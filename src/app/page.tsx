@@ -91,10 +91,12 @@ export default function Home() {
       <div className="grid lg:grid-cols-2 gap-12 items-center">
         <div className="space-y-8">
           <h1 className="text-4xl md:text-5xl font-extrabold leading-tight">
-            Find Expert Services, AnyTime-AnyWhere.
+            {"Find Expert Services, AnyTime-AnyWhere."}
+            
           </h1>
           <p className="text-xl text-blue-100">
-            Connect with skilled professionals for all your needs. From automotive to home maintenance, we've got you covered.
+            {"Connect with skilled professionals for all your needs. From automotive to home maintenance, we've got you covered."}
+            
           </p>
           <form className="flex flex-col sm:flex-row gap-4">
             <input
