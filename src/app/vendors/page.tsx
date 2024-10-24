@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import FooterComponent from '@/component/footer/footerComponent'
+
 
 // Mock data for vendors (in a real application, this would come from an API or database)
 const vendors = [
@@ -73,7 +73,7 @@ export default function VendorList() {
       </main>
 
       <footer className="bg-white border-t border-gray-200">
-        <FooterComponent/>
+        
         {/* <div className="container mx-auto px-6 py-8">
           <div className="flex flex-col sm:flex-row justify-between items-center">
             <p className="text-sm text-gray-500">© 2024 VsHub by ILUD. All rights reserved.</p>
