@@ -1,8 +1,11 @@
 "use client";
 import Image from "next/image";
 import { useState } from "react";
+interface SetProps{
+	setQNav :any;
+}
 
-const NavComponent: React.FC<any> = ({ setQNav }) => {
+const NavComponent: React.FC<SetProps> = ({ setQNav }) => {
 	const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
 	return (

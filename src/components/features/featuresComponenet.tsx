@@ -1,6 +1,6 @@
-import Image from "next/image";
 
-const FeaturesComponenet: React.FC<any> = () => {
+
+const FeaturesComponenet: React.FC = () => {
 
 	return (
 		<div className="container mx-auto px-4">

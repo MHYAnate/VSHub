@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-const HeroComponent: React.FC<any> = ({ state }) => {
+const HeroComponent: React.FC= () => {
 	return (
 		<section className="relative py-20 bg-gradient-to-r from-gray-900 to-gray-800 text-white overflow-hidden">
 			<div className="container mx-auto px-4 relative z-10">

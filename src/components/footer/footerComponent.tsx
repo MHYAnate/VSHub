@@ -1,8 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
 
-const FooterComponent: React.FC<any> = ({ state }) => {
+const FooterComponent: React.FC = () => {
 	return (
 		<div className="container mx-auto px-4 py-8">
 			<div className="flex flex-col md:flex-row justify-between items-center">

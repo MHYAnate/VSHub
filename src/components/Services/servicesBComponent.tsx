@@ -2,7 +2,7 @@ import Image from "next/image";
 import { Services } from "@/database/data";
 import { useState } from "react";
 
-export default function ServiceBcomponent() {
+const ServicesBComponent: React.FC = () => {
 	const [selectedCategory, setSelectedCategory] = useState<number | null>(null);
 
 	const toggleCategory = (categoryId: number) => {
@@ -84,3 +84,5 @@ export default function ServiceBcomponent() {
 };
 
 
+ServicesBComponent.displayName = "ServicesBComponent";
+export default ServicesBComponent;

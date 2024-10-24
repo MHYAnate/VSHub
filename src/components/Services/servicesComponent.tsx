@@ -2,7 +2,7 @@ import Image from "next/image";
 import { Services } from "@/database/data";
 import { useState } from "react";
 
-const ServicesComponent: React.FC<any> = ({ state }) => {
+const ServicesComponent: React.FC = () => {
 	const [expandedCategory, setExpandedCategory] = useState<number | null>(null);
 
 	const toggleMdCategory = (categoryId: number) => {

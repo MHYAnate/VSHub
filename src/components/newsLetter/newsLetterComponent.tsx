@@ -1,6 +1,6 @@
-import Image from "next/image";
 
-const NewsLetterComponent: React.FC<any> = ({ state }) => {
+
+const NewsLetterComponent: React.FC = () => {
 	return (
 		<div className="container mx-auto px-4">
 			<div className="max-w-2xl mx-auto text-center">

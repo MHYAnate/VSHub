@@ -1,7 +1,5 @@
 "use client";
 import { useState, useRef, useEffect } from "react";
-import Image from "next/image";
-import { Services } from "@/database/data";
 import NavComponent from "@/components/nav/navComponent";
 import HeroComponent from "@/components/hero/heroComponent";
 import ServiceBcomponent from "@/components/Services/servicesBComponent";
@@ -25,19 +23,27 @@ export default function Home() {
 
 	const q4 = useRef<HTMLDivElement>(null);
 
-	const qView1 = q1.current?.scrollIntoView({ behavior: "smooth" });
+	const qView1 = () => q1.current?.scrollIntoView({ behavior: "smooth" });
 
-	const qView2 = q2.current?.scrollIntoView({ behavior: "smooth" });
+	const qView2 = () => q2.current?.scrollIntoView({ behavior: "smooth" });
 
-	const qView3 = q3.current?.scrollIntoView({ behavior: "smooth" });
+	const qView3 = () => q3.current?.scrollIntoView({ behavior: "smooth" });
 
-	const qView4 = q4.current?.scrollIntoView({ behavior: "smooth" });
+	const qView4 = () => q4.current?.scrollIntoView({ behavior: "smooth" });
 
 	useEffect(() => {
-		qNav === "services" && qView1;
-		qNav === "service" && qView2;
-		qNav === "features" && qView3;
-		qNav === "contact" && qView4;
+		if (qNav === "services") {
+			qView1();
+		}
+		if (qNav === "service") {
+			qView2();
+		}
+		if (qNav === "features") {
+			qView3();
+		}
+		if (qNav === "contact") {
+			qView4();
+		}
 	}, [qNav, setQNav]);
 
 	return (
