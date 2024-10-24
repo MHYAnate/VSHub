@@ -41,7 +41,7 @@ const ServicesBComponent: React.FC = () => {
 								className={`w-full py-2 px-4 rounded-full transition-colors ${
 									selectedCategory === category.id
 										? "bg-gray-600 text-white hover:bg--700"
-										: "bg-gray-100 text-gray-800 hover:bg-gray-200"
+										: "bg-gray-100 text-gray-800 hover:bg-gray-200 font-[family-name:var(--Poppins-semiBold)] "
 								}`}
 							>
 								{selectedCategory === category.id
@@ -54,7 +54,7 @@ const ServicesBComponent: React.FC = () => {
 			</div>
 			{selectedCategory && (
 				<div className="mt-12 lg:mt-16">
-					<h3 className="text-2xl font-bold mb-6">
+					<h3 className="text-2xl font-bold mb-6 text-zinc-950 font-[family-name:var(--Poppins-semiBold)] ">
 						{Services.find((cat) => cat.id === selectedCategory)?.category}{" "}
 						Services
 					</h3>
@@ -72,7 +72,7 @@ const ServicesBComponent: React.FC = () => {
 										height={200}
 										className="w-full h-40 object-cover rounded-md mb-4 hover:scale-105 transition-all duration-1000 ease-in-out"
 									/>
-									<p className="text-lg font-medium">{service.name}</p>
+									<p className="text-lg font-medium text-zinc-950 font-[family-name:var(--Poppins-semiBold)] ">{service.name}</p>
 								</div>
 							)
 						)}

@@ -11,7 +11,7 @@ const ServicesComponent: React.FC = () => {
 
 	return (
 		<div className="container mx-auto px-6">
-			<h2 className="text-3xl font-bold text-center mb-12">Our Services</h2>
+			<h2 className="text-3xl font-bold text-center mb-12 text-zinc-950 font-[family-name:var(--Poppins-Bold)] ">Our Services</h2>
 			<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 				{Services.map((category) => (
 					<div
@@ -29,7 +29,7 @@ const ServicesComponent: React.FC = () => {
 							/>
 						</div>
 						<div className="p-6">
-							<h3 className="text-xl font-semibold mb-4">
+							<h3 className="text-xl font-semibold mb-4 text-zinc-950 font-[family-name:var(--Poppins-semiBold)] ">
 								{category.category}
 							</h3>
 							<button
@@ -54,7 +54,7 @@ const ServicesComponent: React.FC = () => {
 												height={100}
 												className="w-full h-24 object-cover rounded-md mb-2"
 											/>
-											<p className="text-sm font-medium">{service.name}</p>
+											<p className="text-sm font-medium text-zinc-950 font-[family-name:var(--Poppins-Regular)] ">{service.name}</p>
 										</div>
 									))}
 								</div>
