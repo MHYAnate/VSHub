@@ -7,11 +7,6 @@ import { type ProfileValues } from '@/lib/store/features/profileSlice';
 import { useSearchParams } from "next/navigation";
 import RenderStars from "./renderStar";
 import Image from "next/image";
-import dynamic from 'next/dynamic';
-
-
-const MapComponent = dynamic(() => import('@/components/map/mapComponent'), { ssr: false });
-
 
 const DetailHead: React.FC = () => {
 
@@ -95,7 +90,6 @@ const DetailHead: React.FC = () => {
             <h3 className="text-lg font-semibold text-gray-900 mb-2">Location</h3>
             <div className="bg-gray-100 rounded-lg p-4 h-48 flex items-center justify-center">
 
-              <MapComponent/>
              
             </div>
           </div>
