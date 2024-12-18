@@ -113,7 +113,7 @@ export default function UpDateLocation(
 				</label>
 				<select
 					value={
-						selectState !== (undefined || null)
+						 selectState !== undefined && selectState !== null
 							? selectState
 							: selectCountry === "Nigeria"
 							? ""
