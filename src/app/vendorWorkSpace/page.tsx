@@ -9,6 +9,7 @@ import Reviews from '@/components/workShop/reviews';
 import VendorServicesComponent from '@/components/workShop/services';
 import VendorVacanciesComponent from '@/components/workShop/vacancy';
 import FooterComponent from '@/components/footer/footerComponent';
+import { Suspense } from "react";
 
 
 export default function Component() {
@@ -16,6 +17,8 @@ export default function Component() {
   const [activeTab, setActiveTab] = useState('about')
 
   return (
+
+    <Suspense fallback={`Loading....`}>
     <div className="min-h-screen bg-gray-100">
       <header className="bg-white shadow">
 
@@ -75,6 +78,6 @@ export default function Component() {
         </div>
       </main>
     </div>
-    
+    </Suspense>
   )
 };
