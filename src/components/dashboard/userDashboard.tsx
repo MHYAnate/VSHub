@@ -87,7 +87,7 @@ export default function ClientDashboard() {
   favoriteVendors?.length > 0
     ? favoriteVendors.filter((eachItem) => {
         const text = eachItem.clientId.toLowerCase();
-        return clientId !== (null || undefined || "" )
+        return clientId !== null && clientId !== undefined && clientId !== ""
         ? text.includes(clientId.toLowerCase())
         : null
       })
@@ -97,7 +97,7 @@ export default function ClientDashboard() {
   filteredFevouriteVendor?.length > 0
     ? filteredFevouriteVendor.filter((eachItem) => {
         const text = eachItem.vendorCategory.toLowerCase();
-        return categoryInput !== (null || undefined || "" )
+        return  categoryInput !== null && categoryInput !== undefined && categoryInput !== ""
         ? text.includes(categoryInput.toLowerCase())
         : text	
       })
@@ -107,7 +107,7 @@ const filteredFevouriteService =
   filteredFevouriteCategory?.length > 0
     ? filteredFevouriteCategory.filter((eachItem) => {
         const text = eachItem.vendorService.toLowerCase();
-        return serviceInput !== (null || undefined || "" || "Select State")
+        return  serviceInput !== null && serviceInput !== undefined && serviceInput !== ""
           ? text.includes(serviceInput.toLowerCase())
           : text;
       })
