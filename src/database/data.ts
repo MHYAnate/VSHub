@@ -2,7 +2,7 @@ export const Services = [
   {
     "id": 1,
     "category": "Automotive",
-    "src": "/service/automotive.jpg",
+    "src": "/service/vshas.jpg",
     "services": [
       {
         "id": 1,
@@ -57,7 +57,7 @@ export const Services = [
   {
     "id": 2,
     "category": "Maintenance",
-    "src": "/service/maintenance.jpg",
+    "src": "/service/vshm3.jpg",
     "services": [
       {
         "id": 1,
@@ -161,7 +161,7 @@ export const Services = [
   {
     "id": 3,
     "category": "Others",
-    "src": "/service/personal.jpg",
+    "src": "/service/vshos.jpg",
     "services": [
       {
         "id": 1,

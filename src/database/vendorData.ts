@@ -163,7 +163,7 @@ export const VendorsData = [
 					{
 						id: "3",
 						name: "Idrissa",
-						src: "/service/8.jpg",
+						src: "/service/16.jpg",
 						rank: "intern",
 					},
 				],
@@ -251,7 +251,7 @@ export const VendorsData = [
 					{
 						id: "3",
 						name: "Aboubacar",
-						src: "/service/7.jpg",
+						src: "/service/2.jpg",
 						rank: "intern",
 					},
 				],
@@ -511,7 +511,7 @@ export const VendorsData = [
 			{
 				id: 7,
 				name: "Furaha",
-				src: "/service/7.jpg",
+				src: "/service/2.jpg",
 				address:
 					"shop 3690 across the main market entrance opposite the school block, Zone 2",
 				contact: "07012345678",
@@ -591,7 +591,7 @@ export const VendorsData = [
 					{
 						id: "3",
 						name: "Aboubacar",
-						src: "/service/8.jpg",
+						src: "/service/16.jpg",
 						rank: "intern",
 					},
 				],
@@ -606,7 +606,7 @@ export const VendorsData = [
 			{
 				id: 1,
 				name: "Faraji",
-				src: "/service/8.jpg",
+				src: "/service/16.jpg",
 				address:
 					"shop 3579 across the main market entrance opposite the office block in area 2",
 				contact: "07012345678",
@@ -844,7 +844,7 @@ export const VendorsData = [
 					{
 						id: "3",
 						name: "Eseoghene",
-						src: "/service/7.jpg",
+						src: "/service/2.jpg",
 						rank: "Intern",
 					},
 				],
@@ -1002,7 +1002,7 @@ export const VendorsData = [
 					{
 						id: "2",
 						name: "Eku",
-						src: "/service/7.jpg",
+						src: "/service/2.jpg",
 						rank: "Assist",
 					},
 					{
@@ -1187,7 +1187,7 @@ export const VendorsData = [
 			{
 				id: 1,
 				name: "Faraji",
-				src: "/service/8.jpg",
+				src: "/service/16.jpg",
 				address:
 					"shop 3579 across the main market entrance opposite the school block, Zone 4",
 				contact: "07012345678",
@@ -1425,13 +1425,13 @@ export const VendorsData = [
 					{
 						id: "2",
 						name: "Eseoghene",
-						src: "/service/8.jpg",
+						src: "/service/16.jpg",
 						rank: "Mechanic Assisst",
 					},
 					{
 						id: "3",
 						name: "Emem",
-						src: "/service/7.jpg",
+						src: "/service/2.jpg",
 						rank: "interm",
 					},
 				],
@@ -1513,7 +1513,7 @@ export const VendorsData = [
 					{
 						id: "3",
 						name: "Ebrima",
-						src: "/service/8.jpg",
+						src: "/service/16.jpg",
 						rank: "interm",
 					},
 				],
@@ -1750,7 +1750,7 @@ export const VendorsData = [
 					{
 						id: "1",
 						name: "Ebrima",
-						src: "/service/7.jpg",
+						src: "/service/2.jpg",
 						rank: "Mechanic",
 					},
 					{
@@ -1862,7 +1862,7 @@ export const VendorsData = [
 			{
 				id: 2,
 				name: "Dakarai",
-				src: "/service/7.jpg",
+				src: "/service/2.jpg",
 				address:
 					"shop across the main market entrance opposite the bank block, Area 5",
 				contact: "07012345678",
@@ -1927,7 +1927,7 @@ export const VendorsData = [
 					{
 						id: "1",
 						name: "Faraji",
-						src: "/service/8.jpg",
+						src: "/service/16.jpg",
 						rank: "Panel Beater",
 					},
 					{
@@ -1947,7 +1947,7 @@ export const VendorsData = [
 			{
 				id: 3,
 				name: "Cusmaan",
-				src: "/service/8.jpg",
+				src: "/service/16.jpg",
 				address:
 					"shop across the main market entrance opposite the bank block, District 2",
 				contact: "07012345678",
@@ -2273,7 +2273,7 @@ export const VendorsData = [
 					{
 						id: "2",
 						name: "Dakarai",
-						src: "/service/7.jpg",
+						src: "/service/2.jpg",
 						rank: "Assit Panel beater",
 					},
 					{
@@ -2352,7 +2352,7 @@ export const VendorsData = [
 					{
 						id: "1",
 						name: "Ebrima",
-						src: "/service/7.jpg",
+						src: "/service/2.jpg",
 						rank: "Panel Beater",
 					},
 					{
@@ -2465,7 +2465,7 @@ export const VendorsData = [
 			{
 				id: 2,
 				name: "Dakarai",
-				src: "/service/7.jpg",
+				src: "/service/2.jpg",
 				address:
 					"shop 3698 across the main market entrance opposite the zone block, Area 3",
 				contact: "07012345678",
@@ -2536,7 +2536,7 @@ export const VendorsData = [
 					{
 						id: "2",
 						name: "Faraji",
-						src: "/service/8.jpg",
+						src: "/service/16.jpg",
 						rank: "Re-wiring Assist",
 					},
 					{
@@ -2550,7 +2550,7 @@ export const VendorsData = [
 			{
 				id: 3,
 				name: "Cusmaan",
-				src: "/service/8.jpg",
+				src: "/service/16.jpg",
 				address:
 					"shop 1234 across the main market entrance opposite the complex zone, District 7",
 				contact: "07012345678",
@@ -3278,13 +3278,13 @@ export const VendorsData = [
 					{
 						id: "1",
 						name: "Ochieng",
-						src: "/service/7.jpg",
+						src: "/service/2.jpg",
 						rank: "Driver 1",
 					},
 					{
 						id: "2",
 						name: "Ebrima",
-						src: "/service/7.jpg",
+						src: "/service/2.jpg",
 						rank: "Driver 2",
 					},
 					{
@@ -3443,13 +3443,13 @@ export const VendorsData = [
 					{
 						id: "2",
 						name: "Faraji",
-						src: "/service/8.jpg",
+						src: "/service/16.jpg",
 						rank: "Driver 2",
 					},
 					{
 						id: "3",
 						name: "Pharoq",
-						src: "/service/7.jpg",
+						src: "/service/2.jpg",
 						rank: "Driver 3",
 					},
 				],
@@ -4344,13 +4344,13 @@ export const VendorsData = [
 					{
 						id: "2",
 						name: "Kyauta",
-						src: "/service/8.jpg",
+						src: "/service/16.jpg",
 						rank: "Assist Wheel Balacing Operator",
 					},
 					{
 						id: "3",
 						name: "Kwasi",
-						src: "/service/7.jpg",
+						src: "/service/2.jpg",
 						rank: "interm Wheel Balacing Operator",
 					},
 				],
@@ -4575,7 +4575,7 @@ export const VendorsData = [
 					{
 						id: "1",
 						name: "Ousmane",
-						src: "/service/8.jpg",
+						src: "/service/16.jpg",
 						rank: "Senior Wheel Balacing Operator",
 					},
 					{
@@ -4765,7 +4765,7 @@ export const VendorsData = [
 			{
 				id: 2,
 				name: "Muhammadu",
-				src: "/service/7.jpg",
+				src: "/service/2.jpg",
 				address:
 					"shop across the main market entrance opposite the zone 567 block",
 				contact: "07012345678",
@@ -4848,7 +4848,7 @@ export const VendorsData = [
 			{
 				id: 3,
 				name: "Munyaradzi",
-				src: "/service/8.jpg",
+				src: "/service/16.jpg",
 				address:
 					"shop across the main market entrance opposite the area 890 block",
 				contact: "07012345678",
@@ -5858,7 +5858,7 @@ export const VendorsData = [
 			{
 				id: 1,
 				name: "Pilirani",
-				src: "/service/7.jpg",
+				src: "/service/2.jpg",
 				address:
 					"shop across the main market entrance opposite the area 567 block",
 				contact: "07012345678",
@@ -5941,7 +5941,7 @@ export const VendorsData = [
 			{
 				id: 2,
 				name: "Rabiu",
-				src: "/service/8.jpg",
+				src: "/service/16.jpg",
 				address:
 					"shop across the main market entrance opposite the zone 890 block",
 				contact: "07012345678",
@@ -6944,7 +6944,7 @@ export const VendorsData = [
 			{
 				id: 7,
 				name: "Furaha",
-				src: "/service/7.jpg",
+				src: "/service/2.jpg",
 				address:
 					"shop across the main market entrance opposite the area 567 block",
 				contact: "07012345678",
@@ -7705,7 +7705,7 @@ export const VendorsData = [
 			{
 				id: 2,
 				name: "Dakarai",
-				src: "/service/7.jpg",
+				src: "/service/2.jpg",
 				address:
 					"shop 123 across the main bank entrance opposite the market block, Area 6",
 				contact: "07012345678",
@@ -7788,7 +7788,7 @@ export const VendorsData = [
 			{
 				id: 3,
 				name: "Cusmaan",
-				src: "/service/8.jpg",
+				src: "/service/16.jpg",
 				address:
 					"shop 456 across the main complex entrance opposite the bank block, District 9",
 				contact: "07012345678",
@@ -10645,7 +10645,7 @@ export const VendorsData = [
 			{
 				id: 2,
 				name: "Muhammadu",
-				src: "/service/7.jpg",
+				src: "/service/2.jpg",
 				address:
 					"shop across the main secretariat entrance opposite the bank block, area 2",
 				contact: "07012345678",
@@ -10728,7 +10728,7 @@ export const VendorsData = [
 			{
 				id: 3,
 				name: "Munyaradzi",
-				src: "/service/8.jpg",
+				src: "/service/16.jpg",
 				address:
 					"shop across the main school entrance opposite the bank block, zone 3",
 				contact: "07012345678",
@@ -11648,7 +11648,7 @@ export const VendorsData = [
 			{
 				id: 7,
 				name: "Furaha",
-				src: "/service/7.jpg",
+				src: "/service/2.jpg",
 				address:
 					"shop across the main school entrance opposite the bank block, area 7",
 				contact: "07012345678",
@@ -11739,7 +11739,7 @@ export const VendorsData = [
 			{
 				id: 1,
 				name: "Faraji",
-				src: "/service/8.jpg",
+				src: "/service/16.jpg",
 				address:
 					"shop across the main office entrance opposite the bank block, zone 8",
 				contact: "07012345678",
@@ -12237,7 +12237,7 @@ export const VendorsData = [
 			{
 				id: 7,
 				name: "Ebrima",
-				src: "/service/7.jpg",
+				src: "/service/2.jpg",
 				address:
 					"shop across the main school entrance opposite the bank block, zone 7",
 				contact: "07012345678",
@@ -14001,7 +14001,7 @@ export const VendorsData = [
 			{
 				id: 7,
 				name: "Furaha",
-				src: "/service/7.jpg",
+				src: "/service/2.jpg",
 				address:
 					"shop 74 across the main hospital entrance opposite the bank block, Zone 57",
 				contact: "07012345678",
@@ -14092,7 +14092,7 @@ export const VendorsData = [
 			{
 				id: 1,
 				name: "Lawal",
-				src: "/service/7.jpg",
+				src: "/service/2.jpg",
 				address:
 					"shop 57 across the main office block entrance opposite the bank block, Zone 38",
 				contact: "07012345678",
@@ -15095,7 +15095,7 @@ export const VendorsData = [
 			{
 				id: 6,
 				name: "Ousmane",
-				src: "/service/8.jpg",
+				src: "/service/16.jpg",
 				address:
 					"shop 57 across the main secretariate entrance opposite the bank block, Area 78",
 				contact: "07012345678",
@@ -15600,7 +15600,7 @@ export const VendorsData = [
 			{
 				id: 5,
 				name: "Kwasi",
-				src: "/service/7.jpg",
+				src: "/service/2.jpg",
 				address:
 					"shop 44 across the main office block entrance opposite the bank block, Zone 59",
 				contact: "07012345678",
@@ -15683,7 +15683,7 @@ export const VendorsData = [
 			{
 				id: 6,
 				name: "Kyauta",
-				src: "/service/8.jpg",
+				src: "/service/16.jpg",
 				address:
 					"shop 72 across the main secretariate entrance opposite the bank block, Area 21",
 				contact: "07012345678",
@@ -18797,7 +18797,7 @@ export const VendorsData = [
 			{
 				id: 1,
 				name: "Faraji",
-				src: "/service/8.jpg",
+				src: "/service/16.jpg",
 				address:
 					"shop 63 across the main secretariat entrance opposite the bank block, Area 54",
 				contact: "07012345678",
@@ -19295,7 +19295,7 @@ export const VendorsData = [
 			{
 				id: 7,
 				name: "Ebrima",
-				src: "/service/7.jpg",
+				src: "/service/2.jpg",
 				address:
 					"shop 50 across the main office block entrance opposite the bank block, Area 14",
 				contact: "07012345678",
@@ -19385,7 +19385,7 @@ export const VendorsData = [
 			{
 				id: 1,
 				name: "Ochieng",
-				src: "/service/7.jpg",
+				src: "/service/2.jpg",
 				address:
 					"shop 18 across the main school entrance opposite the bank block, Zone 42",
 				contact: "07012345678",
@@ -21150,7 +21150,7 @@ export const VendorsData = [
 			{
 				id: 1,
 				name: "Faraji",
-				src: "/service/8.jpg",
+				src: "/service/16.jpg",
 				address:
 					"shop 35 across the main office block entrance opposite the bank block, Area 17",
 				contact: "07012345678",
@@ -21648,7 +21648,7 @@ export const VendorsData = [
 			{
 				id: 7,
 				name: "Ebrima",
-				src: "/service/7.jpg",
+				src: "/service/2.jpg",
 				address:
 					"shop 16 across the main hospital entrance opposite the bank block, Area 41",
 				contact: "07012345678",
@@ -22409,7 +22409,7 @@ export const VendorsData = [
 			{
 				id: 2,
 				name: "Dakarai",
-				src: "/service/7.jpg",
+				src: "/service/2.jpg",
 				address:
 					"shop 61 across the main secretariat entrance opposite the bank block, Zone 48",
 				contact: "07012345678",
@@ -23503,7 +23503,7 @@ export const VendorsData = [
 			{
 				id: 1,
 				name: "Faraji",
-				src: "/service/8.jpg",
+				src: "/service/16.jpg",
 				address:
 					"shop across the main market entrance opposite the bank block Area 4",
 				contact: "07012345678",
@@ -24001,7 +24001,7 @@ export const VendorsData = [
 			{
 				id: 7,
 				name: "Ebrima",
-				src: "/service/7.jpg",
+				src: "/service/2.jpg",
 				address:
 					"shop across the main market entrance opposite the bank block District 3",
 				contact: "07012345678",
@@ -24589,7 +24589,7 @@ export const VendorsData = [
 			{
 				id: 7,
 				name: "Ebrima",
-				src: "/service/8.jpg",
+				src: "/service/16.jpg",
 				address:
 					"shop across the main market entrance opposite the bank block Area 11",
 				contact: "07012345678",

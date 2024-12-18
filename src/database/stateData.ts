@@ -1,65 +1,24 @@
 export const StateData = [
   {
-   "name":"Kogi",
+   "name":"Abuja",
    "areaList": [
     {
       "id":"1",
-      "name":"okene",
+      "name":"apo",
     },
     {
       "id":"2",
-      "name":"Kotokarfey"
+      "name":"guzape"
     },
     {
       "id":"3",
-      "name":"Ajakota"
+      "name":"garki"
     },
     {
       "id":"4",
-      "name":"Lokoja"
+      "name":"wuse"
     }
    ]
   },
-  {
-    "name":"Niger",
-    "areaList": [
-     {
-      "id":"1",
-      "name":"Mokwa",
-     },
-     {
-      "id":"2",
-      "name":"Kpagungu"
-     },
-     {
-      "id":"3",
-      "name":"Agaye"
-     },
-     {
-      "id":"4",
-      "name":"Suleja"
-     }
-    ]
-   },
-   {
-    "name":"Kano",
-    "areaList": [
-     {
-      "id":"1",
-      "name":"Dawakin kudo",
-     },
-     {
-      "id":"2",
-      "name":"Kofa Shakir"
-     },
-     {
-      "id":"3",
-      "name":"B.U.K Road"
-     },
-     {
-      "id":"4",
-      "name":"Wudil"
-     }
-    ]
-   },
+  
 ]
