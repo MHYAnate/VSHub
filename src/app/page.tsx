@@ -7,9 +7,17 @@ import ServicesComponent from "@/components/Services/servicesComponent";
 import FeaturesComponenet from "@/components/features/featuresComponenet";
 import NewsLetterComponent from "@/components/newsLetter/newsLetterComponent";
 import FooterComponent from "@/components/footer/footerComponent";
- 
 
 export default function Home() {
+
+		useEffect(() => {
+			// Accessing window.location.pathname doesn't require assignment 
+			// if you only intend to read the value. 
+			const pathname = window.location.pathname; 
+			// You can use the pathname value here if needed:
+			pathname
+			console.log(pathname); 
+		}, []); 
 
 	const [qNav, setQNav] = useState("");
 
@@ -49,14 +57,14 @@ export default function Home() {
 	return (
 		<div className="flex flex-col min-h-screen font-sans bg-gray-50">
 			<header className="bg-white shadow-sm sticky top-0 z-50">
-				<NavComponent setQNav={setQNav} />
+				<NavComponent setQNav={setQNav} qNav={qNav} />
 			</header>
 			<main className="flex-grow">
-				<HeroComponent />
+				<HeroComponent setQNav={setQNav} qNav={qNav} />
 				<section
 					ref={qNav === "services" ? q1 : q0}
 					id="services"
-					className="md:hidden py-20  bg-gray-50"
+					className="md:hidden py-20  bg-white"
 				>
 					<ServicesComponent />
 				</section>
@@ -64,7 +72,7 @@ export default function Home() {
 				<section
 					ref={qNav === "service" ? q2 : q0}
 					id="service"
-					className=" hidden md:block py-20 bg-gray-50"
+					className=" hidden md:block py-20 bg-white"
 				>
 					<ServiceBcomponent />
 				</section>
@@ -80,7 +88,7 @@ export default function Home() {
 				<section
 					ref={qNav === "contact" ? q4 : q0}
 					id="contact"
-					className="py-20 bg-gradient-to-r from-gray-900 to-gray-800 text-white font-[family-name:var(--Poppins-Regular)] "
+					className="py-20 bg-gradient-to-r from-white to-white text-black font-[family-name:var(--Poppins-Regular)] "
 				>
 					<NewsLetterComponent />
 				</section>
@@ -92,3 +100,4 @@ export default function Home() {
 		</div>
 	);
 }
+ 
