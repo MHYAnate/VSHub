@@ -407,7 +407,7 @@ export default function VendorRegComponent() {
 							</label>
 							<select
 								value={
-									selectState !== (undefined || null)
+									selectState !==  undefined && selectState !==  null
 										? selectState
 										: selectCountry === "Nigeria"
 										? ""
@@ -469,7 +469,7 @@ export default function VendorRegComponent() {
 							</label>
 							<select
 								value={
-									selectService !== (undefined || null)
+									 selectService !==  undefined && selectService !==  null
 										? selectService
 										: selectState
 										? ""
@@ -494,7 +494,7 @@ export default function VendorRegComponent() {
 							</label>
 							<select
 								value={
-									ServiceSelect !== (undefined || null)
+									 ServiceSelect !==  undefined && ServiceSelect !==  null
 										? ServiceSelect
 										: selectService
 										? ""
