@@ -5,7 +5,7 @@ import { useSearchParams } from "next/navigation";
 import VendorStaffsCard from './staffCard';
 
 interface Props{
-  id : string
+  id : string 
 }
 const VendorStaffsComponent: React.FC<Props> = ({id}) => {
 

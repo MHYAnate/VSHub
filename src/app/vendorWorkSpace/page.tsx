@@ -48,7 +48,7 @@ export default function Component() {
 
                 {activeTab === 'staff' && (
 
-                  <VendorStaffsComponent/>
+                  <VendorStaffsComponent id=''/>
 
                 )}
 
