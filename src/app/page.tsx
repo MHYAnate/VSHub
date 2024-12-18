@@ -7,6 +7,7 @@ import ServicesComponent from "@/components/Services/servicesComponent";
 import FeaturesComponenet from "@/components/features/featuresComponenet";
 import NewsLetterComponent from "@/components/newsLetter/newsLetterComponent";
 import FooterComponent from "@/components/footer/footerComponent";
+import { Suspense } from "react";
 
 export default function Home() {
 
@@ -51,6 +52,7 @@ export default function Home() {
 	}, [qNav, setQNav]);
 
 	return (
+		<Suspense fallback={`Loading....`}>
 		<div className="flex flex-col min-h-screen font-sans bg-gray-50">
 			<header className="bg-white shadow-sm sticky top-0 z-50">
 				<NavComponent setQNav={setQNav} qNav={qNav} />
@@ -94,6 +96,7 @@ export default function Home() {
 				<FooterComponent />
 			</footer>
 		</div>
+		</Suspense>
 	);
 }
  
