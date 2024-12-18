@@ -8,13 +8,6 @@ import { config } from 'dotenv';
 
 config();
 
-interface AddData {
-  address: string;
-	number: string;
-}
-
-
-
 // Initialize Firebase
 
 const firebaseConfig = initializeApp( {

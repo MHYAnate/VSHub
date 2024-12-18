@@ -84,7 +84,7 @@ export default function Profile() {
 
     staffs:(
       <div className="space-y-2">
-        <VendorStaffsComponent id={profileDetails?.docid}/>
+        <VendorStaffsComponent id={ `${profileDetails?.docid}`}/>
       </div>
     ),
   }

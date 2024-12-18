@@ -49,6 +49,7 @@ export const fetchVacancies = createAsyncThunk(
       
       return vacancies;
     } catch (error) {
+      console.log(error)
       throw new Error('Failed to fetch vacancies');
     }
   }

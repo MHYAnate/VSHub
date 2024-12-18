@@ -44,12 +44,6 @@ export default function VendorRegComponent() {
 			? (document.querySelector("#email") as HTMLInputElement)?.value || ""
 			: "";
 
-	const stateValue =
-		typeof document !== "undefined"
-			? (document.querySelector("#state") as HTMLInputElement)
-					?.value || ""
-			: "";
-
 	const handleProfileDetail = async (data: ProfileValues) => {
 		try {
 			const profileDetailRef = collection(database, `profile`);
