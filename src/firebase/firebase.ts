@@ -2,7 +2,7 @@
 import { initializeApp } from "firebase/app";
 // import { getAnalytics } from "firebase/analytics";
 import { getStorage } from "firebase/storage";
-import {getFirestore, collection,doc, addDoc, getDocs, deleteDoc, onSnapshot} from "firebase/firestore";
+import {getFirestore} from "firebase/firestore";
 import { getAuth, setPersistence, browserLocalPersistence, browserSessionPersistence, GoogleAuthProvider } from "firebase/auth";
 import { config } from 'dotenv';
 

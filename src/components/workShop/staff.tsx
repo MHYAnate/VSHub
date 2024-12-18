@@ -4,7 +4,10 @@ import { useAppSelector } from "@/lib/store/store";
 import { useSearchParams } from "next/navigation";
 import VendorStaffsCard from './staffCard';
 
-const VendorStaffsComponent: React.FC<any> = (id) => {
+interface Props{
+  id : string
+}
+const VendorStaffsComponent: React.FC<Props> = ({id}) => {
 
   const { profiles } = useAppSelector((state) => state.profile);
 

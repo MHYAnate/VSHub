@@ -2,7 +2,6 @@
 import React from "react";
 import { useAppSelector } from "@/lib/store/store";
 import { useSearchParams } from "next/navigation";
-import VendorStaffsCard from "./staffCard";
 
 const VendorVacanciesComponent: React.FC = () => {
 	const { vacancies } = useAppSelector((state) => state.vacancy);

@@ -21,7 +21,7 @@ export default function UpDateSpecialty(
 	const {
 		register,
 		handleSubmit,
-		formState: { isSubmitSuccessful, isDirty, isSubmitting },
+		formState: { isSubmitSuccessful,  isSubmitting },
 	} = useForm<ProfileValues>({
 		defaultValues: {
 			specialty: "",

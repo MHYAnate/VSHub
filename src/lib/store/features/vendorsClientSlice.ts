@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { collection, getDocs } from 'firebase/firestore';
 import Firebase from '@/firebase/firebase';
 
@@ -39,6 +39,7 @@ export const fetchVendorsClient = createAsyncThunk(
       
       return clientValues;
     } catch (error) {
+      console.log(error)
       return rejectWithValue('Failed to fetch clientValues');
     }
   }

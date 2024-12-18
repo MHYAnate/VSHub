@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
-import { collection, setDoc, doc, getDocs, query, where, addDoc, serverTimestamp } from 'firebase/firestore';
+import { collection, setDoc, doc, getDocs, query, where, addDoc, serverTimestamp, Timestamp } from 'firebase/firestore';
 import Firebase from '@/firebase/firebase';
 
 const { database } = Firebase;
@@ -13,7 +13,7 @@ export interface RateValue {
   raterName: string;
   raterImg: string;
   raterId: string;
-  createdAt: any;
+  createdAt: Timestamp | null;
 }
 
 interface CardRating {
@@ -68,6 +68,7 @@ export const fetchRatings = createAsyncThunk(
       const ratings = querySnapshot.docs.map(doc => doc.data() as RateValue);
       return { rateeId, ratings };
     } catch (error) {
+      console.log(error)
       throw new Error('Failed to fetch ratings');
     }
   }
@@ -99,12 +100,13 @@ export const addRating = createAsyncThunk(
         raterImg,
         raterName,
         raterId,
-        createdAt: new Date().toISOString(),
+        createdAt: Timestamp.now(),
       };
 
       await setDoc(doc(rateUsDetailRef, docRef.id), { docid: docRef.id }, { merge: true });
       return { rateeId, rating: newRating };
     } catch (error) {
+      console.log(error)
       throw new Error('Failed to add rating');
     }
   }
@@ -132,6 +134,7 @@ export const updateRating = createAsyncThunk(
         },
       };
     } catch (error) {
+      console.log(error)
       throw new Error('Failed to update rating');
     }
   }

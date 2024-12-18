@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef } from 'react'
 
 const FeaturesComponent: React.FC = () => {
   const features = [
@@ -40,25 +40,27 @@ const FeaturesComponent: React.FC = () => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add('feature-visible')
+            entry.target.classList.add('feature-visible');
           }
-        })
+        });
       },
       { threshold: 0.1 }
-    )
-
-    featureRefs.current.forEach((ref) => {
-      if (ref) observer.observe(ref)
-    })
-
+    );
+  
+    // Copy the current refs to a local variable
+    const currentRefs = featureRefs.current;
+  
+    currentRefs.forEach((ref) => {
+      if (ref) observer.observe(ref);
+    });
+  
     return () => {
-      featureRefs.current.forEach((ref) => {
-        if (ref) observer.unobserve(ref)
-      })
-    }
-  }, [])
-
-  // 
+      // Use the local variable in the cleanup
+      currentRefs.forEach((ref) => {
+        if (ref) observer.unobserve(ref);
+      });
+    };
+  }, []); 
 
   return (
     <div className="container mx-auto px-4 py-16 bg-white rounded-md">

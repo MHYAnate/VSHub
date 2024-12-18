@@ -29,7 +29,7 @@ const Header: React.FC = () => {
 	return (
 		
     <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 flex justify-between items-center">
-          <h1 className="text-3xl font-bold  text-gray-900 font-[family-name:var(--Poppins-SemiBold)]">{ profileDetails? profileDetails.name : ""}'s Workspace</h1>
+          <h1 className="text-3xl font-bold  text-gray-900 font-[family-name:var(--Poppins-SemiBold)]">{ profileDetails? profileDetails.name : ""}{`'s Workspace`}</h1>
           <nav>
             <ul className="flex space-x-4">
               <li>

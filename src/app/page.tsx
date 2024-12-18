@@ -10,14 +10,10 @@ import FooterComponent from "@/components/footer/footerComponent";
 
 export default function Home() {
 
-		useEffect(() => {
-			// Accessing window.location.pathname doesn't require assignment 
-			// if you only intend to read the value. 
-			const pathname = window.location.pathname; 
-			// You can use the pathname value here if needed:
-			pathname
-			console.log(pathname); 
-		}, []); 
+	useEffect(() => {
+    const pathname = window.location.pathname; 
+    console.log(pathname); // Now you're using the value
+  }, []); 
 
 	const [qNav, setQNav] = useState("");
 
