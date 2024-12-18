@@ -5,8 +5,11 @@ import Firebase from "@/firebase/firebase";
 import { collection, setDoc, doc } from "firebase/firestore";
 import Loading from "../loading/loading";
 import { ProfileValues } from "@/lib/store/features/profileSlice";
+interface Props {
+	docId: string
+}
 
-export default function VendorAccountSetting(docId: string) {
+export default function VendorAccountSetting({docId}:Props) {
 	const { database } = Firebase;
 
 	const [loader, setLoader] = useState(false);

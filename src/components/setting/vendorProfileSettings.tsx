@@ -7,8 +7,11 @@ import { Services } from "@/database/data";
 import { StateData } from "@/database/stateData";
 import { ProfileValues } from "@/lib/store/features/profileSlice";
 import Loading from "../loading/loading";
+interface Props {
+	docId: string
+}
 
-export default function VendorProfileSetting(docId: string) {
+export default function VendorProfileSetting({docId}:Props) {
 	const {database } = Firebase;
 
 	const [loader, setLoader] = useState(false);

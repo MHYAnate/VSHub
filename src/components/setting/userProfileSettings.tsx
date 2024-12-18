@@ -6,8 +6,11 @@ import { collection, setDoc, doc } from "firebase/firestore";
 import { StateData } from "@/database/stateData";
 import { ProfileValues } from "@/lib/store/features/profileSlice";
 import Loading from "../loading/loading";
+interface Props {
+	docId: string
+}
 
-export default function UserProfileSetting(docId: string) {
+export default function UserProfileSetting({docId}:Props) {
 	const { database } = Firebase;
 
 	const [loader, setLoader] = useState(false);
