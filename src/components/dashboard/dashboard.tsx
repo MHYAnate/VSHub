@@ -63,7 +63,7 @@ export default function Dashboard() {
 		clientValues?.length > 0
 			? clientValues.filter((eachItem) => {
 					const text = eachItem.vendorId.toLowerCase();
-					return vendorId !== (null || undefined || "")
+					 return vendorId !== null && vendorId !== undefined && vendorId !== "" 
 						? text.includes(vendorId.toLowerCase())
 						: text;
 			  })
@@ -73,7 +73,7 @@ export default function Dashboard() {
 		profiles?.length > 0
 			? profiles.filter((eachItem) => {
 					const text = eachItem.isEmployedId.toLowerCase();
-					return vendorId !== (null || undefined || "")
+					 return vendorId !== null && vendorId !== undefined && vendorId !== "" 
 						? text.includes(vendorId.toLowerCase())
 						: text;
 			  })
