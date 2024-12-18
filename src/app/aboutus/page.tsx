@@ -1,6 +1,6 @@
 "use client";
 
-import React from 'react'
+import React, {useState} from 'react'
 import AboutHero from '@/components/about/aboutHero';
 import AboutMission from '@/components/about/aboutMission';
 import AboutFeatures from '@/components/about/aboutFeature';
@@ -14,13 +14,15 @@ import AboutFooter from '@/components/about/aboutFooter';
 
 export default function AboutUs() {
 
+	const [a, setA] = useState("")
+
 
 	return (
 		<div className="min-h-screen bg-gray-50">
 			
 			<header className="bg-white shadow-sm">
 
-				<NavComponent/>
+				<NavComponent setQNav={setA} qNav={a}/>
 
       </header>
 
