@@ -437,7 +437,7 @@ export default function VendorRegComponent() {
 							</label>
 							<select
 								value={
-									selectArea !== (undefined || null)
+									 selectArea !==  undefined && selectArea !==  null
 										? selectArea
 										: selectState
 										? ""
