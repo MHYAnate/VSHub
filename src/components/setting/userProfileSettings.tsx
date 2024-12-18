@@ -178,7 +178,7 @@ export default function UserProfileSetting({docId}:Props) {
 							</label>
 							<select
 								value={
-									selectState !== (undefined || null)
+									selectState !== undefined && selectState !==  null
 										? selectState
 										: selectCountry === "Nigeria"
 										? ""
@@ -208,7 +208,7 @@ export default function UserProfileSetting({docId}:Props) {
 							</label>
 							<select
 								value={
-									selectArea !== (undefined || null)
+									 selectArea !== undefined && selectArea !==  null
 										? selectArea
 										: selectState
 										? ""

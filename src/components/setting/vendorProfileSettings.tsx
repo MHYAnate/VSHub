@@ -257,8 +257,7 @@ export default function VendorProfileSetting({docId}:Props) {
 						State
 					</label>
 					<select
-						value={
-							selectState !== (undefined || null)
+						value={ selectState !== undefined && selectState !==  null
 								? selectState
 								: selectCountry === "Nigeria"
 								? ""
@@ -288,7 +287,7 @@ export default function VendorProfileSetting({docId}:Props) {
 					</label>
 					<select
 						value={
-							selectArea !== (undefined || null)
+							selectArea !== undefined && selectArea !==  null
 								? selectArea
 								: selectState
 								? ""
@@ -320,7 +319,7 @@ export default function VendorProfileSetting({docId}:Props) {
 					</label>
 					<select
 						value={
-							selectService !== (undefined || null)
+							selectService !== undefined &&	selectService !==  null
 								? selectService
 								: selectState
 								? ""
@@ -345,7 +344,7 @@ export default function VendorProfileSetting({docId}:Props) {
 					</label>
 					<select
 						value={
-							ServiceSelect !== (undefined || null)
+								ServiceSelect !== undefined &&	ServiceSelect !==  null
 								? ServiceSelect
 								: selectService
 								? ""
