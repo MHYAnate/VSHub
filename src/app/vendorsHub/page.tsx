@@ -3,6 +3,7 @@ import React,{useState} from 'react'
 import FilterVendorComponent from '@/components/filters/filterVendors'
 import NavComponent from '@/components/nav/navComponent';
 import TermsAndPolicies from '@/components/workShop/termAndPolicies'
+import { Suspense } from "react";
 
 
 
@@ -11,6 +12,7 @@ export default function VendorList() {
   const [a, setA] = useState("")
 	
   return (
+    <Suspense fallback={`Loading....`}>
     <div className="flex flex-col min-h-screen font-sans bg-gray-50">
       
       <header className="px-6 py-4 bg-transparent">
@@ -35,5 +37,6 @@ export default function VendorList() {
 
       </footer>
     </div>
+    </Suspense>
   )
 }
