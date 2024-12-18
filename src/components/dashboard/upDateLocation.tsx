@@ -143,7 +143,7 @@ export default function UpDateLocation(
 				</label>
 				<select
 					value={
-						selectArea !== (undefined || null)
+						 selectArea !== undefined && selectArea !== null
 							? selectArea
 							: selectState
 							? ""

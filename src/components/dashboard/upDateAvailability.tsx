@@ -73,7 +73,7 @@ export default function UpDateAvailability(
 				</label>
 				<select
 					value={
-						selectAvailability !== (undefined || null)
+						selectAvailability !== undefined && selectAvailability !== null
 							? selectAvailability
 							: "Select Availability"
 					}

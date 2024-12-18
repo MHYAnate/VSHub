@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
 import RateUs from "@/components/btn/rateUs";
 import Pagination from "@/components/btn/paginationBtn";
-import { useAppSelector } from '@/lib/store/store';
+import { useAppSelector } from "@/lib/store/store";
 
 interface RaterValue {
 	name: string;
@@ -40,32 +40,27 @@ const AvailableVendors: React.FC<VendorProps> = ({
 		[searchParams]
 	);
 
-  const { profiles, error } = useAppSelector((state) => state.profile);
-
+	const { profiles, error } = useAppSelector((state) => state.profile);
 
 	const Vendors = searchParams.get("name");
 
-	const vendors = Vendors ? Vendors : "" ;
+	const vendors = Vendors ? Vendors : "";
 
+	if (error) {
+		return (
+			<div className="flex justify-center items-center min-h-[200px]">
+				<div className="text-red-500 bg-red-50 p-4 rounded-lg">{error}</div>
+			</div>
+		);
+	}
 
-
-  if (error) {
-    return (
-      <div className="flex justify-center items-center min-h-[200px]">
-        <div className="text-red-500 bg-red-50 p-4 rounded-lg">
-          {error}
-        </div>
-      </div>
-    );
-  }
-	
-		const filteredVendorHub =
+	const filteredVendorHub =
 		profiles?.length > 0
 			? profiles.filter((eachItem) => {
 					const text = eachItem.service.toLowerCase();
-					return vendors !== (null || undefined || "" )
-					? text.includes(vendors.toLowerCase())
-					: text	
+					return vendors !== null && vendors !== undefined && vendors !== ""
+						? text.includes(vendors.toLowerCase())
+						: text;
 			  })
 			: [];
 
@@ -73,7 +68,10 @@ const AvailableVendors: React.FC<VendorProps> = ({
 		filteredVendorHub?.length > 0
 			? filteredVendorHub.filter((eachItem) => {
 					const text = eachItem.state.toLowerCase();
-					return selectState !== (null || undefined || "" || "Select State")
+					return selectState !== null &&
+						selectState !== undefined &&
+						selectState !== "" &&
+						selectState !== "Select State"
 						? text.includes(selectState.toLowerCase())
 						: text;
 			  })
@@ -83,7 +81,10 @@ const AvailableVendors: React.FC<VendorProps> = ({
 		filteredListstate.length > 0
 			? filteredListstate.filter((eachItem) => {
 					const text = eachItem.area.toLowerCase();
-					return selectArea !== (null || undefined || "" || "Select Area")
+					return selectArea !== null &&
+						selectArea !== undefined &&
+						selectArea !== "" &&
+						selectArea !== "Select Area"
 						? text.includes(selectArea.toLowerCase())
 						: text;
 			  })
@@ -97,8 +98,6 @@ const AvailableVendors: React.FC<VendorProps> = ({
 			  })
 			: [];
 
-	
-
 	// Get current posts
 	const indexOfLastPost = currentPage * postsPerPage;
 	const indexOfFirstPost = indexOfLastPost - postsPerPage;
@@ -106,7 +105,6 @@ const AvailableVendors: React.FC<VendorProps> = ({
 
 	// Change page
 	const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
-
 
 	function renderVendors() {
 		if (filteredList.length === 0) {
@@ -118,7 +116,7 @@ const AvailableVendors: React.FC<VendorProps> = ({
 				</div>
 			);
 		}
-		console.log(profiles)
+		console.log(profiles);
 
 		return currentPosts.map((vendor) => (
 			<div
@@ -157,9 +155,7 @@ const AvailableVendors: React.FC<VendorProps> = ({
 				<button
 					onClick={() =>
 						router.push(
-							`/vendorWorkSpace` +
-								"?" +
-								set("docid", `${vendor.docid}`)
+							`/vendorWorkSpace` + "?" + set("docid", `${vendor.docid}`)
 						)
 					}
 					className="w-full py-3 px-4 bg-zinc-900 text-white font-bold rounded-b-lg hover:bg-zinc-950 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-zinc-900"
@@ -168,7 +164,7 @@ const AvailableVendors: React.FC<VendorProps> = ({
 				</button>
 			</div>
 		));
-	};
+	}
 
 	return (
 		<div className="space-y-8">
