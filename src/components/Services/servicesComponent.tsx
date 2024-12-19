@@ -3,13 +3,13 @@
 import React from 'react'
 import Image from "next/image"
 import { Services } from "@/database/data"
-import { useState, useCallback, useRef, useEffect } from "react"
+import { useState, useCallback, useRef } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
 
 const ServicesComponent: React.FC = () => {
   const searchParams = useSearchParams()
   const router = useRouter()
-  const [expandedCategory, setExpandedCategory] = useState<number | null>(null)
+  const [selectedCategory, setSelectedCategory] = useState<number | null>(null)
   const [hoveredService, setHoveredService] = useState<number | null>(null)
   const categoryRefs = useRef<(HTMLDivElement | null)[]>([])
 
@@ -22,18 +22,11 @@ const ServicesComponent: React.FC = () => {
     [searchParams]
   )
 
-  const toggleMdCategory = (categoryId: number) => {
-    setExpandedCategory(expandedCategory === categoryId ? null : categoryId)
+  const toggleCategory = (categoryId: number) => {
+    setSelectedCategory(selectedCategory === categoryId ? null : categoryId)
   }
 
-  useEffect(() => {
-    if (expandedCategory !== null) {
-      categoryRefs.current[expandedCategory]?.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start',
-      })
-    }
-  }, [expandedCategory])
+  
 
   return (
     <div className="container mx-auto px-6 py-16 bg-white">
@@ -66,14 +59,14 @@ const ServicesComponent: React.FC = () => {
             </div>
             <div className="p-6">
               <button
-                onClick={() => toggleMdCategory(category.id)}
+                onClick={() => toggleCategory(category.id)}
                 className="w-full py-3 px-6 bg-black text-white rounded-full hover:bg-gray-800 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black"
               >
-                {expandedCategory === category.id
+                {selectedCategory === category.id
                   ? "Hide Services"
                   : "Show Services"}
               </button>
-              {expandedCategory === category.id && (
+              {selectedCategory === category.id && (
                 <div className="mt-8 grid grid-cols-2 gap-6">
                   {category.services.map((service) => (
                     <div
