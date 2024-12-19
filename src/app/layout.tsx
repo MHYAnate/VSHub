@@ -3,6 +3,8 @@ import localFont from "next/font/local";
 import "./globals.css";
 import StoreProvider from '@/lib/store/StoreProvider';
 
+import { Suspense } from "react";
+
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -61,7 +63,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${poppinsBold.variable} ${poppinsRegular.variable} ${poppinsSemiBold} ${ProtestGuerrilla.variable} antialiased`}
       >
+        <Suspense fallback={`Loading.....`}>
         <StoreProvider>{children}</StoreProvider>
+        </Suspense>
       </body>
     </html>
   );
