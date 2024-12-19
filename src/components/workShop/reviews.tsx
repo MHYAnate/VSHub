@@ -24,6 +24,8 @@ const Reviews: React.FC = () => {
 
 	const { ratings, totalRate } = cardRatings;
 
+	const finalRate = Math.round(ratings.length ? totalRate / ratings.length : 0);
+
 	return (
 		<div>
 			<h3 className="text-lg font-medium text-gray-900 mb-4">
@@ -32,7 +34,7 @@ const Reviews: React.FC = () => {
 			<div className="flex items-center">
 				<RenderStars rating={totalRate} />
 				<p className="ml-2 text-sm text-gray-600">
-					{totalRate.toFixed(1)} ({ratings.length} reviews)
+					{finalRate} ({ratings.length} reviews)
 				</p>
 			</div>
 			<div className="space-y-4">

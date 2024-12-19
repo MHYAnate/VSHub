@@ -2,13 +2,14 @@
 
 import React, { useState, useEffect }  from "react";
 import { useAppSelector } from "@/lib/store/store";
-import { type RateValue } from "@/lib/store/features/ratingSlice";
+import {  type RateValue } from '@/lib/store/features/ratingSlice';
 import { type ProfileValues } from '@/lib/store/features/profileSlice';
 import { useSearchParams } from "next/navigation";
 import RenderStars from "./renderStar";
 import Image from "next/image";
 
 const DetailHead: React.FC = () => {
+  
 
   const [profileDetails, setProfileDetails] = useState<ProfileValues | null>(null);
 
@@ -39,8 +40,10 @@ const DetailHead: React.FC = () => {
       }
   );
 
-  const { ratings, totalRate } = cardRatings;
 
+  const { ratings, totalRate, } = cardRatings;
+
+  const finalRate = Math.round(ratings.length ? totalRate / ratings.length : 0);
   return (
     <div className="bg-white shadow-lg rounded-lg overflow-hidden">
       <div className="md:flex">
@@ -74,9 +77,9 @@ const DetailHead: React.FC = () => {
             </div>
             <div className="text-right">
               <div className="flex items-center">
-                <RenderStars rating={totalRate} />
+                <RenderStars rating={finalRate} />
                 <p className="ml-2 text-sm text-gray-600">
-                  {totalRate.toFixed(1)} ({ratings.length} reviews)
+                  {finalRate} ({ratings.length} reviews)
                 </p>
               </div>
               {profileDetails?.isVerified === "true" && (
@@ -88,9 +91,7 @@ const DetailHead: React.FC = () => {
           </div>
           <div className="mt-4">
             <h3 className="text-lg font-semibold text-gray-900 mb-2">Location</h3>
-            <div className="bg-gray-100 rounded-lg p-4 h-48 flex items-center justify-center">
-
-             
+            <div className="bg-gray-100 rounded-lg p-4 h-48 flex items-center justify-center"> 
             </div>
           </div>
           <div className="mt-4 grid grid-cols-2 gap-4">

@@ -1,5 +1,6 @@
 "use client"
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
+import { useAppDispatch } from "@/lib/store/store";
 import AboutVendor from '@/components/workShop/about';
 import Header from '@/components/workShop/header';
 import MainTab from '@/components/workShop/mainTab';
@@ -10,9 +11,30 @@ import VendorServicesComponent from '@/components/workShop/services';
 import VendorVacanciesComponent from '@/components/workShop/vacancy';
 import FooterComponent from '@/components/footer/footerComponent';
 import { Suspense } from "react";
+import { fetchRatings,  resetCardRating } from '@/lib/store/features/ratingSlice';
+import { fetchProfiles  } from '@/lib/store/features/profileSlice';
+import { useSearchParams } from "next/navigation";
 
 
 export default function Component() {
+  const searchParams = useSearchParams();
+
+  const vendorId = searchParams.get("docid");
+
+  const vendorDocId = vendorId ? vendorId : "";
+
+  const dispatch =useAppDispatch()
+
+  useEffect(() => {
+    dispatch(fetchRatings(vendorDocId));
+    return () => {
+      dispatch(resetCardRating(vendorDocId));
+    };
+  }, [dispatch, vendorDocId]);
+
+  useEffect(() => {
+    dispatch(fetchProfiles())
+  }, [dispatch])
 
   const [activeTab, setActiveTab] = useState('about')
 
