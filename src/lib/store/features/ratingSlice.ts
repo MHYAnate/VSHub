@@ -3,18 +3,16 @@ import { collection, setDoc, doc, getDocs, query, where, addDoc, serverTimestamp
 import Firebase from '@/firebase/firebase';
 
 
-const serializeTimestamp = (timestamp: any) => {
+const serializeTimestamp = (timestamp: Timestamp | null | undefined): number | null => {
   if (!timestamp) return null;
-  if (timestamp.toMillis) {
+  if ('toMillis' in timestamp) {
     return timestamp.toMillis();
   }
   return null;
 };
 
- const formatDate = (timestamp: number | null): string => {
-  if (!timestamp) return '';
-  return new Date(timestamp).toLocaleDateString();
-};
+
+
 
 const { database } = Firebase;
 
