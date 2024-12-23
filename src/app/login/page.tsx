@@ -6,7 +6,7 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import Image from "next/image";
 import React, { useState, Suspense } from "react";
 import Link from "next/link";
-import LoadingSvg from "@/components/loading/loading";
+import LoadingSvg from "@/components/loading/loadingSvg";
 import { type ProfileValues } from "@/lib/store/features/profileSlice";
 import NavComponent from "@/components/nav/navComponent";
 

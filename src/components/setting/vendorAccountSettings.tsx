@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import Firebase from "@/firebase/firebase";
 import { collection, setDoc, doc } from "firebase/firestore";
-import Loading from "../loading/loading";
+import LoadingSvg from "@/components/loading/loadingSvg";
 import { ProfileValues } from "@/lib/store/features/profileSlice";
 interface Props {
 	docId: string
@@ -61,7 +61,7 @@ export default function VendorAccountSetting({docId}:Props) {
 	return (
 		<>
 			{loader ? (
-				<Loading />
+				<LoadingSvg />
 			) : (
 				<form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
 					<div>

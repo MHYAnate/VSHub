@@ -15,7 +15,7 @@ import ClientRateTime from "./clientRateTime";
 import UpDateAvailability from "./upDateAvailability";
 import UpDateLocation from "./upDateLocation";
 import UpDateSpecialty from "./upDateSpecialty";
-import LoadingSvg from "../loading/loading";
+import LoadingSvg from "@/components/loading/loadingSvg";
 
 const { auth } = Firebase;
 
