@@ -31,11 +31,9 @@ export default function Home() {
 		if (user){
 			router.push("/dashboard");
 		}
-	},[user])
+	},[user, router])
 	
 	const [qNav, setQNav] = useState("");
-
-	const q0 = useRef<HTMLDivElement>(null);
 
 	const q1 = useRef<HTMLDivElement>(null);
 
