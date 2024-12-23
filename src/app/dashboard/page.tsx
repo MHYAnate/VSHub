@@ -101,13 +101,21 @@ export default function VendorDashboard() {
 						<span className="text-sm hidden md:inline">
 							Welcome, {profileDetails?.name}
 						</span>
-						<Image
+						{profileDetails?.src === "" ?<Image
+							src={"/service/u1.jpg"}
+							alt={profileDetails?.name || "Vendor"}
+							width={40}
+							height={40}
+							className="rounded-full border-2 border-white"
+						/> :<Image
 							src={profileDetails?.src !== undefined? profileDetails?.src :"/service/u1.jpg"}
 							alt={profileDetails?.name || "Vendor"}
 							width={40}
 							height={40}
 							className="rounded-full border-2 border-white"
-						/>
+						/>  }
+						
+							
 						<button
 							onClick={() => setIsMenuOpen(!isMenuOpen)}
 							className="md:hidden text-white focus:outline-none"

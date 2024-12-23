@@ -6,9 +6,7 @@ import {
 	fetchProfiles,
 	type ProfileValues,
 } from "@/lib/store/features/profileSlice";
-import {
-	fetchFavourites,
-} from "@/lib/store/features/favoriteVendorsSlice";
+import { fetchFavourites } from "@/lib/store/features/favoriteVendorsSlice";
 import { fetchRatings, type RateValue } from "@/lib/store/features/ratingSlice";
 import Firebase from "@/firebase/firebase";
 import ClientRating from "./clientRating";
@@ -21,8 +19,7 @@ import LoadingSvg from "../loading/loading";
 
 const { auth } = Firebase;
 
-export default function Dashboard() {	
-	
+export default function Dashboard() {
 	const dispatch = useAppDispatch();
 	const [user] = useAuthState(auth);
 
@@ -56,21 +53,22 @@ export default function Dashboard() {
 				(profile) => profile.email.toLowerCase() === user.email?.toLowerCase()
 			);
 			setProfileDetails(vendorDetail || null);
-			console.log(profileDetails?.name, "name")
+			console.log(profileDetails?.name, "name");
 		}
 	}, [user, profiles, profileDetails?.name]);
 
-
-	const filteredCustomers = favoriteVendors?.filter((customer) => 
-  vendorId ? customer.vendorId.toLowerCase() === vendorId.toLowerCase() : false
-) ?? [];
-
+	const filteredCustomers =
+		favoriteVendors?.filter((customer) =>
+			vendorId
+				? customer.vendorId.toLowerCase() === vendorId.toLowerCase()
+				: false
+		) ?? [];
 
 	const filteredStaffs =
 		profiles?.length > 0
 			? profiles.filter((eachItem) => {
 					const text = eachItem.isEmployedId.toLowerCase();
-					 return vendorId !== null && vendorId !== undefined && vendorId !== "" 
+					return vendorId !== null && vendorId !== undefined && vendorId !== ""
 						? text.includes(vendorId.toLowerCase())
 						: text;
 			  })
@@ -118,7 +116,11 @@ export default function Dashboard() {
 									Update Availability
 								</button>
 								{quick === "Availability" && (
-									<UpDateAvailability setLoader={setLoader} setQuick={setQuick} docId={vendorId} />
+									<UpDateAvailability
+										setLoader={setLoader}
+										setQuick={setQuick}
+										docId={vendorId}
+									/>
 								)}
 
 								<button
@@ -130,7 +132,11 @@ export default function Dashboard() {
 									Update Location
 								</button>
 								{quick === "Location" && (
-									<UpDateLocation setLoader={setLoader} setQuick={setQuick} docId={vendorId} />
+									<UpDateLocation
+										setLoader={setLoader}
+										setQuick={setQuick}
+										docId={vendorId}
+									/>
 								)}
 
 								<button
@@ -144,7 +150,11 @@ export default function Dashboard() {
 									Update Speciality
 								</button>
 								{quick === "Speciality" && (
-									<UpDateSpecialty setLoader={setLoader} setQuick={setQuick} docId={vendorId} />
+									<UpDateSpecialty
+										setLoader={setLoader}
+										setQuick={setQuick}
+										docId={vendorId}
+									/>
 								)}
 							</div>
 						</div>
@@ -231,8 +241,8 @@ export default function Dashboard() {
 											</td>
 											<td className="p-2">
 												<ClientRateTime
-												clientId={customer.clientId}
-												ratings={ratings}
+													clientId={customer.clientId}
+													ratings={ratings}
 												/>
 											</td>
 										</tr>

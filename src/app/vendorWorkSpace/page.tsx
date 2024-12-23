@@ -17,6 +17,7 @@ import {
 } from "@/lib/store/features/ratingSlice";
 import { fetchProfiles } from "@/lib/store/features/profileSlice";
 import { useSearchParams } from "next/navigation";
+import LoadingSvg from "@/components/loading/loadingSvg";
 
 export default function Component() {
 	const searchParams = useSearchParams();
@@ -41,7 +42,7 @@ export default function Component() {
 	const [activeTab, setActiveTab] = useState("about");
 
 	return (
-		<Suspense fallback={`Loading....`}>
+		<Suspense fallback={<LoadingSvg/>}>
 			<div className="min-h-screen bg-gray-100">
 				<header className="bg-white shadow">
 					<Header />
