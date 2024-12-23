@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { usePathname, useRouter } from "next/navigation";
+import Firebase from "@/firebase/firebase";
 
 interface Props {
 	setQNav: (value: string) => void;
@@ -13,6 +14,7 @@ export default function NavComponent({ setQNav, qNav }: Props) {
 	const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 	const [scrolled, setScrolled] = useState(false);
 
+  const {auth}= Firebase
 	const pathname = usePathname();
 	const router = useRouter();
 
@@ -24,6 +26,8 @@ export default function NavComponent({ setQNav, qNav }: Props) {
 		window.addEventListener("scroll", handleScroll);
 		return () => window.removeEventListener("scroll", handleScroll);
 	}, []);
+
+  const user= auth.currentUser;
 
 	const navItems = [
 		{
@@ -55,7 +59,7 @@ export default function NavComponent({ setQNav, qNav }: Props) {
 			<div className="container mx-auto px-4 py-4">
 				<div className="flex items-center justify-between">
 					<div
-          onClick={()=> router.push("/")} 
+						onClick={() => router.push("/")}
 						className={`${
 							scrolled
 								? " pl-2 pr-3"
@@ -92,13 +96,18 @@ export default function NavComponent({ setQNav, qNav }: Props) {
 							VsHub
 						</span>
 					</div>
-          {pathname === "/" && (
-            <nav className="flex items-center space-x-6 md:hidden ">
-              <div onClick={()=>setQNav(qNav === "service" ? "" : "service")}  className={`px-4 py-2 text-sm font-medium ${scrolled? "text-white bg-black" : "text-black bg-white"}  rounded-full hover:bg-gray-800 transition-all duration-300 cursor-pointer hover:shadow-lg transform hover:-translate-y-0.5`}>
-                Services
-              </div>
-            </nav>
-          )}
+					{pathname === "/" && (
+						<nav className="flex items-center space-x-6 md:hidden ">
+							<div
+								onClick={() => setQNav(qNav === "service" ? "" : "service")}
+								className={`px-4 py-2 text-sm font-medium ${
+									scrolled ? "text-white bg-black" : "text-black bg-white"
+								}  rounded-full hover:bg-gray-800 transition-all duration-300 cursor-pointer hover:shadow-lg transform hover:-translate-y-0.5`}
+							>
+								Services
+							</div>
+						</nav>
+					)}
 
 					{pathname === "/" && (
 						<nav className="hidden md:flex items-center space-x-6">
@@ -121,22 +130,24 @@ export default function NavComponent({ setQNav, qNav }: Props) {
 						</nav>
 					)}
 
-					{pathname !== "/" &&  pathname !== "/login" && pathname !== "register" && (
-						<nav className="hidden md:flex items-center space-x-6">
-							<div
-								onClick={() => router.push("/login")}
-								className="text-sm font-medium text-gray-600 hover:text-black transition-all duration-300 cursor-pointer relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-black after:transition-all after:duration-300 hover:after:w-full"
-							>
-								Log In
-							</div>
-							<div
-								onClick={() => router.push("/register")}
-								className="px-4 py-2 text-sm font-medium text-white bg-black rounded-full hover:bg-gray-800 transition-all duration-300 cursor-pointer hover:shadow-lg transform hover:-translate-y-0.5"
-							>
-								Register
-							</div>
-						</nav>
-					)}
+					{pathname !== "/" &&
+						pathname !== "/login" &&
+						pathname !== "register" && (
+							<nav className="hidden md:flex items-center space-x-6">
+								<div
+									onClick={() => router.push("/login")}
+									className="text-sm font-medium text-gray-600 hover:text-black transition-all duration-300 cursor-pointer relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-black after:transition-all after:duration-300 hover:after:w-full"
+								>
+									Log In
+								</div>
+								<div
+									onClick={() => router.push("/register")}
+									className="px-4 py-2 text-sm font-medium text-white bg-black rounded-full hover:bg-gray-800 transition-all duration-300 cursor-pointer hover:shadow-lg transform hover:-translate-y-0.5"
+								>
+									Register
+								</div>
+							</nav>
+						)}
 
 					{pathname === "/login" && (
 						<nav className="hidden md:flex items-center space-x-6">
@@ -148,8 +159,6 @@ export default function NavComponent({ setQNav, qNav }: Props) {
 							</div>
 						</nav>
 					)}
-          
-    
 
 					{pathname === "/register" && (
 						<nav className="hidden md:flex items-center space-x-6">
@@ -187,7 +196,7 @@ export default function NavComponent({ setQNav, qNav }: Props) {
 					</button>
 				</div>
 
-				{mobileMenuOpen && (
+				{mobileMenuOpen && pathname === "/" && (
 					<nav className="mt-4 md:hidden">
 						<div className="flex flex-col space-y-2">
 							{navItems.map((item, index) => (
@@ -210,6 +219,48 @@ export default function NavComponent({ setQNav, qNav }: Props) {
 								</div>
 							))}
 						</div>
+					</nav>
+				)}
+
+				{mobileMenuOpen && pathname !== "/" &&
+						pathname !== "/login" &&
+						pathname !== "register" && (
+					<nav className="mt-4 md:hidden">
+						<div
+									onClick={() => router.push("/login")}
+									className="text-sm font-medium text-gray-600 hover:text-black transition-all duration-300 cursor-pointer relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-black after:transition-all after:duration-300 hover:after:w-full"
+								>
+									Log In
+								</div>
+								<div
+									onClick={() => router.push("/register")}
+									className="px-4 py-2 text-sm font-medium text-white bg-black rounded-full hover:bg-gray-800 transition-all duration-300 cursor-pointer hover:shadow-lg transform hover:-translate-y-0.5"
+								>
+									Register
+								</div>
+					</nav>
+				)}
+
+{mobileMenuOpen && pathname === "/login" &&  (
+					<nav className="mt-4 md:hidden">
+					
+								<div
+									onClick={() => router.push("/register")}
+									className="px-4 py-2 text-sm font-medium text-white bg-black rounded-full hover:bg-gray-800 transition-all duration-300 cursor-pointer hover:shadow-lg transform hover:-translate-y-0.5"
+								>
+									Register
+								</div>
+					</nav>
+				)}
+        {mobileMenuOpen && pathname === "/register" &&  (
+					<nav className="mt-4 md:hidden">
+					
+          <div
+								onClick={() => router.push("/login")}
+								className="text-sm font-medium text-gray-600 hover:text-black transition-all duration-300 cursor-pointer relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-black after:transition-all after:duration-300 hover:after:w-full"
+							>
+								Log In
+							</div>
 					</nav>
 				)}
 			</div>

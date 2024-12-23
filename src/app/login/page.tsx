@@ -6,7 +6,7 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import Image from "next/image";
 import React, { useState, Suspense } from "react";
 import Link from "next/link";
-import Loading from "@/components/loading/loading";
+import LoadingSvg from "@/components/loading/loading";
 import { type ProfileValues } from "@/lib/store/features/profileSlice";
 import NavComponent from "@/components/nav/navComponent";
 
@@ -53,9 +53,9 @@ export default function Register() {
 	};
 
 	return (
-		<Suspense fallback={<Loading />}>
+		<Suspense fallback={<LoadingSvg />}>
 			{loader ? (
-				<Loading />
+				<LoadingSvg />
 			) : (
 				<div>
 					<NavComponent setQNav={setQnav} qNav={qNav} />
