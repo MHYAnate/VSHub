@@ -13,7 +13,7 @@ export default function RegisterLanding() {
 	return (
 		<div>
 			<NavComponent setQNav={setQnav} qNav={qNav} />
-			<div className="min-h-screen bg-gradient-to-br from-gray-100 to-gray-300 flex flex-col justify-center items-center p-4">
+			<div className="min-h-screen bg-gradient-to-br from-gray-100 to-gray-300 flex flex-col justify-center items-center p-4 mt-20">
 				<div className="w-full max-w-2xl bg-white shadow-xl rounded-lg overflow-hidden">
 					<div className="text-center p-6 border-b">
 						<h1 className="text-3xl font-bold text-gray-900">
@@ -87,7 +87,6 @@ export default function RegisterLanding() {
 						Sign in
 					</Link>
 				</div>
-				N
 			</div>
 		</div>
 	);
