@@ -1,5 +1,6 @@
 "use client";
-import { useRouter, redirect } from "next/navigation";
+"use client";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import Firebase from "@/firebase/firebase";
 import {
@@ -14,7 +15,7 @@ import { ProfileValues } from "@/lib/store/features/profileSlice";
 import LoadingSvg from "@/components//loading/loadingSvg";
 
 export default function VendorRegComponent() {
-	const router = redirect;
+	const router = useRouter();
 
 	const { auth, database } = Firebase;
 
@@ -105,7 +106,8 @@ export default function VendorRegComponent() {
 
 				updateEmail(user, `${data.email}`);
 
-				router("/dashboard");
+			
+				router.push("/dashboard");
 			})
 			.catch((error) => {
 				console.log(error)

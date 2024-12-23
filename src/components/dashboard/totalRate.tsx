@@ -14,7 +14,7 @@ export default function TotalRate({ id }:PropsValues) {
   useEffect(() => {
 		dispatch(fetchRatings(id));
 	
-	}, [dispatch]);
+	}, [dispatch, id]);
 
 
   const cardRatings = useAppSelector((state) => 

@@ -8,7 +8,6 @@ import {
 } from "@/lib/store/features/profileSlice";
 import {
 	fetchFavourites,
-	type FavoriteValues,
 } from "@/lib/store/features/favoriteVendorsSlice";
 import { fetchRatings, type RateValue } from "@/lib/store/features/ratingSlice";
 import Firebase from "@/firebase/firebase";
@@ -59,7 +58,7 @@ export default function Dashboard() {
 			setProfileDetails(vendorDetail || null);
 			console.log(profileDetails?.name, "name")
 		}
-	}, [user, profiles]);
+	}, [user, profiles, profileDetails?.name]);
 
 
 	const filteredCustomers = favoriteVendors?.filter((customer) => 

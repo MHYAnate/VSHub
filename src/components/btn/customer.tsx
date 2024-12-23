@@ -75,7 +75,7 @@ const CustomerBtn: React.FC<Props> = ({ vendorData, clientId }) => {
 		);
 
 		setProfileDetail(vendorDetail || null);
-	}, [favoriteVendors, vendorData.docid, clientId]);
+	}, [favoriteVendors, vendorData.docid, clientId,profiles]);
 
 	const handleAddCustomer = async () => {
 		setIsLoading(true);
