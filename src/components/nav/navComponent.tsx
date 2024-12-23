@@ -14,7 +14,7 @@ export default function NavComponent({ setQNav, qNav }: Props) {
 	const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 	const [scrolled, setScrolled] = useState(false);
 
-  const {auth}= Firebase
+	const { auth } = Firebase;
 	const pathname = usePathname();
 	const router = useRouter();
 
@@ -27,7 +27,7 @@ export default function NavComponent({ setQNav, qNav }: Props) {
 		return () => window.removeEventListener("scroll", handleScroll);
 	}, []);
 
-  const user= auth.currentUser;
+	const user = auth.currentUser;
 
 	const navItems = [
 		{
@@ -132,7 +132,8 @@ export default function NavComponent({ setQNav, qNav }: Props) {
 
 					{pathname !== "/" &&
 						pathname !== "/login" &&
-						pathname !== "register" && (
+						pathname !== "register" &&
+						!user && (
 							<nav className="hidden md:flex items-center space-x-6">
 								<div
 									onClick={() => router.push("/login")}
@@ -222,45 +223,45 @@ export default function NavComponent({ setQNav, qNav }: Props) {
 					</nav>
 				)}
 
-				{mobileMenuOpen && pathname !== "/" &&
-						pathname !== "/login" &&
-						pathname !== "register" && (
-					<nav className="mt-4 md:hidden">
-						<div
-									onClick={() => router.push("/login")}
-									className="text-sm font-medium text-gray-600 hover:text-black transition-all duration-300 cursor-pointer relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-black after:transition-all after:duration-300 hover:after:w-full"
-								>
-									Log In
-								</div>
-								<div
-									onClick={() => router.push("/register")}
-									className="px-4 py-2 text-sm font-medium text-white bg-black rounded-full hover:bg-gray-800 transition-all duration-300 cursor-pointer hover:shadow-lg transform hover:-translate-y-0.5"
-								>
-									Register
-								</div>
-					</nav>
-				)}
-
-{mobileMenuOpen && pathname === "/login" &&  (
-					<nav className="mt-4 md:hidden">
-					
-								<div
-									onClick={() => router.push("/register")}
-									className="px-4 py-2 text-sm font-medium text-white bg-black rounded-full hover:bg-gray-800 transition-all duration-300 cursor-pointer hover:shadow-lg transform hover:-translate-y-0.5"
-								>
-									Register
-								</div>
-					</nav>
-				)}
-        {mobileMenuOpen && pathname === "/register" &&  (
-					<nav className="mt-4 md:hidden">
-					
-          <div
+				{mobileMenuOpen &&
+					pathname !== "/" &&
+					pathname !== "/login" &&
+					pathname !== "register" &&
+					!user && (
+						<nav className="mt-4 md:hidden">
+							<div
 								onClick={() => router.push("/login")}
 								className="text-sm font-medium text-gray-600 hover:text-black transition-all duration-300 cursor-pointer relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-black after:transition-all after:duration-300 hover:after:w-full"
 							>
 								Log In
 							</div>
+							<div
+								onClick={() => router.push("/register")}
+								className="px-4 py-2 text-sm font-medium text-white bg-black rounded-full hover:bg-gray-800 transition-all duration-300 cursor-pointer hover:shadow-lg transform hover:-translate-y-0.5"
+							>
+								Register
+							</div>
+						</nav>
+					)}
+
+				{mobileMenuOpen && pathname === "/login" && (
+					<nav className="mt-4 md:hidden">
+						<div
+							onClick={() => router.push("/register")}
+							className="px-4 py-2 text-sm font-medium text-white bg-black rounded-full hover:bg-gray-800 transition-all duration-300 cursor-pointer hover:shadow-lg transform hover:-translate-y-0.5"
+						>
+							Register
+						</div>
+					</nav>
+				)}
+				{mobileMenuOpen && pathname === "/register" && (
+					<nav className="mt-4 md:hidden">
+						<div
+							onClick={() => router.push("/login")}
+							className="text-sm font-medium text-gray-600 hover:text-black transition-all duration-300 cursor-pointer relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-black after:transition-all after:duration-300 hover:after:w-full"
+						>
+							Log In
+						</div>
 					</nav>
 				)}
 			</div>
