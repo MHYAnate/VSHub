@@ -9,14 +9,30 @@ import NewsLetterComponent from "@/components/newsLetter/newsLetterComponent";
 import FooterComponent from "@/components/footer/footerComponent";
 import { Suspense } from "react";
 import LoadingSvg from "@/components//loading/loadingSvg";
+import Firebase from "@/firebase/firebase";
+import { useRouter } from "next/navigation";
+
+const {auth} = Firebase;
+
+
 
 export default function Home() {
+
+  const user = auth.currentUser;
+
+	const router = useRouter();
 
 	useEffect(() => {
     const pathname = window.location.pathname; 
     console.log(pathname); // Now you're using the value
   }, []); 
 
+	useEffect(()=>{
+		if (user){
+			router.push("/dashboard");
+		}
+	},[user])
+	
 	const [qNav, setQNav] = useState("");
 
 	const q0 = useRef<HTMLDivElement>(null);
@@ -61,7 +77,7 @@ export default function Home() {
 			<main className="flex-grow">
 				<HeroComponent setQNav={setQNav} qNav={qNav} />
 				<section
-					ref={qNav === "services" ? q1 : q0}
+					ref={q1}
 					id="services"
 					className="md:hidden py-20  bg-white"
 				>
@@ -69,7 +85,7 @@ export default function Home() {
 				</section>
 
 				<section
-					ref={qNav === "service" ? q2 : q0}
+					ref={q2}
 					id="service"
 					className=" hidden md:block py-20 bg-white"
 				>
@@ -77,7 +93,7 @@ export default function Home() {
 				</section>
 
 				<section
-					ref={qNav === "features" ? q3 : q0}
+					ref={q3}
 					id="features"
 					className="py-20 bg-gray-100"
 				>
@@ -85,7 +101,7 @@ export default function Home() {
 				</section>
 
 				<section
-					ref={qNav === "contact" ? q4 : q0}
+					ref={q4}
 					id="contact"
 					className="py-20 bg-gradient-to-r from-white to-white text-black font-[family-name:var(--Poppins-Regular)] "
 				>
