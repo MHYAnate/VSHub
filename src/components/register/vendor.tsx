@@ -14,7 +14,7 @@ import { StateData } from "@/database/stateData";
 import React, { useState } from "react";
 import Link from "next/link";
 import { ProfileValues } from "@/lib/store/features/profileSlice";
-import Loading from "../loading/loading";
+import LoadingSvg from "../loading/loadingSvg";
 
 export default function VendorRegComponent() {
 	const router = useRouter();
@@ -47,6 +47,8 @@ export default function VendorRegComponent() {
 	const [loader, setLoader] = useState(false);
 
 	const [checked, setChecked] = useState(false);
+
+	const [isFailed, setIsFailed] = useState(false);
 
 	const check0 = watch("password");
 
@@ -128,11 +130,14 @@ export default function VendorRegComponent() {
 
 				updateEmail(user, `${data.email}`);
 
-				router.push("dashboard");
+				handleProfileDetail(data);
+
+				router.push("/dashboard");
 			})
 			.catch((error) => {
 				console.log(error)
 
+				setIsFailed(true);
 				setLoader(false);
 
 				// ..
@@ -243,12 +248,11 @@ export default function VendorRegComponent() {
 	}
 
 	const onSubmit = (data: ProfileValues) => {
-		handleProfileDetail(data);
 		Register(data);
 	};
 
 	return (<>
-		{loader? <Loading/>:	<div className="min-h-screen bg-gray-100 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+		{loader? <LoadingSvg/>:	<div className="min-h-screen bg-gray-100 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
 		<div className="sm:mx-auto sm:w-full sm:max-w-md">
 			<h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
 				Register as a Vendor
@@ -265,7 +269,10 @@ export default function VendorRegComponent() {
 		</div>
 
 		<div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-			<div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
+			{isFailed?<div>
+				<p>inValid Email or password</p>
+			<div onClick={()=> setIsFailed(false)}>RE TRY</div>
+			</div> : 			<div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
 				<form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
 					<div>
 						<label
@@ -567,7 +574,8 @@ export default function VendorRegComponent() {
 						</button>
 					</div>
 				</form>
-			</div>
+			</div>}
+
 		</div>
 	</div>}
 	</>

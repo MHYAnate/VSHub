@@ -4,70 +4,73 @@ import Firebase from '@/firebase/firebase';
 
 const { database } = Firebase;
 
-export interface FavoriteVendorValues {
+export interface FavoriteValues {
   vendorName:string;
   vendorImg:string;
   vendorId:string;
   vendorCategory:string;
   vendorService:string;
   clientId:string;
+  clientName:string;
+  clientImg:string;
   id:string;
+  docId:string;
 }
 
-interface FavoriteVendorState {
-  favoriteVendors: FavoriteVendorValues[];
+interface favouriteState {
+  favoriteVendors: FavoriteValues[];
   status: 'idle' | 'loading' | 'succeeded' | 'failed';
   error: string | null;
 }
 
-const initialState: FavoriteVendorState = {
+const initialState: favouriteState = {
   favoriteVendors: [],
   status: 'idle',
   error: null,
 };
 
-export const fetchFavoriteVendors = createAsyncThunk(
-  'favoriteVendors/fetchFavoriteVendors',
+export const fetchFavourites = createAsyncThunk(
+  'favoriteVendors/fetchFavourites',
   async (_, { rejectWithValue }) => {
     try {
-      const profileDetailRef = collection(database, 'VendorsClient');
+      const profileDetailRef = collection(database, `vendorsClient`);
       const querySnapshot = await getDocs(profileDetailRef);
-      const FavoriteVendorValues: FavoriteVendorValues[] = [];
+      const favoriteVendors: FavoriteValues[] = [];
       
       querySnapshot.forEach((doc) => {
-        const docData = doc.data() as FavoriteVendorValues;
-        FavoriteVendorValues.push({ ...docData, id: doc.id });
+        const docData = doc.data() as FavoriteValues;
+        favoriteVendors.push({ ...docData, id: doc.id });
       });
       
-      return FavoriteVendorValues;
+      return favoriteVendors;
     } catch (error) {
       return rejectWithValue(error);
     }
   }
 );
 
-const favoriteVendorSlice = createSlice({
+const favoriteSlice = createSlice({
   name: 'favoriteVendors',
   initialState,
   reducers: {
-    clearFavoriteVendor: (state) => {
-      state.favoriteVendors = [];
+    clearFavourites: (state) => {
+      state.favoriteVendors= [];
       state.status = 'idle';
       state.error = null;
     },
   },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchFavoriteVendors.pending, (state) => {
+      .addCase(fetchFavourites.pending, (state) => {
         state.status = 'loading';
         state.error = null;
       })
-      .addCase(fetchFavoriteVendors.fulfilled, (state, action) => {
+      .addCase(fetchFavourites.fulfilled, (state, action) => {
         state.status = 'succeeded';
-        state.favoriteVendors = action.payload;
+        state.favoriteVendors= action.payload;
         state.error = null;
       })
-      .addCase(fetchFavoriteVendors.rejected, (state, action) => {
+      .addCase(fetchFavourites.rejected, (state, action) => {
         state.status = 'failed';
         state.error = action.payload as string;
       });
@@ -75,9 +78,9 @@ const favoriteVendorSlice = createSlice({
 });
 
 // Selectors
-export const selectAllFavoriteVendorValues = (state: { favoriteVendors: FavoriteVendorState }) => state.favoriteVendors.favoriteVendors;
-export const selectFavoriteVendorValuesStatus = (state: { favoriteVendors: FavoriteVendorState }) => state.favoriteVendors.status;
-export const selectFavoriteVendorValuesError = (state: { favoriteVendors: FavoriteVendorState }) => state.favoriteVendors.error;
+export const selectAllfavoriteVendors = (state: { favourite: favouriteState }) => state.favourite.favoriteVendors;
+export const selectfavoriteVendorsStatus = (state: { favourite: favouriteState }) => state.favourite.status;
+export const selectfavoriteVendorsError = (state: { favourite: favouriteState }) => state.favourite.error;
 
-export const { clearFavoriteVendor } = favoriteVendorSlice.actions;
-export default favoriteVendorSlice.reducer;
+export const { clearFavourites } = favoriteSlice .actions;
+export default favoriteSlice .reducer;

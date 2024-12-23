@@ -7,11 +7,12 @@ import { ProfileValues } from "@/lib/store/features/profileSlice";
 
 interface Props{
 	setLoader:(value:boolean)=>void
+	setQuick:(value:string)=> void;
 	docId:string
 }
 
 export default function UpDateAvailability(
-	{setLoader,
+	{setLoader, setQuick,
 	docId}:Props
 ) {
 	const { database } = Firebase;
@@ -49,7 +50,9 @@ export default function UpDateAvailability(
 
 	
 			setLoader(isSubmitting)
+			setQuick("")
 			setLoader(isSubmitSuccessful && false)
+
 
 			console.log("Profile detail added successfully");
 		} catch (error) {

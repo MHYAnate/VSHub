@@ -1,13 +1,21 @@
 "use client";
-import React from "react";
-import {useAppSelector } from '@/lib/store/store';
-import { type RateValue } from '@/lib/store/features/ratingSlice';
+import React ,{useEffect}from "react";
+import {useAppSelector,useAppDispatch } from '@/lib/store/store';
+import { fetchRatings, type RateValue } from "@/lib/store/features/ratingSlice";
 interface PropsValues {
 	id:string;
 }
 
 
 export default function TotalRate({ id }:PropsValues) {
+
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+		dispatch(fetchRatings(id));
+	
+	}, [dispatch]);
+
 
   const cardRatings = useAppSelector((state) => 
   state.rating.ratingsByCard[id] || {
@@ -18,9 +26,11 @@ export default function TotalRate({ id }:PropsValues) {
   }
 );
 
-const { totalRate } = cardRatings;
+const { totalRate, ratings } = cardRatings;
+
+const finalRate = Math.round(ratings.length ? totalRate / ratings.length : 0);
 
   
 
-	return <>{totalRate}</>;
+	return <>{finalRate}</>;
 }

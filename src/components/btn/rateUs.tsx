@@ -6,6 +6,7 @@ import { useForm } from 'react-hook-form';
 import { useAppDispatch, useAppSelector } from '@/lib/store/store';
 import { fetchRatings, addRating, updateRating, resetCardRating, type RateValue } from '@/lib/store/features/ratingSlice';
 
+
 interface RateUsProps {
   rateeId: string;
   raterId: string;

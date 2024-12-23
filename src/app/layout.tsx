@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import StoreProvider from '@/lib/store/StoreProvider';
+import LoadingSvg from "@/components//loading/loadingSvg";
 
 import { Suspense } from "react";
 
@@ -63,7 +64,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${poppinsBold.variable} ${poppinsRegular.variable} ${poppinsSemiBold} ${ProtestGuerrilla.variable} antialiased`}
       >
-        <Suspense fallback={`Loading.....`}>
+        <Suspense fallback={<LoadingSvg/>}>
         <StoreProvider>{children}</StoreProvider>
         </Suspense>
       </body>

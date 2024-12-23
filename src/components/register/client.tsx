@@ -1,5 +1,5 @@
 "use client";
-import { useRouter } from "next/navigation";
+import { useRouter, redirect } from "next/navigation";
 import { useForm } from "react-hook-form";
 import Firebase from "@/firebase/firebase";
 import {
@@ -11,10 +11,10 @@ import { collection, addDoc, setDoc, doc } from "firebase/firestore";
 import React, { useState } from "react";
 import Link from "next/link";
 import { ProfileValues } from "@/lib/store/features/profileSlice";
-import Loading from "../loading/loading";
+import LoadingSvg from "@/components//loading/loadingSvg";
 
 export default function VendorRegComponent() {
-	const router = useRouter();
+	const router = redirect;
 
 	const { auth, database } = Firebase;
 
@@ -105,7 +105,7 @@ export default function VendorRegComponent() {
 
 				updateEmail(user, `${data.email}`);
 
-				router.push("dashboard");
+				router("/dashboard");
 			})
 			.catch((error) => {
 				console.log(error)
@@ -122,7 +122,7 @@ export default function VendorRegComponent() {
 	};
 
 	return (<>
-		{loader? <Loading/>:	<div className="min-h-screen bg-gray-100 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+		{loader? <LoadingSvg/>:	<div className="min-h-screen bg-gray-100 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
 		<div className="sm:mx-auto sm:w-full sm:max-w-md">
 			<h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
 				Register as a Client

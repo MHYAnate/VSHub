@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect , useCallback } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useAppDispatch, useAppSelector } from "@/lib/store/store";
 import {
@@ -8,17 +8,30 @@ import {
 	type ProfileValues,
 } from "@/lib/store/features/profileSlice";
 import {
-	fetchFavoriteVendors
+	fetchFavourites 
 } from "@/lib/store/features/favoriteVendorsSlice";
 import Firebase from "@/firebase/firebase";
 import { Services } from "@/database/data";
 import Image from "next/image";
 import SearchSvg from "@/components/btn/searchSvg";
-import TotalRate from "@/components/dashboard/totalRate";
+import RateUs from "@/components/btn/rateUs";
+import { useRouter, useSearchParams } from "next/navigation";
 
 const { auth } = Firebase;
 
 export default function ClientDashboard() {
+
+	const searchParams = useSearchParams();
+
+	const router = useRouter();
+	const set = useCallback(
+    (name: string, value: string) => {
+      const params = new URLSearchParams(searchParams.toString());
+      params.set(name, value);
+      return params.toString();
+    },
+    [searchParams]
+  );
 	const [user] = useAuthState(auth);
 	const [profileDetails, setProfileDetails] = useState<ProfileValues | null>(
 		null
@@ -69,7 +82,7 @@ export default function ClientDashboard() {
 
 	useEffect(() => {
 		dispatch(fetchProfiles());
-		dispatch(fetchFavoriteVendors());
+		dispatch(fetchFavourites());
 	}, [dispatch]);
 
 	useEffect(() => {
@@ -204,7 +217,7 @@ const filteredFevouriteService =
 						>
 							<div className="relative w-24 h-24 mx-auto mb-4">
 								<Image
-									src={vendor.vendorImg || "/placeholder.svg"}
+									src={vendor.vendorImg || "/service/u1.jpg"}
 									alt={vendor.vendorName}
 									layout="fill"
 									objectFit="cover"
@@ -214,6 +227,13 @@ const filteredFevouriteService =
 							<h3 className="text-xl font-semibold mb-2 text-center">
 								{vendor.vendorName}
 							</h3>
+							<RateUs
+              rateeId={`${vendor.vendorId}`}
+              raterId={profileDetails?.docid || ""}
+              raterName={profileDetails?.name || ""}
+              raterImg={profileDetails?.src || "/service/u1.jpg"}
+            />
+							
 							<p className="mb-1">
 								<strong className="text-gray-700">Category:</strong>{" "}
 								{vendor.vendorCategory}
@@ -222,10 +242,16 @@ const filteredFevouriteService =
 								<strong className="text-gray-700">Service:</strong>{" "}
 								{vendor.vendorService}
 							</p>
-							<p>
-								<strong className="text-gray-700">Rating:</strong>{" "}
-								<TotalRate id={vendor.vendorId} />
-							</p>
+						  <button
+          onClick={() =>
+            router.push(
+              `/vendorWorkSpace` + "?" + set("docid", `${vendor.vendorId}`)
+            )
+          }
+          className="w-full py-3 px-4 bg-black text-white font-bold transition-colors duration-300 hover:bg-white hover:text-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900"
+        >
+          Enter Work Space
+        </button>
 						</div>
 					))}
 				</div>

@@ -1,35 +1,42 @@
 "use client";
-import React from "react";
-import {
-	type RateValue,
-} from "@/lib/store/features/ratingSlice";
+
+import React, { useState, useEffect } from "react";
+import { type RateValue } from "@/lib/store/features/ratingSlice";
 
 interface PropsValues {
+  clientId: string;
   ratings: RateValue[];
-	id:string;
 }
 
-export default function ClientRating({ratings,  id }:PropsValues) {
+
+export default function ClientRating({ clientId, ratings }: PropsValues) {
 
 
-	const value = ratings.find((value) => value.docid === `${id}`);
+  const [profileDetails, setProfileDetails] = useState<RateValue | null>(null);
+
+  useEffect(() => {
+    const vendorDetail = ratings.find(
+      (profile) => profile.raterId.toLowerCase() === clientId.toLowerCase()
+    );
+    setProfileDetails(vendorDetail || null);
+  }, [clientId, ratings]);
 
 	return (
 		<span
 			className={`px-2 py-1 rounded-full text-xs font-semibold
     ${
-			value
-				? value?.rate >= 4
+			profileDetails
+				? profileDetails?.rate >= 4
 					? "bg-green-100 text-green-800"
-					: value?.rate < 4 && value?.rate >= 3
+					: profileDetails?.rate < 4 && profileDetails?.rate >= 3
 					? "bg-yellow-100 text-yellow-800"
-					: value?.rate < 3
+					: profileDetails?.rate < 3
 					? "bg-blue-100 text-blue-800"
 					: "bg-gray-100 text-gray-800"
 				: ""
 		}`}
 		>
-			{value?.rate}
+			{profileDetails?.rate}
 		</span>
 	);
 };

@@ -1,20 +1,22 @@
 "use client";
-import React from "react";
-import {
-	type RateValue,
-} from "@/lib/store/features/ratingSlice";
+
+import React, { useState, useEffect } from "react";
+import { type RateValue } from "@/lib/store/features/ratingSlice";
 
 interface PropsValues {
+  clientId: string;
   ratings: RateValue[];
-	id:string;
 }
 
+export default function ClientFeedBack({ clientId, ratings }: PropsValues) {
+  const [profileDetails, setProfileDetails] = useState<RateValue | null>(null);
 
-export default function ClientFeedBack({ratings,id }:PropsValues) {
+  useEffect(() => {
+    const vendorDetail = ratings.find(
+      (profile) => profile.raterId.toLowerCase() === clientId.toLowerCase()
+    );
+    setProfileDetails(vendorDetail || null);
+  }, [clientId, ratings]);
 
-
-	const value = ratings.find((value) => value.docid === `${id}`);
-  
-
-	return <>{value?.feedback}</>;
+  return <>{profileDetails?.feedback}</>;
 }
