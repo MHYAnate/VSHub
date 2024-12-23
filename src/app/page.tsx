@@ -43,6 +43,8 @@ export default function Home() {
 
 	const q4 = useRef<HTMLDivElement>(null);
 
+	const qServivice = useRef<HTMLDivElement>(null);
+
 	const qView1 = () => q1.current?.scrollIntoView({ behavior: "smooth" });
 
 	const qView2 = () => q2.current?.scrollIntoView({ behavior: "smooth" });
@@ -50,6 +52,8 @@ export default function Home() {
 	const qView3 = () => q3.current?.scrollIntoView({ behavior: "smooth" });
 
 	const qView4 = () => q4.current?.scrollIntoView({ behavior: "smooth" });
+
+	const qServices = () => qServivice.current?.scrollIntoView({ behavior: "smooth" });
 
 	useEffect(() => {
 		if (qNav === "services") {
@@ -64,6 +68,10 @@ export default function Home() {
 		if (qNav === "contact") {
 			qView4();
 		}
+
+		if (qNav === "service") {
+			qServices();
+		}
 	}, [qNav, setQNav]);
 
 	return (
@@ -75,8 +83,8 @@ export default function Home() {
 			<main className="flex-grow">
 				<HeroComponent setQNav={setQNav} qNav={qNav} />
 				<section
-					ref={q1}
-					id="services"
+					ref={qServivice}
+					id="service"
 					className="md:hidden py-20  bg-white"
 				>
 					<ServicesComponent />
