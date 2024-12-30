@@ -135,7 +135,7 @@ export default function RequestCard({
           Accept
         </button>
         <button
-          onClick={()=>{handleDeleteNotice(); onReject}}
+          onClick={()=>{handleDeleteNotice(); onReject()}}
           className="flex-1 bg-white text-black py-2 px-4 rounded-lg border-2 border-black transition-all duration-300 hover:bg-black hover:text-white focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 transform hover:-translate-y-0.5 hover:shadow-lg"
         >
           Reject

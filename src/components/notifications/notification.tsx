@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useAppDispatch, useAppSelector } from "@/lib/store/store";
 import {
 	fetchMessages,
@@ -64,21 +64,36 @@ export default function AdminMessageNotice() {
 		};
 	};
 
-	const transformMessages = (
-		messages: MessageTransformInput[]
-	): AdminMessage[] => {
-		return messages.map(transformMessage);
-	};
+	const transformMessages = useCallback((messages: MessageTransformInput[]) => {
+    // Your message transformation logic here
+    return messages.map(transformMessage); // Assuming transformMessage exists elsewhere
+}, []); // Empty dependency array for useCallback
 
-	const { messages: reduxMessages } = useAppSelector((state) => state.notice);
-	const [messages, setMessages] = useState<AdminMessage[]>([]);
+const { messages: reduxMessages } = useAppSelector((state) => state.notice);
+const [messages, setMessages] = useState<AdminMessage[]>([]);
 
-	useEffect(() => {
-		if (reduxMessages) {
-			const transformedMessages = transformMessages(reduxMessages);
-			setMessages(transformedMessages);
-		}
-	}, [reduxMessages,transformMessages]);
+useEffect(() => {
+    if (reduxMessages) {
+        const transformedMessages = transformMessages(reduxMessages);
+        setMessages(transformedMessages);
+    }
+}, [reduxMessages]);
+
+	// const transformMessages = (
+	// 	messages: MessageTransformInput[]
+	// ): AdminMessage[] => {
+	// 	return messages.map(transformMessage);
+	// };
+
+	// const { messages: reduxMessages } = useAppSelector((state) => state.notice);
+	// const [messages, setMessages] = useState<AdminMessage[]>([]);
+
+	// useEffect(() => {
+	// 	if (reduxMessages) {
+	// 		const transformedMessages = transformMessages(reduxMessages);
+	// 		setMessages(transformedMessages);
+	// 	}
+	// }, [reduxMessages,transformMessages]);
 
 	useEffect(() => {
 		const newMessages = messages?.filter(

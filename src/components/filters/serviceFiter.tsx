@@ -4,7 +4,7 @@ import React, { useState, useEffect ,  useCallback } from "react";
 import SearchSvg from "../btn/searchSvg";
 import XSvg from "../btn/xSvg";
 import Image from "next/image";
-import { useRouter, useSearchParams, usePathname } from "next/navigation"
+import { useRouter, useSearchParams } from "next/navigation"
 
 interface ServiceItem {
 	id: number;
@@ -65,7 +65,7 @@ export default function SearchComponent({ serviceList }: SearchComponentProps) {
                   "isrc",
                   service.src
                 )}`
-              ),setIsOpen(false)}
+              );setIsOpen(false)}
             }
 						className="bg-gray-50 dark:bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-105"
 					>
