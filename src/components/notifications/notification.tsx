@@ -78,7 +78,7 @@ export default function AdminMessageNotice() {
 			const transformedMessages = transformMessages(reduxMessages);
 			setMessages(transformedMessages);
 		}
-	}, [reduxMessages]);
+	}, [reduxMessages,transformMessages]);
 
 	useEffect(() => {
 		const newMessages = messages?.filter(

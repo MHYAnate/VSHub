@@ -136,7 +136,8 @@ export default function EmploymentCard({
 					<div className="p-6 pt-0 flex space-x-4">
 						<button
 							onClick={() => {
-								setState("request"), handlelNotice();
+								setState("request");
+								handlelNotice();
 							}}
               disabled={sent}
 							className="flex-1 bg-black text-white py-2 px-4 rounded-lg transition-all duration-300 hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 transform hover:-translate-y-0.5 hover:shadow-lg"
@@ -145,7 +146,8 @@ export default function EmploymentCard({
 						</button>
 						<button
 							onClick={() => {
-								setState("offer"), handlelNotice();
+								setState("offer");
+								handlelNotice();
 							}}
               disabled={sent}
 							className="flex-1 bg-white text-black py-2 px-4 rounded-lg border-2 border-black transition-all duration-300 hover:bg-black hover:text-white focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 transform hover:-translate-y-0.5 hover:shadow-lg"
