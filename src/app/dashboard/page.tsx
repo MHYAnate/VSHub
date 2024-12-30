@@ -110,13 +110,13 @@ export default function VendorDashboard() {
 							alt={profileDetails?.name || "Vendor"}
 							width={40}
 							height={40}
-							className="rounded-full border-2 border-white"
+							className="hidden sm:block rounded-full border-2 border-white"
 						/> :<Image
 							src={profileDetails?.src !== undefined? profileDetails?.src :"/service/u1.jpg"}
 							alt={profileDetails?.name || "Vendor"}
 							width={40}
 							height={40}
-							className="rounded-full border-2 border-white"
+							className="hidden sm:block rounded-full border-2 border-white "
 						/>  }
 						
 							
