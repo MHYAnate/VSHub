@@ -33,7 +33,7 @@ export default function VendorDashboard() {
 	const [profileDetails, setProfileDetails] = useState<ProfileValues | null>(
 		null
 	);
-	const [activeTab, setActiveTab] = useState("Dashboard");
+	const [activeTab, setActiveTab] = useState("Dash board");
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	const [account, setAccount] = useState(false)
 
