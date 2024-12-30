@@ -150,7 +150,7 @@ export default function VendorDashboard() {
 				<div className="container mx-auto px-4 py-2">
 					<ul className="flex flex-col md:flex-row md:space-x-8">
 						
-						{["Dashboard", "Profile", "Job Board", "Settings", "VendorsHub"].map((item) => (
+						{["Dash board", "Profile", "Job Board", "Settings", "Service spot"].map((item) => (
 							<li className={(item ==="Profile" && account === false)? "hidden":""} key={item}>
 								<button
 									onClick={() => setActiveTab(item)}
@@ -175,7 +175,7 @@ export default function VendorDashboard() {
 				</div>
 			</nav>
 
-			{activeTab === "Dashboard" && (account ? <Dashboard />:<ClientDashboard />)}
+			{activeTab === "Dash board" && (account ? <Dashboard />:<ClientDashboard />)}
 
 			{activeTab === "Profile" && <Profile />}
 
@@ -183,7 +183,7 @@ export default function VendorDashboard() {
 
 			{activeTab === "Settings" && <VendorSettings  isVendor={`${profileDetails?.isVendor}`} docid={`${profileDetails?.docid}`}/>}
 
-			{activeTab === "VendorsHub" && (
+			{activeTab === "Service spot" && (
 				<>
 					<section id="service" className=" hidden md:block py-20 bg-white">
 						<ServiceBcomponent />
