@@ -23,6 +23,9 @@ import AdminMessageNotice from "@/components/notifications/notification";
 import ServiceBcomponent from "@/components/Services/servicesBComponent";
 import ServicesComponent from "@/components/Services/servicesComponent";
 import ClientDashboard from "@/components/dashboard/userDashboard";
+import JobBoard from "@/components/dashboard/jobBoard";
+import SearchComponent from "@/components/filters/serviceFiter";
+import { ServiceList } from "@/database/serviceData";
 const { auth } = Firebase;
 
 export default function VendorDashboard() {
@@ -83,7 +86,7 @@ export default function VendorDashboard() {
 		<div className="min-h-screen bg-white text-black flex flex-col">
 			<header className="bg-black text-white p-4">
 				<div className="container mx-auto flex justify-between items-center border-black bg-black">
-					<Link href="/" className="flex items-center space-x-2 bg-black transition-transform duration-300 hover:scale-95">
+					<Link href="/dashboard" className="flex items-center space-x-2 bg-black transition-transform duration-300 hover:scale-95">
 						<Image
 							src="/service/1xi.jpg"
 							alt="VSHub Logo"
@@ -94,9 +97,10 @@ export default function VendorDashboard() {
 						<span
 							className={`text-2xl font-bold  font-[family-name:var(--ProtestGuerrilla)] text-white`}
 						>
-							VsHub
+							Sspot1
 						</span>
 					</Link>
+					<SearchComponent serviceList={ServiceList} />
 					<div className="flex items-center space-x-4">
 						<span className="text-sm hidden md:inline">
 							Welcome, {profileDetails?.name}
@@ -146,7 +150,7 @@ export default function VendorDashboard() {
 				<div className="container mx-auto px-4 py-2">
 					<ul className="flex flex-col md:flex-row md:space-x-8">
 						
-						{["Dashboard", "Profile", "Settings", "VendorsHub"].map((item) => (
+						{["Dashboard", "Profile", "Job Board", "Settings", "VendorsHub"].map((item) => (
 							<li className={(item ==="Profile" && account === false)? "hidden":""} key={item}>
 								<button
 									onClick={() => setActiveTab(item)}
@@ -171,9 +175,11 @@ export default function VendorDashboard() {
 				</div>
 			</nav>
 
-			{activeTab === "Dashboard" && (account?<Dashboard />:<ClientDashboard/>)}
+			{activeTab === "Dashboard" && (account ? <Dashboard />:<ClientDashboard />)}
 
 			{activeTab === "Profile" && <Profile />}
+
+			{activeTab === "Job Board" && <JobBoard vendorId={`${profileDetails?.docid}`} vendorService={`${profileDetails?.service}`} vendorAddress={`${profileDetails?.address}`} vendorImage={`${profileDetails?.src}`} vendorName={`${profileDetails?.name}`} vendorNumber={`${profileDetails?.number}`} profiles={profiles}/>  }
 
 			{activeTab === "Settings" && <VendorSettings  isVendor={`${profileDetails?.isVendor}`} docid={`${profileDetails?.docid}`}/>}
 

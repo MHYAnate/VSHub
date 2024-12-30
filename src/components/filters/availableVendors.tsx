@@ -1,12 +1,12 @@
 "use client";
 
-import React, { useState, useCallback } from "react";
-import Image from "next/image";
-import { useRouter, useSearchParams } from "next/navigation";
-import RateUs from "@/components/btn/rateUs";
-import Pagination from "@/components/btn/paginationBtn";
-import { useAppSelector } from "@/lib/store/store";
-import CustomerBtn from "@/components/btn/customer";
+import React, { useState, useCallback } from "react"
+import Image from "next/image"
+import { useRouter, useSearchParams } from "next/navigation"
+import RateUs from "@/components/btn/rateUs"
+import Pagination from "@/components/btn/paginationBtn"
+import { useAppSelector } from "@/lib/store/store"
+import CustomerBtn from "@/components/btn/customer"
 
 interface RaterValue {
   name: string;

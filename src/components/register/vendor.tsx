@@ -17,6 +17,7 @@ import { ProfileValues } from "@/lib/store/features/profileSlice";
 import LoadingSvg from "../loading/loadingSvg";
 
 export default function VendorRegComponent() {
+	
 	const router = useRouter();
 
 	const { auth, database } = Firebase;

@@ -33,7 +33,7 @@ export default function HeroComponent({ setQNav, qNav }: State) {
               </span>
             </h1>
             <p className="text-xl text-gray-300 leading-relaxed max-w-2xl">
-             {`Connect with skilled professionals for all your needs. From automotive to home maintenance, we've got you covered.`} 
+             {`Connect with skilled professionals for all your needs. From automotive to home services and maintenance, we've got you covered.`} 
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <button

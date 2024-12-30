@@ -5,7 +5,7 @@ const PrivacyFooter: React.FC = () => {
 	return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col md:flex-row justify-between items-center">
     <p className="text-center text-gray-500 text-sm mb-4 md:mb-0">
-      &copy; 2024 VsHub. All rights reserved.
+      &copy; 2024 Sspot1. All rights reserved.
     </p>
     <div className="flex space-x-6">
       {['Twitter', 'LinkedIn'].map((platform) => (

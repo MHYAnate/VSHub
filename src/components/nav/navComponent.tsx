@@ -4,200 +4,205 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import Firebase from "@/firebase/firebase";
+import SearchComponent from "../filters/serviceFiter";
+import { ServiceList } from "@/database/serviceData";
 
 interface Props {
-  setQNav: (value: string) => void;
-  qNav: string;
+	setQNav: (value: string) => void;
+	qNav: string;
 }
 
 export default function NavComponent({ setQNav, qNav }: Props) {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-  const [user, setUser] = useState(Firebase.auth.currentUser);
+	const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+	const [scrolled, setScrolled] = useState(false);
+	const [user, setUser] = useState(Firebase.auth.currentUser);
 
-  const { auth } = Firebase;
-  const pathname = usePathname();
-  const router = useRouter();
+	const { auth } = Firebase;
+	const pathname = usePathname();
+	const router = useRouter();
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
+	useEffect(() => {
+		const handleScroll = () => {
+			setScrolled(window.scrollY > 20);
+		};
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+		window.addEventListener("scroll", handleScroll);
+		return () => window.removeEventListener("scroll", handleScroll);
+	}, []);
 
-  useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((user) => {
-      setUser(user);
-    });
-    return () => unsubscribe();
-  }, [auth]);
+	useEffect(() => {
+		const unsubscribe = auth.onAuthStateChanged((user) => {
+			setUser(user);
+		});
+		return () => unsubscribe();
+	}, [auth]);
 
-  const navItems = [
-    {
-      label: "Services",
-      action: () => setQNav(qNav === "service" ? "" : "service"),
-    },
-    {
-      label: "Features",
-      action: () => setQNav(qNav === "features" ? "" : "features"),
-    },
-    {
-      label: "Contact",
-      action: () => setQNav(qNav === "contact" ? "" : "contact"),
-    },
-  ];
+	const navItems = [
+		{
+			label: "Services",
+			action: () => setQNav(qNav === "service" ? "" : "service"),
+		},
+		{
+			label: "Features",
+			action: () => setQNav(qNav === "features" ? "" : "features"),
+		},
+		{
+			label: "Contact",
+			action: () => setQNav(qNav === "contact" ? "" : "contact"),
+		},
+	];
 
-  const renderAuthButton = () => {
-    if (user) return null;
-    if (pathname === "/login") {
-      return (
-        <div
-          onClick={() => router.push("/register")}
-          className="px-4 py-2 text-sm font-medium text-white bg-black rounded-full hover:bg-gray-800 transition-all duration-300 cursor-pointer hover:shadow-lg transform hover:-translate-y-0.5"
-        >
-          Register
-        </div>
-      );
-    }
-    if (pathname === "/register") {
-      return (
-        <div
-          onClick={() => router.push("/login")}
-          className="text-sm font-medium text-gray-600 hover:text-black transition-all duration-300 cursor-pointer relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-black after:transition-all after:duration-300 hover:after:w-full"
-        >
-          Log In
-        </div>
-      );
-    }
-    return (
-      <>
-        <div
-          onClick={() => router.push("/login")}
-          className="text-sm font-medium text-gray-600 hover:text-black transition-all duration-300 cursor-pointer relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-black after:transition-all after:duration-300 hover:after:w-full"
-        >
-          Log In
-        </div>
-        <div
-          onClick={() => router.push("/register")}
-          className="px-4 py-2 text-sm font-medium text-white bg-black rounded-full hover:bg-gray-800 transition-all duration-300 cursor-pointer hover:shadow-lg transform hover:-translate-y-0.5"
-        >
-          Register
-        </div>
-      </>
-    );
-  };
+	const renderAuthButton = () => {
+		if (user) return null;
+		if (pathname === "/login") {
+			return (
+				<div
+					onClick={() => router.push("/register")}
+					className="px-4 py-2 text-sm font-medium text-white bg-black rounded-full hover:bg-gray-800 transition-all duration-300 cursor-pointer hover:shadow-lg transform hover:-translate-y-0.5"
+				>
+					Register
+				</div>
+			);
+		}
+		if (pathname === "/register") {
+			return (
+				<div
+					onClick={() => router.push("/login")}
+					className="text-sm font-medium text-gray-600 hover:text-black transition-all duration-300 cursor-pointer relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-black after:transition-all after:duration-300 hover:after:w-full"
+				>
+					Log In
+				</div>
+			);
+		}
+		return (
+			<>
+				<div
+					onClick={() => router.push("/login")}
+					className="text-sm font-medium text-gray-600 hover:text-black transition-all duration-300 cursor-pointer relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-black after:transition-all after:duration-300 hover:after:w-full"
+				>
+					Log In
+				</div>
+				<div
+					onClick={() => router.push("/register")}
+					className="px-4 py-2 text-sm font-medium text-white bg-black rounded-full hover:bg-gray-800 transition-all duration-300 cursor-pointer hover:shadow-lg transform hover:-translate-y-0.5"
+				>
+					Register
+				</div>
+			</>
+		);
+	};
 
-  return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-white shadow-md " : "bg-transparent"
-      }`}
-    >
-      <div className="container mx-auto px-4 py-4">
-        <div className="flex items-center justify-between">
-          <div
-            onClick={() => router.push("/")}
-            className={`${
-              scrolled
-                ? "pl-2 pr-3"
-                : "bg-gradient-to-br from-black to-gray-900 rounded-full pl-2 pr-3"
-            } flex items-center space-x-2 select-none cursor-pointer`}
-          >
-            <div className={`relative w-10 h-10 overflow-hidden rounded-full ${scrolled ? "bg-gray-200" : "bg-black"}`}>
-              <Image
-                src={scrolled ? "/service/1x.jpg" : "/service/1xi.jpg"}
-                alt="VSHub Logo"
-                layout="fill"
-                objectFit="cover"
-                className="transition-transform duration-300 hover:scale-110"
-              />
-            </div>
-            <span
-              className={`text-2xl font-bold font-[family-name:var(--ProtestGuerrilla)] ${
-                scrolled ? "text-black" : "text-white"
-              }`}
-            >
-              VsHub
-            </span>
-          </div>
+	return (
+		<header
+			className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+				scrolled ? "bg-white shadow-md " : "bg-transparent"
+			}`}
+		>
+			<div className="container mx-auto px-4 py-4">
+				<div className="flex items-center justify-between">
+					<div
+						onClick={() => router.push("/")}
+						className={`${
+							scrolled
+								? "pl-2 pr-3"
+								: "bg-gradient-to-br from-black to-gray-900 rounded-full pl-2 pr-3"
+						} flex items-center space-x-2 select-none cursor-pointer`}
+					>
+						<div
+							className={`relative w-10 h-10 overflow-hidden rounded-full ${
+								scrolled ? "bg-gray-200" : "bg-black"
+							}`}
+						>
+							<Image
+								src={scrolled ? "/service/1x.jpg" : "/service/1xi.jpg"}
+								alt="VSHub Logo"
+								layout="fill"
+								objectFit="cover"
+								className="transition-transform duration-300 hover:scale-110"
+							/>
+						</div>
+						<span
+							className={`text-2xl font-bold font-[family-name:var(--ProtestGuerrilla)] ${
+								scrolled ? "text-black" : "text-white"
+							}`}
+						>
+							Sspot1
+						</span>
+					</div>
 
-          {pathname === "/" && (
-            <>
-              <nav className="hidden md:flex items-center space-x-6">
-                {navItems.map((item, index) => (
-                  <div
-                    key={index}
-                    onClick={item.action}
-                    className="text-sm font-medium text-gray-600 hover:text-black transition-all duration-300 cursor-pointer relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-black after:transition-all after:duration-300 hover:after:w-full"
-                  >
-                    {item.label}
-                  </div>
-                ))}
-                {renderAuthButton()}
-              </nav>
-              <nav className="flex items-center space-x-6 md:hidden">
-                <div
-                  onClick={() => setQNav(qNav === "service" ? "" : "service")}
-                  className={`px-4 py-2 text-sm font-medium ${
-                    scrolled ? "text-white bg-black" : "text-black bg-white"
-                  } rounded-full hover:bg-gray-800 transition-all duration-300 cursor-pointer hover:shadow-lg transform hover:-translate-y-0.5`}
-                >
-                  Services
-                </div>
-              </nav>
-            </>
-          )}
+          {pathname === "/"   && <SearchComponent serviceList={ServiceList} />}
 
-          {pathname !== "/" && (
-            <nav className="hidden md:flex items-center space-x-6">
-              {renderAuthButton()}
-            </nav>
-          )}
 
-          <button
-            className="md:hidden text-black hover:text-gray-600 transition-colors duration-300 focus:outline-none"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label="Toggle mobile menu"
-          >
-            <svg
-              className="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d={mobileMenuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"}
-              />
-            </svg>
-          </button>
-        </div>
+					{pathname === "/" && (
+						<>
+							<nav className="hidden md:flex items-center space-x-6">
+								{navItems.map((item, index) => (
+									<div
+										key={index}
+										onClick={item.action}
+										className="text-sm font-medium text-gray-600 hover:text-black transition-all duration-300 cursor-pointer relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-black after:transition-all after:duration-300 hover:after:w-full"
+									>
+										{item.label}
+									</div>
+								))}
+								{renderAuthButton()}
+							</nav>
+							
+						</>
+					)}
 
-        {mobileMenuOpen && (
-          <nav className="mt-4 md:hidden">
-            <div className="flex flex-col space-y-2">
-              {pathname === "/" && navItems.map((item, index) => (
-                <div
-                  key={index}
-                  onClick={() => {
-                    item.action();
-                    setMobileMenuOpen(false);
-                  }}
-                  className="text-sm font-medium text-gray-600 hover:text-black transition-all duration-300 cursor-pointer"
-                >
-                  {item.label}
-                </div>
-              ))}
-              {renderAuthButton()}
-            </div>
-          </nav>
-        )}
-      </div>
-    </header>
-  );
+					{pathname !== "/" && (
+						<nav className="hidden md:flex items-center space-x-6">
+							{renderAuthButton()}
+						</nav>
+					)}
+
+					<button
+						className="md:hidden text-black hover:text-gray-600 transition-colors duration-300 focus:outline-none"
+						onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+						aria-label="Toggle mobile menu"
+					>
+						<svg
+							className="h-6 w-6"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke="currentColor"
+						>
+							<path
+								strokeLinecap="round"
+								strokeLinejoin="round"
+								strokeWidth={2}
+								d={
+									mobileMenuOpen
+										? "M6 18L18 6M6 6l12 12"
+										: "M4 6h16M4 12h16M4 18h16"
+								}
+							/>
+						</svg>
+					</button>
+				</div>
+
+				{mobileMenuOpen && (
+					<nav className="mt-4 md:hidden">
+						<div className="flex flex-col space-y-2">
+							{pathname === "/" &&
+								navItems.map((item, index) => (
+									<div
+										key={index}
+										onClick={() => {
+											item.action();
+											setMobileMenuOpen(false);
+										}}
+										className="text-sm font-medium text-gray-600 hover:text-black transition-all duration-300 cursor-pointer"
+									>
+										{item.label}
+									</div>
+								))}
+							{renderAuthButton()}
+						</div>
+					</nav>
+				)}
+			</div>
+		</header>
+	);
 }

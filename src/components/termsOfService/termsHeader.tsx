@@ -20,13 +20,13 @@ const TermsHeader: React.FC = () => {
     <div className="select-none flex items-center space-x-2">
 				<Image
 					src="/service/1x.jpg"
-					alt="VSHub Logo"
+					alt="Sspot1 Logo"
 					width={40}
 					height={40}
 					className="select-none rounded-full "
 				/>
 				<span className="select-none text-3xl font-bold   font-[family-name:var(--ProtestGuerrilla)] ">
-					VsHub
+					Sspot1
 				</span>
 				<span className="text-3xl  font-bold font-[family-name:var(--Poppins-Bold)]">Terms and Conditions</span>
 			</div>

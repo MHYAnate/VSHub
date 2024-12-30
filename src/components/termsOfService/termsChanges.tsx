@@ -5,7 +5,7 @@ const TermsChanges: React.FC = () => {
 		<section className="animate-fadeIn">
 			<h2 className="text-2xl font-bold mb-4">Changes to Terms</h2>
 			<p className="mb-4">
-				VHub reserves the right to modify or replace these Terms at any time. We
+				Sspot1 reserves the right to modify or replace these Terms at any time. We
 				will provide notice of any significant changes.
 			</p>
 			<ul className="list-disc pl-5 mb-4 space-y-2">

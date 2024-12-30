@@ -18,13 +18,13 @@ const FooterComponent: React.FC = () => {
 						<div className="relative w-12 h-12 mr-3 overflow-hidden rounded-full transition-transform duration-300 group-hover:scale-110">
 							<Image
 								src="/service/1x.jpg"
-								alt="VSHub Logo"
+								alt="Sspot1 Logo"
 								layout="fill"
 								objectFit="cover"
 							/>
 						</div>
 						<span className="text-2xl font-bold text-black font-[family-name:var(--ProtestGuerrilla)] relative">
-							VsHub
+							Sspot1
 							<span className="absolute bottom-0 left-0 w-0 h-0.5 bg-black transition-all duration-300 group-hover:w-full"></span>
 						</span>
 					</div>
@@ -50,7 +50,7 @@ const FooterComponent: React.FC = () => {
 					<p className="text-sm text-gray-500">
 						© {currentYear}{" "}
 						<span className="font-[family-name:var(--ProtestGuerrilla)]">
-							VsHub
+							Sspot1
 						</span>{" "}
 						by ILUD. All rights reserved.
 					</p>

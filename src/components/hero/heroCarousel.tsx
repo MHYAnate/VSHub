@@ -87,7 +87,7 @@ export default function HeroCarousel({ setQNav, qNav }: State) {
                         ? "Category"
                         : card.type === "ad"
                         ? "Advertisement"
-                        : "VsHub Benefit"}
+                        : "Sspot1 Benefit"}
                     </div>
                     <h2 className="text-2xl leading-tight font-bold text-white mb-4">
                       {card.title}

@@ -106,7 +106,7 @@ export default function VendorRegComponent() {
 
 				updateEmail(user, `${data.email}`);
 
-			
+				handleProfileDetail(data);
 				router.push("/dashboard");
 			})
 			.catch((error) => {
@@ -119,7 +119,6 @@ export default function VendorRegComponent() {
 	};
 
 	const onSubmit = (data: ProfileValues) => {
-		handleProfileDetail(data);
 		Register(data);
 	};
 

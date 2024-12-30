@@ -7,7 +7,7 @@ const AboutMission: React.FC = () => {
     <section className="bg-white max-w-7xl mx-auto mt-6 py-6 px-4 sm:px-6 lg:py-16 lg:px-8">
     <h2 className="text-3xl font-extrabold text-gray-900 text-center sm:text-4xl font-[family-name:var(--Poppins-Bold)]">Our Mission</h2>
     <p className="mt-4 text-lg text-gray-500 font-[family-name:var(--Poppins-Regular)]">
-      {`At VsHub, We're dedicated to revolutionizing the way vendors and clients connect in the digital space, by simplifing and streamlining the process of finding trusted Service vendors and employers to potential clients and job seakers.`}
+      {`At Sspot1, We're dedicated to revolutionizing the way vendors and clients connect in the digital space, by simplifing and streamlining the process of finding trusted Service vendors and employers to potential clients and job seakers.`}
     
     </p>
     <p className="mt-4 text-lg text-gray-500 font-[family-name:var(--Poppins-Regular)]">

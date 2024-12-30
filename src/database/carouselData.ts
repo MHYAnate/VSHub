@@ -22,7 +22,7 @@ export const Cards = [
 	},
 	{
 		type: "ad",
-		title: "Join VsHub Today",
+		title: "Join Sspot1 Today",
 		description: "Start your journey as a service provider or client.",
 		image: "/service/vshub.jpg",
 		cta: "Register Now",
@@ -30,7 +30,7 @@ export const Cards = [
   {
 		type: "ad",
 		title: "Promote Your Business",
-		description: "Reach more clients with VsHub's marketing tools.",
+		description: "Reach more clients with Sspot1's marketing tools.",
 		image: "/service/benefit.jpg",
 		cta: "Start Promoting",
 	},

@@ -42,8 +42,8 @@ const ProtestGuerrilla = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "VsHub",
-  description: "Vendors Service Hub",
+  title: "Sspot1",
+  description: "Service spot 1",
 };
 
 export default function RootLayout({

@@ -2,7 +2,6 @@ import { configureStore } from '@reduxjs/toolkit';
 import ratingReducer from './features/ratingSlice';
 import profileReducer from './features/profileSlice';
 import offerReducer from './features/offerSlice';
-import galleryReducer from './features/gallerySlice';
 import vacancyReducer from './features/vacancySlice';
 import clientValueReducer from './features/vendorsClientSlice';
 import favoriteVendorReducer from './features/favoriteVendorsSlice';
@@ -15,7 +14,6 @@ export const makeStore = () => {
       rating: ratingReducer,
       profile: profileReducer,
       offer: offerReducer,
-      gallery: galleryReducer,
       vacancy: vacancyReducer,
       customer:clientValueReducer,
       favoriteVendor:favoriteVendorReducer,

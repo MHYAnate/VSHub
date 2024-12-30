@@ -9,7 +9,7 @@ export const Faqs = [
   {
     category: "Vendors",
     questions: [
-      { q: "How do I become a vendor on VsHub?", a: "To become a vendor, Simply click on the Register now or log in to your account and navigate to your profile settings. Click on 'Become a Vendor' and complete the required information. Our team will review your application and get back to you within 2-3 business days if you request to be a Verified Vendor." },
+      { q: "How do I become a vendor on Sspot1?", a: "To become a vendor, Simply click on the Register now or log in to your account and navigate to your profile settings. Click on 'Become a Vendor' and complete the required information. Our team will review your application and get back to you within 2-3 business days if you request to be a Verified Vendor." },
       { q: "How do I list my services?", a: "Once approved as a vendor, you can list your services by going to your vendor dashboard and clicking on 'Add New Service'. Fill in the details about your service, including pricing, description, and availability." },
     ]
   },

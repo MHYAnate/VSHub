@@ -100,7 +100,7 @@ export default function AdInquiry() {
 		<div className="max-w-2xl mx-auto mt-10 p-6 bg-white rounded-lg shadow-xl">
 			<h1 className="text-3xl font-bold text-gray-900 mb-6">
 				Advertise with <span className="select-none text-3xl font-bold   font-[family-name:var(--ProtestGuerrilla)] ">
-					VsHub
+					Sspot1
 				</span>
 			</h1>
 			<p className="text-gray-600 mb-6">

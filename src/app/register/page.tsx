@@ -17,7 +17,7 @@ export default function RegisterLanding() {
 				<div className="w-full max-w-2xl bg-white shadow-xl rounded-lg overflow-hidden">
 					<div className="text-center p-6 border-b">
 						<h1 className="text-3xl font-bold text-gray-900">
-							Join VsHub Today
+							Join Sspot1 Today
 						</h1>
 						<p className="text-gray-600 mt-2">
 							Choose how you want to be part of our community

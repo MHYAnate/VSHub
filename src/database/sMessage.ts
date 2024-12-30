@@ -1,7 +1,7 @@
 export  const sMessage = [
   {
     id: '1',
-    content: 'Welcome to VsHub!',
+    content: 'Welcome to Sspot1!',
     timestamp: new Date('2024-03-15T10:00:00'),
     read: false,
     docId:"",
