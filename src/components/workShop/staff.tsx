@@ -15,7 +15,6 @@ const VendorStaffsComponent: React.FC<Props> = ({id}) => {
 
   const vendorId = searchParams.get("vendorId");
 
-  const vendorDocId = (vendorId !== undefined && vendorId !== null) ? vendorId : (id !== undefined && id !== null)? id:"";
 
   const filteredStaff =
   profiles?profiles.length > 0

@@ -49,7 +49,6 @@ const RateUs: React.FC<RateUsProps> = ({ rateeId, raterId, raterName, raterImg }
   const { register, handleSubmit, reset } = useForm<FormValue>();
   const [rate, setRate] = useState(0);
   const [openRateUs, setOpenRateUs] = useState(false);
-  const [openFeedBack, setOpenFeedBack] = useState(false);
 
   useEffect(() => {
     dispatch(fetchRatings(rateeId));

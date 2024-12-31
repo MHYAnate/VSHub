@@ -1,14 +1,10 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import { RateValue } from "@/lib/store/features/ratingSlice";
-import { collection, getDocs } from "firebase/firestore";
-import firebase from "@/firebase/firebase";
 
-interface Rating {
-	value: RateValue[];
-}
+
 interface Props {
 	id: string;
   profiles:RateValue[];
@@ -33,7 +29,7 @@ const StarIcon: React.FC<{ className?: string; fill?: string }> = ({
 );
 
 export default function RatingsComponent({ id, profiles }: Props) {
-  
+
   const [openFeedBack, setOpenFeedBack] = useState(false);
 
   const rates = profiles.filter((eachItem) =>

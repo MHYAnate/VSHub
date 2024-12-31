@@ -68,7 +68,7 @@ const AvailableVendors: React.FC<VendorProps> = ({
 
   useEffect(() => {
     handleGetProfileDetail();
-  }, []);
+  }, [handleGetProfileDetail]);
 
 
   const set = useCallback(

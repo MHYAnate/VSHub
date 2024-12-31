@@ -77,7 +77,7 @@ useEffect(() => {
         const transformedMessages = transformMessages(reduxMessages);
         setMessages(transformedMessages);
     }
-}, [reduxMessages]);
+}, [reduxMessages, transformMessages]);
 
 	// const transformMessages = (
 	// 	messages: MessageTransformInput[]
