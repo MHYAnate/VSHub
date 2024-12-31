@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import Image from 'next/image';
 import { useForm } from 'react-hook-form';
 import { useAppDispatch, useAppSelector } from '@/lib/store/store';
 import { fetchRatings, addRating, updateRating, resetCardRating, type RateValue } from '@/lib/store/features/ratingSlice';
@@ -168,20 +167,20 @@ const RateUs: React.FC<RateUsProps> = ({ rateeId, raterId, raterName, raterImg }
             />
             <button
               type="submit"
-              disabled={!raterId || rate === 0}
+              disabled={raterId === "undefined" && rate === 0 }
               className={`w-full py-2 px-4 rounded-md transition-colors ${
-                !raterId || rate === 0
+                raterId === "undefined"
                   ? 'bg-gray-300 cursor-not-allowed'
                   : 'bg-blue-500 hover:bg-blue-600 text-white'
               }`}
             >
-              {!raterId ? 'Register or log in to rate' : 'Submit Rating'}
+              {raterId === "undefined" ? 'Register or log in to rate' : 'Submit Rating'}
             </button>
           </form>
         </div>
       )}
 
-      <button
+      {/* <button
         onClick={() => setOpenFeedBack(!openFeedBack)}
         className={`text-blue-500 hover:text-blue-600 transition-colors ${
           ratings.length === 0 ? 'opacity-50 cursor-not-allowed' : ''
@@ -189,9 +188,9 @@ const RateUs: React.FC<RateUsProps> = ({ rateeId, raterId, raterName, raterImg }
         disabled={ratings.length === 0}
       >
         {ratings.length === 0 ? 'No Feedback Available' : openFeedBack ? 'Hide Feedbacks' : 'Show Feedbacks'}
-      </button>
+      </button> */}
 
-      {openFeedBack && (
+      {/* {openFeedBack && (
         <div className="space-y-4">
           {ratings.map((rating) => (
             <div key={rating.raterId} className="flex items-start space-x-4 p-4 bg-gray-50 rounded-lg">
@@ -213,7 +212,7 @@ const RateUs: React.FC<RateUsProps> = ({ rateeId, raterId, raterName, raterImg }
             </div>
           ))}
         </div>
-      )}
+      )} */}
     </div>
   );
 };

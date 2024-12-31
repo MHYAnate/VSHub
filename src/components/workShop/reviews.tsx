@@ -8,7 +8,7 @@ import { useSearchParams } from "next/navigation";
 const Reviews: React.FC = () => {
 	const searchParams = useSearchParams();
 
-	const vendorId = searchParams.get("docid");
+	const vendorId = searchParams.get("vendorId");
 
 	const vendorDocId = vendorId ? vendorId : "";
 

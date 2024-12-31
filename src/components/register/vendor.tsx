@@ -291,7 +291,7 @@ export default function VendorRegComponent() {
 							placeholder={"Vendor's User Name"}
 							autoComplete="organization"
 							required
-							className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+							className="text-gray-900 mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
 						/>
 					</div>
 
@@ -311,7 +311,7 @@ export default function VendorRegComponent() {
 							placeholder={"Enter Contact Email"}
 							autoComplete="email"
 							required
-							className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+							className="text-gray-900 mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
 						/>
 					</div>
 
@@ -332,7 +332,7 @@ export default function VendorRegComponent() {
 							id="password"
 							autoComplete="new-password"
 							required
-							className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+							className="text-gray-900 mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
 						/>
 					</div>
 
@@ -353,7 +353,7 @@ export default function VendorRegComponent() {
 							placeholder={"Verify Contact  PassWord"}
 							autoComplete="new-password"
 							required
-							className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+							className="text-gray-900 mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
 						/>
 					</div>
 					<div className="flex gap-3">
@@ -377,7 +377,7 @@ export default function VendorRegComponent() {
 							type="text"
 							autoComplete="street-address"
 							required
-							className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+							className="text-gray-900 mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
 							{...register("address", {
 								required: "Required",
 							})}
@@ -401,7 +401,7 @@ export default function VendorRegComponent() {
 							placeholder={"Enter Contact Number"}
 							autoComplete="tel"
 							required
-							className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+							className="text-gray-900 mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
 						/>
 					</div>
 
@@ -422,7 +422,7 @@ export default function VendorRegComponent() {
 										: "Select State"
 								}
 								id="state"
-								className="mt-1 mb-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+								className="text-gray-900 mt-1 mb-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
 								{...register("state", {
 									required: "Required",
 								})}
@@ -451,7 +451,7 @@ export default function VendorRegComponent() {
 										? ""
 										: "Select Area"
 								}
-								className="mt-1 mb-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+								className="text-gray-900 mt-1 mb-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
 								{...register("area", {
 									required: "Required",
 								})}
@@ -483,7 +483,7 @@ export default function VendorRegComponent() {
 										? ""
 										: "Select Service Category"
 								}
-								className="mt-1 mb-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+								className="text-gray-900 mt-1 mb-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
 								{...register("category", {
 									required: "Required",
 								})}
@@ -511,7 +511,7 @@ export default function VendorRegComponent() {
 								{...register("service", {
 									required: "Required",
 								})}
-								className="mt-1 mb-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:none focus:border-indigo-500 sm:text-sm"
+								className="text-gray-900 mt-1 mb-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:none focus:border-indigo-500 sm:text-sm"
 							>
 								<option
 									className="grid grid-cols-1 h-fit mb-1 text-white rounded-lg w-fit bg-zinc-900 hover:bg-blue-500 pl-2 pr-2"
@@ -542,7 +542,7 @@ export default function VendorRegComponent() {
 							name="specialty"
 							id="specialty"
 							required
-							className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+							className="text-gray-900 mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
 						/>
 					
 					</div>
@@ -562,7 +562,7 @@ export default function VendorRegComponent() {
 							placeholder={"Tell us about you"}
 							rows={3}
 							required
-							className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+							className="text-gray-900 mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
 						></textarea>
 					</div>
 

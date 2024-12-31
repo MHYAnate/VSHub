@@ -1,12 +1,15 @@
 "use client";
 
-import React, { useState, useCallback } from "react"
+import React, { useState, useCallback, useEffect   } from "react"
 import Image from "next/image"
 import { useRouter, useSearchParams } from "next/navigation"
-import RateUs from "@/components/btn/rateUs"
 import Pagination from "@/components/btn/paginationBtn"
 import { useAppSelector } from "@/lib/store/store"
 import CustomerBtn from "@/components/btn/customer"
+import RatingsComponent from "./ratings";
+import { RateValue } from "@/lib/store/features/ratingSlice";
+import { collection, getDocs } from "firebase/firestore";
+import firebase from "@/firebase/firebase";
 
 interface RaterValue {
   name: string;
@@ -34,6 +37,39 @@ const AvailableVendors: React.FC<VendorProps> = ({
 
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(10);
+
+  const [ratings, setRatings] = useState<RateValue[]>([]); 
+
+  const { database } = firebase;
+  const profileDetailRef = collection(database, 'rateUs');
+
+  const handleGetProfileDetail = async () => {
+    try {
+      const querySnapshot = await getDocs(profileDetailRef);
+
+      if (querySnapshot.empty) {
+        console.log("No profile details found");
+        return;
+      }
+
+      // Transform the data into an array of RateValue objects
+      const retrievedData: RateValue[] = [];
+      querySnapshot.forEach((doc) => {
+        const data = doc.data() as RateValue;
+        retrievedData.push(data);
+      });
+
+      setRatings(retrievedData);
+    } catch (error) {
+      console.error("Error getting profile detail:", error);
+      setRatings([]); // Set empty array on error
+    }
+  };
+
+  useEffect(() => {
+    handleGetProfileDetail();
+  }, []);
+
 
   const set = useCallback(
     (name: string, value: string) => {
@@ -119,12 +155,7 @@ const AvailableVendors: React.FC<VendorProps> = ({
           </div>
           <div className="">
 						
-            <RateUs
-              rateeId={`${vendor.docid}`}
-              raterId={raterDetail?.docid || ""}
-              raterName={raterDetail?.name || ""}
-              raterImg={raterDetail?.src || ""}
-            />
+          <RatingsComponent id={vendor.docid} profiles={ratings}/>
             
           </div>
           <p className="text-lg font-semibold">{vendor.specialty}</p>
@@ -142,14 +173,29 @@ const AvailableVendors: React.FC<VendorProps> = ({
         <button
           onClick={() =>
             router.push(
-              `/vendorWorkSpace` + "?" + set("docid", `${vendor.docid}`)
+              `/vendorWorkSpace` + "?" + set("vendorId", `${vendor.docid}`) 	+
+              "&" +
+              set(
+                "rId",
+                `${raterDetail?.docid}`
+              ) 	+
+              "&" +
+              set(
+                "rName",
+                `${raterDetail?.name}`
+              ) 	+
+              "&" +
+              set(
+                "rSrc",
+                `${raterDetail?.src}`
+              )
             )
           }
           className="w-full py-3 px-4 bg-black text-white font-bold transition-colors duration-300 hover:bg-white hover:text-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900"
         >
           Enter Work Space
         </button>
-      </div>
+      </div> 
     ));
   }
 

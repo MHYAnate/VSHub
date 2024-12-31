@@ -13,7 +13,7 @@ const VendorStaffsComponent: React.FC<Props> = ({id}) => {
 
   const searchParams = useSearchParams();
 
-  const vendorId = searchParams.get("docid");
+  const vendorId = searchParams.get("vendorId");
 
   const vendorDocId = (vendorId !== undefined && vendorId !== null) ? vendorId : (id !== undefined && id !== null)? id:"";
 
@@ -21,7 +21,7 @@ const VendorStaffsComponent: React.FC<Props> = ({id}) => {
   profiles?profiles.length > 0
 			? profiles.filter((eachItem) => {
 					const text = eachItem.isEmployedId.toLowerCase();
-					return text.includes(vendorDocId.toLowerCase());
+					return text.includes(vendorId?vendorId.toLowerCase(): "");
 			  })
 			: []:"";
 

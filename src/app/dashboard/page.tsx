@@ -26,6 +26,8 @@ import ClientDashboard from "@/components/dashboard/userDashboard";
 import JobBoard from "@/components/dashboard/jobBoard";
 import SearchComponent from "@/components/filters/serviceFiter";
 import { ServiceList } from "@/database/serviceData";
+import LoadingSvg from "@/components/loading/loadingSvg";
+
 const { auth } = Firebase;
 
 export default function VendorDashboard() {
@@ -35,7 +37,7 @@ export default function VendorDashboard() {
 	);
 	const [activeTab, setActiveTab] = useState("Dash board");
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
-	const [account, setAccount] = useState(false)
+	const [account, setAccount] = useState("")
 
 	const dispatch = useAppDispatch();
 	const { profiles } = useAppSelector((state) => state.profile);
@@ -78,7 +80,7 @@ export default function VendorDashboard() {
 
 	useEffect(() => {
 		if (user) {
-			setAccount(profileDetails?.isVendor === "true"); 
+			setAccount(profileDetails?.isVendor === "true"? "vendor":profileDetails?.isVendor === "false"? "client":""); 
 		}
 	}, [user, profileDetails]);
 
@@ -151,7 +153,7 @@ export default function VendorDashboard() {
 					<ul className="flex flex-col md:flex-row md:space-x-8">
 						
 						{["Dash board", "Profile", "Job Board", "Settings", "Service spot"].map((item) => (
-							<li className={(item ==="Profile" && account === false)? "hidden":""} key={item}>
+							<li className={(item ==="Profile" && account === "client"? "hidden":"")} key={item}>
 								<button
 									onClick={() => setActiveTab(item)}
 									className={`w-full text-left py-2 px-4 rounded font-[family-name:var(--Poppins-Bold)] transition-colors ${
@@ -175,7 +177,11 @@ export default function VendorDashboard() {
 				</div>
 			</nav>
 
-			{activeTab === "Dash board" && (account ? <Dashboard />:<ClientDashboard />)}
+			{activeTab === "Dash board" && account === "" && <LoadingSvg/> }
+
+			{activeTab === "Dash board" && account === "vendor" && <Dashboard/>}
+
+			{activeTab === "Dash board" && account ==="client" && <ClientDashboard />}
 
 			{activeTab === "Profile" && <Profile />}
 

@@ -28,7 +28,6 @@ const ServicesComponent: React.FC = () => {
 	return (
 		<div className="container mx-auto px-6 py-16 bg-white">
 			<h2 className="text-4xl font-bold text-center mb-16 text-black relative inline-block left-1/2 transform -translate-x-1/2">
-				Our Services
 				<span className="absolute bottom-0 left-0 w-full h-1 bg-black transform scale-x-0 transition-transform duration-300 group-hover:scale-x-100"></span>
 			</h2>
 			<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
@@ -70,10 +69,17 @@ const ServicesComponent: React.FC = () => {
 											key={service.id}
 											onClick={() =>
 												router.push(
-													`/vendorsHub?${set("name", service.name)}&${set(
+													`/vendorsHub` + "?" + set("name", `${service.name}`) 	+
+													"&" +
+													set(
 														"isrc",
-														service.src
-													)}&${set("CatName", category.category)}`
+														`${service.src}`
+													) 	+
+													"&" +
+													set(
+														"CatName",
+														`${category.category}`
+													)
 												)
 											}
 											

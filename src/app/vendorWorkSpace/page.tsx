@@ -23,7 +23,7 @@ export default function Component() {
 	const searchParams = useSearchParams();
 
 	const vendorId = searchParams.get("docid");
-
+	
 	const vendorDocId = vendorId ? vendorId : "";
 
 	const dispatch = useAppDispatch();

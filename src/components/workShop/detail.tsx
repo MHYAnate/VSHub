@@ -2,11 +2,10 @@
 
 import React, { useState, useEffect }  from "react";
 import { useAppSelector } from "@/lib/store/store";
-import {  type RateValue } from '@/lib/store/features/ratingSlice';
 import { type ProfileValues } from '@/lib/store/features/profileSlice';
 import { useSearchParams } from "next/navigation";
-import RenderStars from "./renderStar";
 import Image from "next/image";
+import RateUs from "@/components/btn/rateUs"
 
 const DetailHead: React.FC = () => {
   
@@ -17,9 +16,17 @@ const DetailHead: React.FC = () => {
 
   const searchParams = useSearchParams();
 
-  const vendorId = searchParams.get("docid");
+  const vendorId = searchParams.get("vendorId");
+
+  const id = searchParams.get("rId");
+
+	const name = searchParams.get("rName");
+
+	const src = searchParams.get("rSrc");
 
   const vendorDocId = vendorId ? vendorId : "";
+
+
 
   useEffect(() => {
     // Handle auth state changes
@@ -30,20 +37,7 @@ const DetailHead: React.FC = () => {
     
   }, [profiles, vendorDocId]);
 
-  const cardRatings = useAppSelector(
-    (state) =>
-      state.rating.ratingsByCard[vendorDocId] || {
-        ratings: [] as RateValue[],
-        totalRate: 0,
-        loading: false,
-        error: null,
-      }
-  );
 
-
-  const { ratings, totalRate, } = cardRatings;
-
-  const finalRate = Math.round(ratings.length ? totalRate / ratings.length : 0);
   return (
     <div className="bg-white shadow-lg rounded-lg overflow-hidden">
       <div className="md:flex">
@@ -58,7 +52,13 @@ const DetailHead: React.FC = () => {
                 className="object-cover h-full w-full"
               />
             ) : (
-              "No image"
+              <Image
+              src={'/service/u1.jpg'}
+              alt={"noUser"}
+              width={192}
+              height={192}
+              className="object-cover h-full w-full"
+            />
             )}
           </div>
         </div>
@@ -76,12 +76,13 @@ const DetailHead: React.FC = () => {
               </p>
             </div>
             <div className="text-right">
-              <div className="flex items-center">
-                <RenderStars rating={finalRate} />
-                <p className="ml-2 text-sm text-gray-600">
-                  {finalRate} ({ratings.length} reviews)
-                </p>
-              </div>
+           
+              <RateUs
+              rateeId={`${vendorId}`}
+              raterId={id || ""}
+              raterName={name || ""}
+              raterImg={src || ""}
+            />
               {profileDetails?.isVerified === "true" && (
                 <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 mt-2">
                   Verified

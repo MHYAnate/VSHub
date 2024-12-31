@@ -48,7 +48,7 @@ export default function SearchComponent({ serviceList }: SearchComponentProps) {
 	function SearchResults({ serviceList }: SearchComponentProps) {
 		if (serviceList.length === 0) {
 			return (
-				<p className="text-center text-gray-600 dark:text-gray-400">
+				<p className="text-center text-gray-600 ">
 					No Service found
 				</p>
 			);
@@ -78,7 +78,7 @@ export default function SearchComponent({ serviceList }: SearchComponentProps) {
 								className="transition-transform duration-300 hover:scale-110"
 							/>
 						</div>
-						<h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+						<h3 className="text-lg font-semibold text-gray-900 ">
 							{service.name}
 						</h3>
 					</div>
@@ -115,7 +115,7 @@ export default function SearchComponent({ serviceList }: SearchComponentProps) {
 				<span className="">Search Services...</span>
         <button
 					onClick={() => setIsOpen(!isOpen)}
-					className={` p-2 ${scrolled ? "text-black" : "text-black"}  dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-gray-300 dark:focus:ring-gray-700 rounded-full"
+					className={` p-2 ${scrolled ? "text-black" : "text-black"}  dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-gray-300 rounded-full"
 					aria-label="Toggle search`}
 				>
 					<SearchSvg />
@@ -126,17 +126,17 @@ export default function SearchComponent({ serviceList }: SearchComponentProps) {
 			{isOpen && (
 				<div className="fixed inset-0 z-50 flex items-start justify-center pt-20 transition-all duration-300 ease-in-out backdrop-blur-sm bg-black/30 dark:bg-white/10">
 					<div
-						className={`bg-white dark:bg-gray-900 rounded-2xl shadow-2xl overflow-hidden ${
+						className={`bg-white rounded-2xl shadow-2xl overflow-hidden ${
 							isMobile ? "w-full mx-4" : "max-w-4xl w-full"
 						} max-h-[80vh] transform transition-all duration-300 ease-in-out scale-100 translate-y-0 flex flex-col`}
 					>
-						<div className="p-6 border-b border-gray-200 dark:border-gray-700">
+						<div className="p-6 border-b border-gray-200 ">
 							<div className="relative">
 								<input
 									value={searchInput}
 									onChange={updateSearchInput}
 									id="vendorAddress"
-								  className="w-full bg-transparent text-gray-900 dark:text-white border-b-2 border-gray-300 dark:border-gray-700 focus:border-blue-500 dark:focus:border-blue-400 py-2 px-4 outline-none transition-all duration-300"
+								  className="w-full bg-transparent text-gray-900  border-b-2 border-gray-300 dark:border-gray-700 focus:border-blue-500  py-2 px-4 outline-none transition-all duration-300"
           placeholder="Search services..."
 								/>
 							</div>
@@ -144,7 +144,7 @@ export default function SearchComponent({ serviceList }: SearchComponentProps) {
 								<button
 									type="button"
 									onClick={() => setIsOpen(false)}
-									className="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-colors duration-300 "
+									className="text-gray-500  hover:text-gray-700  transition-colors duration-300 "
 									aria-label="Close search"
 								>
 									<XSvg />

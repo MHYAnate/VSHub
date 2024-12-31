@@ -46,9 +46,10 @@ const VendorStaffsCard: React.FC<Values> = ({ values }) => {
 		<div className="px-4 py-5 sm:p-6">
 			<div className="flex items-center">
 				<div className="flex-shrink-0 h-12 w-12">
+					
 					<Image
 						className="h-12 w-12 rounded-full"
-						src={values ? values.src : ""}
+						src={ values?.src  || "/service/u1.jpg"}
 						alt={values ? values.name : ""}
 						width={48}
 						height={48}
