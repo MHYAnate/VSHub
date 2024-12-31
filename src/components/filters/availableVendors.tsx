@@ -43,32 +43,58 @@ const AvailableVendors: React.FC<VendorProps> = ({
   const { database } = firebase;
   const profileDetailRef = collection(database, 'rateUs');
 
-  const handleGetProfileDetail = async () => {
-    try {
-      const querySnapshot = await getDocs(profileDetailRef);
+  // const handleGetProfileDetail = async () => {
+  //   try {
+  //     const querySnapshot = await getDocs(profileDetailRef);
 
-      if (querySnapshot.empty) {
-        console.log("No profile details found");
-        return;
-      }
+  //     if (querySnapshot.empty) {
+  //       console.log("No profile details found");
+  //       return;
+  //     }
 
-      // Transform the data into an array of RateValue objects
-      const retrievedData: RateValue[] = [];
-      querySnapshot.forEach((doc) => {
-        const data = doc.data() as RateValue;
-        retrievedData.push(data);
-      });
+  //     // Transform the data into an array of RateValue objects
+  //     const retrievedData: RateValue[] = [];
+  //     querySnapshot.forEach((doc) => {
+  //       const data = doc.data() as RateValue;
+  //       retrievedData.push(data);
+  //     });
 
-      setRatings(retrievedData);
-    } catch (error) {
-      console.error("Error getting profile detail:", error);
-      setRatings([]); // Set empty array on error
-    }
-  };
+  //     setRatings(retrievedData);
+  //   } catch (error) {
+  //     console.error("Error getting profile detail:", error);
+  //     setRatings([]); // Set empty array on error
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   handleGetProfileDetail();
+  // }, [handleGetProfileDetail]);
 
   useEffect(() => {
-    handleGetProfileDetail();
-  }, [handleGetProfileDetail]);
+    const fetchProfileDetails = async () => {
+      try {
+        const querySnapshot = await getDocs(profileDetailRef);
+
+        if (querySnapshot.empty) {
+          console.log("No profile details found");
+          return;
+        }
+
+        const retrievedData: RateValue[] = [];
+        querySnapshot.forEach((doc) => {
+          const data = doc.data() as RateValue;
+          retrievedData.push(data);
+        });
+
+        setRatings(retrievedData);
+      } catch (error) {
+        console.error("Error getting profile detail:", error);
+        setRatings([]);
+      }
+    };
+
+    fetchProfileDetails();
+  }, [database]); // Only depends on database instance
 
 
   const set = useCallback(

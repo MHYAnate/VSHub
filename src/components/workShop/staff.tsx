@@ -20,7 +20,7 @@ const VendorStaffsComponent: React.FC<Props> = ({id}) => {
   profiles?profiles.length > 0
 			? profiles.filter((eachItem) => {
 					const text = eachItem.isEmployedId.toLowerCase();
-					return text.includes(vendorId?vendorId.toLowerCase(): "");
+					return text.includes(vendorId?vendorId.toLowerCase(): id);
 			  })
 			: []:"";
 
