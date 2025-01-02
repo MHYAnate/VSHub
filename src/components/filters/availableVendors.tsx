@@ -94,7 +94,7 @@ const AvailableVendors: React.FC<VendorProps> = ({
     };
 
     fetchProfileDetails();
-  }, [database]); // Only depends on database instance
+  }, [database, profileDetailRef]); // Only depends on database instance
 
 
   const set = useCallback(

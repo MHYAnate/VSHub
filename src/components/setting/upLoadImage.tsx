@@ -48,9 +48,10 @@ export default function UploadImage({ docId }: Props) {
 
 			// Upload the file
 			uploadBytes(imageRef, file)
-				.then((snapshot) => {
+				.then(() => {
 					getDownloadURL(imageRef).then((url) => {
 						setImageUrl(url);
+            
 						
 					});
 
