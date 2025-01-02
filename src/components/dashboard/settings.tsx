@@ -10,7 +10,7 @@ interface Props{
 	docid:string
 }
 
-export default function VendorSettings({isVendor, docid}: Props) {
+export default function Settings({isVendor, docid}: Props) {
 	
 	const [activeTab, setActiveTab] = useState("profile");
 

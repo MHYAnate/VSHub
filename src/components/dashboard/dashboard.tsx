@@ -12,9 +12,9 @@ import Firebase from "@/firebase/firebase";
 import ClientRating from "./clientRating";
 import ClientFeedBack from "./clientFeedBack";
 import ClientRateTime from "./clientRateTime";
-import UpDateAvailability from "./upDateAvailability";
-import UpDateLocation from "./upDateLocation";
-import UpDateSpecialty from "./upDateSpecialty";
+import UpDateAvailability from "@/components/setting/upDateAvailability";
+import UpDateLocation from "@/components/setting/upDateLocation";
+import UpDateSpecialty from "@/components/setting/upDateSpecialty";
 import LoadingSvg from "@/components/loading/loadingSvg";
 
 const { auth } = Firebase;

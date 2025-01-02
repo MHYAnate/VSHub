@@ -15,7 +15,7 @@ import {
 import Firebase from "@/firebase/firebase";
 import Dashboard from "@/components/dashboard/dashboard";
 import Profile from "@/components/dashboard/profile";
-import VendorSettings from "@/components/dashboard/settings";
+import Settings from "@/components/dashboard/settings";
 import { useRouter } from "next/navigation";
 import { signOut } from "firebase/auth";
 import FooterComponent from "@/components/footer/footerComponent";
@@ -187,7 +187,7 @@ export default function VendorDashboard() {
 
 			{activeTab === "Job Board" && <JobBoard vendorId={`${profileDetails?.docid}`} vendorService={`${profileDetails?.service}`} vendorAddress={`${profileDetails?.address}`} vendorImage={`${profileDetails?.src}`} vendorName={`${profileDetails?.name}`} vendorNumber={`${profileDetails?.number}`} profiles={profiles}/>  }
 
-			{activeTab === "Settings" && <VendorSettings  isVendor={`${profileDetails?.isVendor}`} docid={`${profileDetails?.docid}`}/>}
+			{activeTab === "Settings" && <Settings  isVendor={`${profileDetails?.isVendor}`} docid={`${profileDetails?.docid}`}/>}
 
 			{activeTab === "Service spot" && (
 				<>
