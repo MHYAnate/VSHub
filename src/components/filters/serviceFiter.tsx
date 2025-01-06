@@ -118,7 +118,7 @@ export default function SearchComponent({ serviceList }: SearchComponentProps) {
 							? "bg-gradient-to-r from-slate-500 to-slate-950 text-white shadow-lg hover:shadow-xl"
 							: "bg-gradient-to-r from-yellow-400 to-orange-500 text-black"
 					}
-					border-2 border-transparent hover:border-white
+					border-2 border-black  hover:border-white
 				`}
 				aria-label="Toggle search"
 			>
@@ -135,6 +135,7 @@ export default function SearchComponent({ serviceList }: SearchComponentProps) {
 				>
 					<SearchSvg />
 				</div>
+
 			</button>
 
 			{isOpen && (
