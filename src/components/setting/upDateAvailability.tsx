@@ -82,19 +82,19 @@ export default function UpDateAvailability(
 					}
 					id="state"
 					className="mt-1 mb-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-					{...register("state", {
+					{...register("availability", {
 						required: "Required",
 					})}
 				>
 					<option
 						className="grid grid-cols-1 h-fit mb-1 text-white rounded-lg w-fit bg-zinc-900 hover:bg-blue-500 pl-2 pr-2"
-						value="Select State"
+						value="Available"
 					>
 						Available
 					</option>
 					<option
 						className="grid grid-cols-1 h-fit mb-1 text-white rounded-lg w-fit bg-zinc-900 hover:bg-blue-500 pl-2 pr-2"
-						value="Select State"
+						value="Not Available"
 					>
 						Not Available
 					</option>
@@ -122,7 +122,7 @@ export default function UpDateAvailability(
 
 			<div>
 				<label
-					htmlFor="email"
+					htmlFor="text"
 					className="block text-sm font-medium text-gray-700"
 				>
 					Availably To

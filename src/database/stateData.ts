@@ -4,20 +4,32 @@ export const StateData = [
    "areaList": [
     {
       "id":"1",
-      "name":"apo",
+      "name":"area 1",
     },
     {
       "id":"2",
-      "name":"guzape"
+      "name":"area 2"
     },
     {
       "id":"3",
-      "name":"garki"
+      "name":"area 3"
     },
     {
       "id":"4",
-      "name":"wuse"
-    }
+      "name":"area 7"
+    },
+    {
+      "id":"5",
+      "name":"area 8"
+    },
+    {
+      "id":"6",
+      "name":"area 10"
+    },
+    {
+      "id":"7",
+      "name":"area 11"
+    },
    ]
   },
   

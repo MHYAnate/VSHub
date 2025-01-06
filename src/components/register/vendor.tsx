@@ -101,6 +101,7 @@ export default function VendorRegComponent() {
 				latitude: "",
 				longitude: "",
 				password:data.password,
+				specialty: data.specialty,
 			});
 			const docId = docRef.id;
 			setLoader(true);
@@ -538,6 +539,9 @@ export default function VendorRegComponent() {
 							Specialty
 						</label>
 						<input
+							{...register("specialty", {
+								required: "Required",
+							})}
 							type="text"
 							name="specialty"
 							id="specialty"
