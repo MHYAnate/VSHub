@@ -1,3 +1,4 @@
+"use client";
 import { usePWAInstall } from '@/hooks/usePWAInstall';
 
 export default function InstallPWA() {
