@@ -16,8 +16,6 @@ import { registerServiceWorker } from '@/utils/service-worker';
 
 const {auth} = Firebase;
 
-
-
 export default function Home() {
 
   const user = auth.currentUser;
