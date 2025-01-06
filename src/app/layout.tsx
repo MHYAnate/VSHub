@@ -4,7 +4,7 @@ import "./globals.css";
 import StoreProvider from '@/lib/store/StoreProvider';
 import LoadingSvg from "@/components//loading/loadingSvg";
 import { siteMetadata } from '@/config/metadata.config';
-import InstallPWA from "@/components/installPWA";
+import InstallPWA from "@/components/install/installPwa";
 
 export const metadata = siteMetadata;
 
