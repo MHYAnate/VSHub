@@ -7,7 +7,7 @@ import { siteMetadata } from '@/config/metadata.config';
 
 export const metadata = siteMetadata;
 
-import { Suspense, useEffect } from "react";
+import { Suspense } from "react";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
