@@ -12,6 +12,8 @@ import LoadingSvg from "@/components//loading/loadingSvg";
 import Firebase from "@/firebase/firebase";
 import { useRouter } from "next/navigation";
 
+import { registerServiceWorker } from '@/utils/service-worker';
+
 const {auth} = Firebase;
 
 
@@ -21,6 +23,10 @@ export default function Home() {
   const user = auth.currentUser;
 
 	const router = useRouter();
+
+	useEffect(() => {
+		registerServiceWorker();
+	}, []);
 
 	useEffect(() => {
     const pathname = window.location.pathname; 

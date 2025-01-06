@@ -1,10 +1,13 @@
-import type { Metadata } from "next";
+
 import localFont from "next/font/local";
 import "./globals.css";
 import StoreProvider from '@/lib/store/StoreProvider';
 import LoadingSvg from "@/components//loading/loadingSvg";
+import { siteMetadata } from '@/config/metadata.config';
 
-import { Suspense } from "react";
+export const metadata = siteMetadata;
+
+import { Suspense, useEffect } from "react";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -41,10 +44,9 @@ const ProtestGuerrilla = localFont({
   weight: "100 900",
 });
 
-export const metadata: Metadata = {
-  title: "Sspot1",
-  description: "Service spot 1",
-};
+
+
+
 
 export default function RootLayout({
   children,

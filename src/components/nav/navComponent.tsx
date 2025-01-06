@@ -122,9 +122,9 @@ export default function NavComponent({ setQNav, qNav }: Props) {
 							/>
 						</div>
 						<span
-							className={`text-2xl font-bold font-[family-name:var(--ProtestGuerrilla)] ${
+							className={`text-lg md:text-2xl font-bold font-[family-name:var(--ProtestGuerrilla)] ${
 								scrolled ? "text-black" : "text-white"
-							}`}
+							} `}
 						>
 							Sspot1
 						</span>
