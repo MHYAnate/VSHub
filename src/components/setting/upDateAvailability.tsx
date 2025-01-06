@@ -81,7 +81,7 @@ export default function UpDateAvailability(
 							: "Select Availability"
 					}
 					id="state"
-					className="mt-1 mb-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+					className="text-gray-900 mt-1 mb-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
 					{...register("availability", {
 						required: "Required",
 					})}
@@ -116,7 +116,7 @@ export default function UpDateAvailability(
 					placeholder={"9 : 00 am"}
 					autoComplete="organization"
 					required
-					className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+					className="text-gray-900 mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
 				/>
 			</div>
 
@@ -136,7 +136,7 @@ export default function UpDateAvailability(
 					placeholder={"5 : 00 pm"}
 					autoComplete="organization"
 					required
-					className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+					className="text-gray-900 mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
 				/>
 			</div>
 			<div>

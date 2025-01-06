@@ -163,7 +163,7 @@ const AvailableVendors: React.FC<VendorProps> = ({
       >
         <div className="p-6 space-y-4">
 				<div className="flex justify-between items-center w-full">
-				<h2 className="text-xl font-semibold">{vendor.name}</h2>
+				<h2 className="text-xl font-semibold text-gray-900">{vendor.name}</h2>
 							<CustomerBtn
               vendorData={vendor}
               clientId={raterDetail?.docid || ""}
@@ -184,15 +184,15 @@ const AvailableVendors: React.FC<VendorProps> = ({
           <RatingsComponent id={vendor.docid} profiles={ratings}/>
             
           </div>
-          <p className="text-lg font-semibold">{vendor.specialty}</p>
+          <p className="text-lg font-semibold text-gray-900">{vendor.specialty}</p>
           <div className="space-y-2">
             <div>
               <p className="font-medium text-gray-600">Address</p>
-              <p className="font-semibold">{vendor.address}</p>
+              <p className="font-semibold text-gray-900">{vendor.address}</p>
             </div>
             <div>
               <p className="font-medium text-gray-600">Contact</p>
-              <p className="font-semibold">{vendor.number}</p>
+              <p className="font-semibold text-gray-900">{vendor.number}</p>
             </div>
           </div>
         </div>
@@ -217,7 +217,7 @@ const AvailableVendors: React.FC<VendorProps> = ({
               )
             )
           }
-          className="w-full py-3 px-4 bg-black text-white font-bold transition-colors duration-300 hover:bg-white hover:text-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900"
+          className="w-full py-3 px-4 bg-black text-white font-bold transition-colors duration-300 hover:bg-white hover:text-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 "
         >
           Enter Work Space
         </button>

@@ -80,7 +80,7 @@ export default function RatingsComponent({ id, profiles }: Props) {
 									{rating.raterName}
 								</p>
 								<div className="flex items-center space-x-1 my-1">
-									<span>{rating.rate}</span>
+									<span className="text-gray-900">{rating.rate}</span>
 									<StarIcon fill="gold" className="w-4 h-4" />
 								</div>
 								<p className="text-gray-600 mt-2">{rating.feedback}</p>

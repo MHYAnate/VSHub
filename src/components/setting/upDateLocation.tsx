@@ -122,7 +122,7 @@ export default function UpDateLocation(
 							: "Select State"
 					}
 					id="state"
-					className="mt-1 mb-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+					className="text-gray-900 mt-1 mb-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
 					{...register("state", {
 						required: "Required",
 					})}
@@ -151,7 +151,7 @@ export default function UpDateLocation(
 							? ""
 							: "Select Area"
 					}
-					className="mt-1 mb-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+					className="text-gray-900 mt-1 mb-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
 					{...register("area", {
 						required: "Required",
 					})}
@@ -176,7 +176,7 @@ export default function UpDateLocation(
 					type="text"
 					autoComplete="street-address"
 					required
-					className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+					className="text-gray-900 mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
 					{...register("address", {
 						required: "Required",
 					})}
