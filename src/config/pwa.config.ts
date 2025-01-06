@@ -10,7 +10,7 @@ export const pwaConfig = {
   startUrl: '/',
   icons: [
     {
-      src: '/service/192.png',
+      src: '/service/1xpng.png',
       sizes: '192x192',
       type: 'image/png',
       purpose: 'any maskable'

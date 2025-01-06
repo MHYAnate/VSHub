@@ -8,7 +8,7 @@ self.addEventListener('install', (event) => {
         '/',
         '/offline',
         '/manifest.json',
-        '/service/111.png',
+        '/service/1xpng.png',
         '/service/111.png',
       ]);
     })
