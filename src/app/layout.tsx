@@ -4,6 +4,7 @@ import "./globals.css";
 import StoreProvider from '@/lib/store/StoreProvider';
 import LoadingSvg from "@/components//loading/loadingSvg";
 import { siteMetadata } from '@/config/metadata.config';
+import InstallPWA from "@/components/installPWA";
 
 export const metadata = siteMetadata;
 
@@ -68,6 +69,7 @@ export default function RootLayout({
       >
         <Suspense fallback={<LoadingSvg/>}>
         <StoreProvider>{children}</StoreProvider>
+        <InstallPWA />
         </Suspense>
       </body>
     </html>
