@@ -11,8 +11,6 @@ import { Suspense } from "react";
 import LoadingSvg from "@/components//loading/loadingSvg";
 import Firebase from "@/firebase/firebase";
 import { useRouter } from "next/navigation";
-import { fetchProfiles } from '@/lib/store/features/profileSlice'
-import { useAppDispatch } from '@/lib/store/store'
 
 import { registerServiceWorker } from '@/utils/service-worker';
 
@@ -24,11 +22,8 @@ export default function Home() {
 
 	const router = useRouter();
 
-	const dispatch = useAppDispatch();
 
-	useEffect(() => {
-    dispatch(fetchProfiles());
-  }, [dispatch]);
+
 
 	useEffect(() => {
 		registerServiceWorker();

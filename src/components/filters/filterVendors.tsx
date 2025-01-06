@@ -3,8 +3,8 @@ import React, { useState, useEffect } from "react"
 import { StateData } from "@/database/stateData"
 import { onAuthStateChanged } from "firebase/auth"
 import firebase from "@/firebase/firebase"
-import { useAppSelector } from '@/lib/store/store'
-import { type ProfileValues } from '@/lib/store/features/profileSlice'
+import { useAppDispatch, useAppSelector } from '@/lib/store/store'
+import { fetchProfiles, type ProfileValues } from '@/lib/store/features/profileSlice'
 import AvailableVendors from "./availableVendors"
 
 const { auth } = firebase;
@@ -16,9 +16,12 @@ const FilterVendorComponent: React.FC = () => {
   const [stateInputView, setStateInputView] = useState(false);
   const [areaInput, setAreaInput] = useState("");
   const [areaInputView, setAreaInputView] = useState(false);
+  const dispatch = useAppDispatch();
   const { profiles  } = useAppSelector((state) => state.profile);
 
-
+ useEffect(() => {
+    dispatch(fetchProfiles());
+  }, [dispatch]);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
