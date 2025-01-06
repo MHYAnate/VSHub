@@ -7,6 +7,13 @@ export const siteMetadata: Metadata = {
   manifest: '/manifest.json',
   themeColor: pwaConfig.themeColor,
   viewport: 'width=device-width, initial-scale=1, maximum-scale=1',
+
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'default',
+    title: pwaConfig.name,
+  },
+
   icons: [
     { rel: 'apple-touch-icon', url: '/1xpng.png' },
     { rel: 'icon', url: '/favicon.ico' }

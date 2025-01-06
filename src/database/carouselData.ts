@@ -46,7 +46,7 @@ export const Cards = [
 		type: "benefit",
 		title: "24/7 Support",
 		description: "Get help anytime with our round-the-clock customer service.",
-		image: "/service/512.png",
+		image: "/service/Sspot1.jpg",
 		cta: "Contact Us",
 	},
 ];
