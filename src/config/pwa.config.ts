@@ -16,7 +16,7 @@ export const pwaConfig = {
       purpose: 'any maskable'
     },
     {
-      src: '/service/512.png',
+      src: '/service/1xpng.png',
       sizes: '512x512',
       type: 'image/png'
     }
