@@ -114,7 +114,7 @@ export default function NavComponent({ setQNav, qNav }: Props) {
 							}`}
 						>
 							<Image
-								src={scrolled ? "/service/1x.jpg" : "/service/1xi.jpg"}
+								src={scrolled ? "/service/1x.jpg" : "/service/1x.jpg"}
 								alt="VSHub Logo"
 								layout="fill"
 								objectFit="cover"
