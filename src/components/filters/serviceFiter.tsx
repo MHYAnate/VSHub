@@ -63,7 +63,7 @@ export default function SearchComponent({ serviceList }: SearchComponentProps) {
 							);
 							setIsOpen(false);
 						}}
-						className="bg-gray-50 dark:bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-105"
+						className="bg-gray-50  p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-105"
 					>
 						<div className="relative w-full h-48 mb-4 rounded-lg overflow-hidden">
 							<Image
