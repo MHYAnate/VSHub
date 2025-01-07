@@ -13,8 +13,8 @@ export default function InstallPWA() {
       <div className="fixed bottom-4 left-1/2 -translate-x-1/2 bg-blue-600 text-white px-4 py-2 rounded-lg shadow-lg text-center z-50 max-w-sm">
         <p>To install this app on iOS:</p>
         <ol className="text-sm mt-2 text-left">
-          <li>1. Tap the Share button</li>
-          <li>2. Scroll down and tap "Add to Home Screen"</li>
+          <li>{`1. Tap the Share button`}</li>
+          <li>{`2. Scroll down and tap "Add to Home Screen"`}</li>
         </ol>
       </div>
     );
