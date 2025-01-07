@@ -90,7 +90,7 @@ export default function VendorDashboard() {
 				<div className="container mx-auto flex justify-between items-center border-black bg-black">
 					<Link href="/dashboard" className="flex items-center space-x-2 bg-black transition-transform duration-300 hover:scale-95">
 						<Image
-							src="/service/1xi.jpg"
+							src="/service/1x.jpg"
 							alt="VSHub Logo"
 							width={40}
 							height={40}
