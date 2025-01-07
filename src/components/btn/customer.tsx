@@ -137,7 +137,7 @@ const CustomerBtn: React.FC<Props> = ({ vendorData, clientId }) => {
 				disabled={isLoading || isSubmitting || !user}
 				
 				className={`
-         w-fit pt-1 px-1 md:w-full md:py-2 md:px-4 rounded-md shadow-md text-sm font-medium
+         w-fit pt-1 px-2 md:w-full md:py-2 md:px-4 rounded-md shadow-md text-sm font-medium
           transition-all duration-300 ease-in-out
           ${
 						isLoading || isSubmitting || clientId === ""

@@ -82,7 +82,7 @@ const FilterVendorComponent: React.FC = () => {
               <div className="pb-1 pt-2 pl-2 border rounded-md">
                 <div
                   onClick={() => setStateInputView(!stateInputView)}
-                  className="w-full mb-1"
+                  className="w-full mb-1 text-slate-900"
                 >
                   {stateInput !== "" ? `${stateInput} State` : "Select State"}
                 </div>
@@ -92,7 +92,7 @@ const FilterVendorComponent: React.FC = () => {
               <div className="pb-1 pt-2 pl-2 border rounded-md">
                 <div
                   onClick={() => setAreaInputView(!areaInputView)}
-                  className="w-full mb-1"
+                  className="w-full mb-1  text-slate-900"
                 >
                   {areaInput !== "" ? `${areaInput} Area` : "Select Area"}
                 </div>
@@ -104,7 +104,7 @@ const FilterVendorComponent: React.FC = () => {
                 onChange={updateSearchInput}
                 id="vendorAddress"
                 placeholder="Search Personal Address"
-                className="p-2 border rounded-md"
+                className="p-2 border rounded-md  text-slate-900"
               />
             </div>
 
