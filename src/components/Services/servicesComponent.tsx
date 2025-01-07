@@ -94,7 +94,7 @@ const ServicesComponent: React.FC = () => {
 													className="transition-transform duration-300 hover:scale-110"
 												/>
 											</div>
-											<h3 className="text-lg font-semibold text-gray-900 ">
+											<h3 className="text-lg font-semibold text-gray-900 text-center">
 												{service.name}
 											</h3>
 										</div>
