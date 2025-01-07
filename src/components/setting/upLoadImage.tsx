@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState, useRef, ChangeEvent, useEffect } from 'react'
+import React, { useState, useRef, ChangeEvent  } from 'react'
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import Firebase from "@/firebase/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
