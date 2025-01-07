@@ -1,18 +1,21 @@
 import React, { useState, useEffect } from 'react'
 import { useSearchParams } from "next/navigation";
-import { useAppSelector } from "@/lib/store/store";
 import { type ProfileValues } from '@/lib/store/features/profileSlice';
 
+interface Props{
+  profiles: ProfileValues[]
+}
 
-const AboutVendor: React.FC = () => {
+
+const AboutVendor: React.FC<Props> = ({profiles}) => {
 
   const [profileDetails, setProfileDetails] = useState<ProfileValues | null>(null);
 
-	const { profiles } = useAppSelector((state) => state.profile);
+
 
 	const searchParams = useSearchParams();
 
-	const vendorId = searchParams.get("docid");
+	const vendorId = searchParams.get("vendorId");
 
 	const vendorDocId = vendorId ? vendorId : "";
 

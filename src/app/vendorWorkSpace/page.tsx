@@ -9,6 +9,8 @@ import VendorStaffsComponent from "@/components/workShop/staff";
 import Reviews from "@/components/workShop/reviews";
 import VendorServicesComponent from "@/components/workShop/services";
 import VendorVacanciesComponent from "@/components/workShop/vacancy";
+
+import { useAppSelector } from "@/lib/store/store";
 import FooterComponent from "@/components/footer/footerComponent";
 import { Suspense } from "react";
 import {
@@ -41,6 +43,10 @@ export default function Component() {
 
 	const [activeTab, setActiveTab] = useState("about");
 
+	const { profiles } = useAppSelector((state) => state.profile);
+
+	
+
 	return (
 		<Suspense fallback={<LoadingSvg/>}>
 			<div className="min-h-screen bg-gray-100">
@@ -57,7 +63,7 @@ export default function Component() {
 								<MainTab activeTab={activeTab} setActiveTab={setActiveTab} />
 
 								<div className="px-4 py-5 sm:p-6">
-									{activeTab === "about" && <AboutVendor />}
+									{activeTab === "about" && <AboutVendor profiles={profiles} />}
 
 									{activeTab === "services" && <VendorServicesComponent />}
 
