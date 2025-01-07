@@ -1,5 +1,5 @@
 
-const ContactSvg: React.FC<any> = () => {
+const ContactSvg: React.FC = () => {
 	return (
 	
 			<svg
