@@ -55,10 +55,10 @@ export default function RatingsComponent({ id, profiles }: Props) {
 					disabled={rates.length === 0}
 				>
 					{rates.length === 0
-						? "No Feedback Yet"
+						? "No Feedbacks"
 						: openFeedBack
-						? "Hide Feedbacks"
-						: "Show Feedbacks"}
+						? "Hide"
+						: "Feedbacks"}
 				</button>
 			</div>
 			{openFeedBack && (

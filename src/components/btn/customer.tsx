@@ -173,7 +173,7 @@ const CustomerBtn: React.FC<Props> = ({ vendorData, clientId }) => {
 							</svg>
 						</span>
 					) : null}
-					<span className={isLoading || isSubmitting ? "invisible" : ""}>
+					<span className={isLoading || isSubmitting ? "invisible" : "text-sm"}>
 						{isCustomer || isSCustomer ? "Remove Customer" : "Add Customer"}
 					</span>
 				</span>
