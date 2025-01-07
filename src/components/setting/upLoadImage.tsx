@@ -21,7 +21,7 @@ export default function UploadImage({ docId }: Props) {
 
   const { auth, storage, database } = Firebase;
 
-  const [imageUrl, setImageUrl] = useState("");
+  // const [imageUrl, setImageUrl] = useState("");
 
   const [loader, setLoader] = useState(false);
 
@@ -37,53 +37,89 @@ export default function UploadImage({ docId }: Props) {
 
   const imageRef = ref(storage, `image/${user?.email}`);
 
-	const handleUpload = () => {
+	// const handleUpload = () => {
 
-    setLoader(true);
-		const fileInput = fileInputRef.current;
-		if (fileInput && fileInput.files && fileInput.files.length > 0) {
-			const file = fileInput.files[0]; // Get the first selected file
+  //   setLoader(true);
+	// 	const fileInput = fileInputRef.current;
+	// 	if (fileInput && fileInput.files && fileInput.files.length > 0) {
+	// 		const file = fileInput.files[0]; // Get the first selected file
 
-			// Reference to the root of the default Firebase Storage bucket
+	// 		// Reference to the root of the default Firebase Storage bucket
 
-			// Upload the file
-			uploadBytes(imageRef, file)
-				.then(() => {
-					getDownloadURL(imageRef).then((url) => {
-						setImageUrl(url);
+	// 		// Upload the file
+	// 		uploadBytes(imageRef, file)
+	// 			.then(() => {
+	// 				getDownloadURL(imageRef).then((url) => {
+	// 					setImageUrl(url);
             
 						
-					});
+	// 				});
 
-					console.log("Uploaded a file!");
-				})
-				.catch((error) => {
-					console.error(error); // Handle any errors
-				});
-		}
-	};
+	// 				console.log("Uploaded a file!");
+	// 			})
+	// 			.catch((error) => {
+	// 				console.error(error); // Handle any errors
+	// 			});
+	// 	}
+	// };
 
 
-  const handleProfileDetail = async () => {
-		try {
-			const profileDetailRef = collection(database, `profile`);
-			await setDoc(
-				doc(profileDetailRef, docId),
-				{
-					src: imageUrl,
-				},
-				{ merge: true }
-			);
-			console.log("Profile detail added successfully");
+  // const handleProfileDetail = async () => {
+	// 	try {
+	// 		const profileDetailRef = collection(database, `profile`);
+	// 		await setDoc(
+	// 			doc(profileDetailRef, docId),
+	// 			{
+	// 				src: imageUrl,
+	// 			},
+	// 			{ merge: true }
+	// 		);
+	// 		console.log("Profile detail added successfully");
+  //     setLoader(false);
+	// 	} catch (error) {
+	// 		console.error("Error adding profile detail:", error);
+  //     setLoader(false);
+	// 	}
+	// };
+	// useEffect(() => {
+	// 	handleProfileDetail();
+	// }, [handleProfileDetail,setImageUrl]);
+
+
+  const handleUpload = async () => {
+    try {
+      setLoader(true);
+      const fileInput = fileInputRef.current;
+      
+      if (!fileInput?.files?.length) {
+        throw new Error('No file selected');
+      }
+  
+      const file = fileInput.files[0];
+      
+      // Upload image and get URL
+      await uploadBytes(imageRef, file);
+      const url = await getDownloadURL(imageRef);
+      
+      // Update profile with new image URL
+      const profileDetailRef = collection(database, 'profile');
+      await setDoc(
+        doc(profileDetailRef, docId),
+        { src: url },
+        { merge: true }
+      );
+  
+      // setImageUrl(url);
+      console.log('Profile updated successfully');
+    } catch (error) {
+      console.error('Error updating profile:', error);
+    } finally {
       setLoader(false);
-		} catch (error) {
-			console.error("Error adding profile detail:", error);
-      setLoader(false);
-		}
-	};
-	useEffect(() => {
-		handleProfileDetail();
-	}, [handleProfileDetail,setImageUrl]);
+    }
+  };
+  
+  // Remove useEffect since we handle everything in handleUpload
+  
 
 
 
