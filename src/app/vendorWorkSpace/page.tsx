@@ -20,9 +20,14 @@ import {
 import { fetchProfiles } from "@/lib/store/features/profileSlice";
 import { useSearchParams } from "next/navigation";
 import LoadingSvg from "@/components/loading/loadingSvg";
+import { RateValue } from "@/lib/store/features/ratingSlice";
+import { collection, getDocs } from "firebase/firestore";
+import firebase from "@/firebase/firebase";
 
 export default function Component() {
 	const searchParams = useSearchParams();
+
+	const [rating, setRatings] = useState<RateValue[]>([]);
 
 	const vendorId = searchParams.get("docid");
 	
@@ -44,6 +49,36 @@ export default function Component() {
 	const [activeTab, setActiveTab] = useState("about");
 
 	const { profiles } = useAppSelector((state) => state.profile);
+
+	const { database } = firebase;
+
+	const profileDetailRef = collection(database, "rateUs");
+
+	useEffect(() => {
+		const fetchProfileDetails = async () => {
+			try {
+				const querySnapshot = await getDocs(profileDetailRef);
+
+				if (querySnapshot.empty) {
+					console.log("No profile details found");
+					return;
+				}
+
+				const retrievedData: RateValue[] = [];
+				querySnapshot.forEach((doc) => {
+					const data = doc.data() as RateValue;
+					retrievedData.push(data);
+				});
+
+				setRatings(retrievedData);
+			} catch (error) {
+				console.error("Error getting profile detail:", error);
+				setRatings([]);
+			}
+		};
+
+		fetchProfileDetails();
+	}, [database, profileDetailRef]); 
 
 	
 
@@ -67,7 +102,7 @@ export default function Component() {
 
 									{activeTab === "services" && <VendorServicesComponent />}
 
-									{activeTab === "staff" && <VendorStaffsComponent id="" />}
+									{activeTab === "staff" && <VendorStaffsComponent id="" rating={rating} />}
 
 									{activeTab === "reviews" && <Reviews />}
 

@@ -26,22 +26,20 @@ type Values = {
 		isEmployedId: string;
 		isVerified: string;
 	} | null;
+	rating: RateValue[]
 };
 
-const VendorStaffsCard: React.FC<Values> = ({ values }) => {
+const VendorStaffsCard: React.FC<Values> = ({ values, rating }) => {
   
-	const cardRatings = useAppSelector(
-		(state) =>
-			state.rating.ratingsByCard[values ? values.docid : ""] || {
-				ratings: [] as RateValue[],
-				totalRate: 0,
-				loading: false,
-				error: null,
-			}
+
+	const filteredRatings = rating.filter((eachItem) =>
+		eachItem.rateeId.toLowerCase().includes(values?values?.docid.toLowerCase():"")
 	);
 
-	const { ratings, totalRate } = cardRatings;
 
+const totalRate = filteredRatings.reduce((accumulator, currentValue) => {
+  return accumulator + currentValue.rate;
+}, 0);
 	return (
 		<div className="px-4 py-5 sm:p-6">
 			<div className="flex items-center">
@@ -63,7 +61,7 @@ const VendorStaffsCard: React.FC<Values> = ({ values }) => {
 					<div className="flex items-center">
 						<RenderStars rating={totalRate} />
 						<p className="ml-2 text-sm text-gray-600">
-							{totalRate.toFixed(1)} ({ratings.length} reviews)
+							{totalRate.toFixed(1)} ({filteredRatings.length} reviews)
 						</p>
 					</div>
 				</div>

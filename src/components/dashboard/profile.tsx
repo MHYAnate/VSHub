@@ -15,6 +15,8 @@ import {
 } from "@/lib/store/features/ratingSlice";
 import Firebase from "@/firebase/firebase";
 import VendorStaffsComponent from "../workShop/staff";
+import { collection, getDocs } from "firebase/firestore";
+import firebase from "@/firebase/firebase";
 
 const { auth } = Firebase;
 export default function Profile() {
@@ -22,6 +24,8 @@ export default function Profile() {
 	const [profileDetails, setProfileDetails] = useState<ProfileValues | null>(
 		null
 	);
+	const [rating, setRatings] = useState<RateValue[]>([]);
+
 	const [activeTab, setActiveTab] = useState("about");
 
 	const dispatch = useAppDispatch();
@@ -37,6 +41,9 @@ export default function Profile() {
 	);
 
 	const { ratings, totalRate } = cardRatings;
+
+
+	const finalRate = totalRate / ratings.length
 
 	useEffect(() => {
 		dispatch(fetchProfiles());
@@ -59,6 +66,36 @@ export default function Profile() {
 			};
 		}
 	}, [dispatch, profileDetails?.docid]);
+
+	const { database } = firebase;
+
+	const profileDetailRef = collection(database, "rateUs");
+
+	useEffect(() => {
+		const fetchProfileDetails = async () => {
+			try {
+				const querySnapshot = await getDocs(profileDetailRef);
+
+				if (querySnapshot.empty) {
+					console.log("No profile details found");
+					return;
+				}
+
+				const retrievedData: RateValue[] = [];
+				querySnapshot.forEach((doc) => {
+					const data = doc.data() as RateValue;
+					retrievedData.push(data);
+				});
+
+				setRatings(retrievedData);
+			} catch (error) {
+				console.error("Error getting profile detail:", error);
+				setRatings([]);
+			}
+		};
+
+		fetchProfileDetails();
+	}, [database, profileDetailRef]); 
 
 	const tabContent = {
 		about: (
@@ -98,7 +135,7 @@ export default function Profile() {
 
 		staffs: (
 			<div className="space-y-2">
-				<VendorStaffsComponent id={`${profileDetails?.docid}`} />
+				<VendorStaffsComponent id={`${profileDetails?.docid}`} rating={rating} />
 			</div>
 		),
 	};
@@ -137,7 +174,7 @@ export default function Profile() {
 							<div className="mt-2 flex items-center">
 								<span className="text-yellow-400">★</span>
 								<span className="ml-1 text-gray-600">
-									{totalRate} ({ratings.length} reviews)
+									{Math.round(finalRate)} ({ratings.length} reviews)
 								</span>
 							</div>
 							<p className="mt-2 text-gray-500">

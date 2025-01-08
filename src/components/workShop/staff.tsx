@@ -3,11 +3,13 @@ import React from 'react'
 import { useAppSelector } from "@/lib/store/store";
 import { useSearchParams } from "next/navigation";
 import VendorStaffsCard from './staffCard';
+import { RateValue } from '@/lib/store/features/ratingSlice';
 
 interface Props{
   id : string 
+  rating:RateValue[]
 }
-const VendorStaffsComponent: React.FC<Props> = ({id}) => {
+const VendorStaffsComponent: React.FC<Props> = ({id, rating}) => {
 
   const { profiles } = useAppSelector((state) => state.profile);
 
@@ -20,7 +22,7 @@ const VendorStaffsComponent: React.FC<Props> = ({id}) => {
   profiles?profiles.length > 0
 			? profiles.filter((eachItem) => {
 					const text = eachItem.isEmployedId.toLowerCase();
-					return text.includes(vendorId?vendorId.toLowerCase(): id);
+					return text.includes(vendorId?vendorId.toLowerCase(): id.toLowerCase());
 			  })
 			: []:"";
 
@@ -30,7 +32,7 @@ const VendorStaffsComponent: React.FC<Props> = ({id}) => {
     <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
       { filteredStaff?filteredStaff.map((staff) => (
         <div key={staff.docid} className="bg-white overflow-hidden shadow rounded-lg">
-          <VendorStaffsCard values={staff}/>
+          <VendorStaffsCard values={staff} rating={rating}/>
         </div>
       )):<></>}
     </div>

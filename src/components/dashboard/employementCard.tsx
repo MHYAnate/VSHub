@@ -12,11 +12,11 @@ interface EmploymentCardProps {
 	address: string;
 	docid: string;
 	vendorId: string;
-  vendorImage: string;
-  vendorName: string;
-  vendorAddress: string;
-  vendorNumber:string;
-  vendorService: string;
+	vendorImage: string;
+	vendorName: string;
+	vendorAddress: string;
+	vendorNumber: string;
+	vendorService: string;
 }
 
 export default function EmploymentCard({
@@ -27,23 +27,19 @@ export default function EmploymentCard({
 	address,
 	docid,
 	vendorId,
-  vendorImage,
-  vendorName,
-  vendorAddress,
-  vendorNumber,
-  vendorService,
+	vendorImage,
+	vendorName,
+	vendorAddress,
+	vendorNumber,
+	vendorService,
 }: EmploymentCardProps) {
 	const { database } = Firebase;
 
-	const [state, setState] = useState("");
-
 	const [loader, setLoader] = useState(false);
 
-  const [sent, setSent] = useState(false)
+	const [sent, setSent] = useState(false);
 
-	const content = state === "offer" ? "offer" : state === "request" ? "request" : "";
-
-	const handlelNotice = async () => {
+	const handlelNoticeOffer = async () => {
 		try {
 			setLoader(true);
 			const noticeRef = collection(database, "adminMessages");
@@ -53,12 +49,12 @@ export default function EmploymentCard({
 				type: "employementNotice",
 				senderId: vendorId,
 				recieverId: docid,
-        senderName: vendorName,
-        senderImage:vendorImage,
-        senderAddress:vendorAddress,
-        senderNumber:vendorNumber,
-        senderService:vendorService,
-				content: content,
+				senderName: vendorName,
+				senderImage: vendorImage,
+				senderAddress: vendorAddress,
+				senderNumber: vendorNumber,
+				senderService: vendorService,
+				content: "offer",
 			});
 			const docId = docRef.id;
 
@@ -74,7 +70,44 @@ export default function EmploymentCard({
 
 			console.log("Profile detail added successfully");
 			setLoader(false);
-      setSent(true)
+			setSent(true);
+		} catch (error) {
+			console.error("Error adding profile detail:", error);
+		}
+	};
+
+	const handlelNoticeRequest = async () => {
+		try {
+			setLoader(true);
+			const noticeRef = collection(database, "adminMessages");
+
+			const docRef = await addDoc(noticeRef, {
+				docId: "",
+				type: "employementNotice",
+				senderId: vendorId,
+				recieverId: docid,
+				senderName: vendorName,
+				senderImage: vendorImage,
+				senderAddress: vendorAddress,
+				senderNumber: vendorNumber,
+				senderService: vendorService,
+				content: "request",
+			});
+			const docId = docRef.id;
+
+			const setNoticeRef = collection(database, "adminMessages");
+
+			await setDoc(
+				doc(setNoticeRef, docId),
+				{
+					docId: docId,
+				},
+				{ merge: true }
+			);
+
+			console.log("Profile detail added successfully");
+			setLoader(false);
+			setSent(true);
 		} catch (error) {
 			console.error("Error adding profile detail:", error);
 		}
@@ -89,7 +122,7 @@ export default function EmploymentCard({
 					<div className="relative">
 						<div className="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-50"></div>
 						<Image
-							src={profileImage ? profileImage : '/service/u1.jpg'}
+							src={profileImage ? profileImage : "/service/u1.jpg"}
 							alt={`${name}'s profile`}
 							width={400}
 							height={300}
@@ -136,20 +169,18 @@ export default function EmploymentCard({
 					<div className="p-6 pt-0 flex space-x-4">
 						<button
 							onClick={() => {
-								setState("request");
-								handlelNotice();
+								handlelNoticeRequest();
 							}}
-              disabled={sent}
+							disabled={sent}
 							className="flex-1 bg-black text-white py-2 px-4 rounded-lg transition-all duration-300 hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 transform hover:-translate-y-0.5 hover:shadow-lg"
 						>
 							Request Employment
 						</button>
 						<button
 							onClick={() => {
-								setState("offer");
-								handlelNotice();
+								handlelNoticeOffer();
 							}}
-              disabled={sent}
+							disabled={sent}
 							className="flex-1 bg-white text-black py-2 px-4 rounded-lg border-2 border-black transition-all duration-300 hover:bg-black hover:text-white focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 transform hover:-translate-y-0.5 hover:shadow-lg"
 						>
 							Offer Employment

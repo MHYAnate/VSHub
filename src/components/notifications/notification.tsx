@@ -1,7 +1,12 @@
 "use client";
 
 import React, { useState, useEffect, useCallback } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { useAppDispatch, useAppSelector } from "@/lib/store/store";
+import {
+	fetchProfiles,
+	type ProfileValues,
+} from "@/lib/store/features/profileSlice";
 import {
 	fetchMessages,
 	type AdminMessage,
@@ -9,6 +14,9 @@ import {
 import NoticeSvg from "../btn/noticeSvg";
 import XSvg from "../btn/xSvg";
 import RequestCard from "./requestCard";
+import Firebase from "@/firebase/firebase";
+
+const { auth } = Firebase;
 
 interface MessageTransformInput {
 	id?: string;
@@ -29,6 +37,11 @@ export default function AdminMessageNotice() {
 	const [isOpen, setIsOpen] = useState(false);
 	const [animatedMessages, setAnimatedMessages] = useState<string[]>([]);
 
+	const [user] = useAuthState(auth);
+	const [profileDetails, setProfileDetails] = useState<ProfileValues | null>(
+		null
+	);
+
 	const dispatch = useAppDispatch();
 
 	useEffect(() => {
@@ -36,18 +49,9 @@ export default function AdminMessageNotice() {
 	}, [dispatch]);
 
 	const transformMessage = (message: MessageTransformInput): AdminMessage => {
-		// Handle timestamp transformation separately to properly type check
-		// let timestamp: Date;
-		// if (message.timestamp instanceof Date) {
-		// 	timestamp = message.timestamp;
-		// } else if (message.timestamp !== undefined) {
-		// 	timestamp = new Date(message.timestamp);
-		// } else {
-		// 	timestamp = new Date();
-		// }
 
 		return {
-			id: message.id || "",
+			id: message.docId || "",
 			docId: message.docId || "",
 			type: message.type || "",
 			senderId: message.senderId || "",
@@ -69,6 +73,21 @@ export default function AdminMessageNotice() {
 
 const { messages: reduxMessages } = useAppSelector((state) => state.notice);
 const [messages, setMessages] = useState<AdminMessage[]>([]);
+
+const { profiles } = useAppSelector((state) => state.profile);
+
+useEffect(() => {
+	if (user && profiles.length > 0) {
+		const vendorDetail = profiles.find(
+			(profile) => profile.email.toLowerCase() === user.email?.toLowerCase()
+		);
+		setProfileDetails(vendorDetail || null);
+	}
+}, [user, profiles])
+
+const filteredMessage = messages.filter((eachItem) =>
+		eachItem.recieverId.toLowerCase().includes(profileDetails?profileDetails?.docid.toLowerCase():"")
+	);
 
 useEffect(() => {
     if (reduxMessages) {
@@ -94,7 +113,7 @@ useEffect(() => {
 	// }, [reduxMessages,transformMessages]);
 
 	useEffect(() => {
-		const newMessages = messages?.filter(
+		const newMessages = filteredMessage?.filter(
 			(msg) => !animatedMessages.includes(msg.id)
 		);
 		if (newMessages?.length > 0) {
@@ -103,19 +122,10 @@ useEffect(() => {
 				...newMessages.map((msg) => msg.id),
 			]);
 		}
-	}, [messages, animatedMessages]);
+	}, [filteredMessage, animatedMessages]);
 
-	const unreadCount = messages?.filter((msg) => !msg.read).length;
+	const unreadCount = filteredMessage?.filter((msg) => !msg.read).length;
 
-	const formatTimestamp = (date: Date) => {
-		return new Intl.DateTimeFormat("en-US", {
-			month: "short",
-			day: "numeric",
-			hour: "numeric",
-			minute: "numeric",
-			hour12: true,
-		}).format(date);
-	};
 
 	const handleMessageRead = (id: string) => {
 		setMessages((prevMessages) =>
@@ -134,7 +144,7 @@ useEffect(() => {
 				className="p-2 rounded-full bg-black text-black border border-black hover:transition-transform duration-300 hover:scale-110"
 				aria-label="Open admin messages"
 			>
-				<NoticeSvg lenght={messages.length} state={isOpen} />
+				<NoticeSvg lenght={filteredMessage.length} state={isOpen} />
 				{unreadCount > 0 && (
 					<span className="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white transform translate-x-1/2 -translate-y-1/2 bg-red-500 rounded-full">
 						{unreadCount}
@@ -151,14 +161,14 @@ useEffect(() => {
 						</h2>
 					</div>
 					<div className="max-h-96 overflow-y-auto">
-						{messages?.length === 0 ? (
+						{filteredMessage?.length === 0 ? (
 							<p className="p-4 text-gray-500">No messages</p>
 						) : (
-							messages?.map((message) => (
+							filteredMessage?.map((message) => (
 								<div
-									key={message.id}
+									key={message.docId}
 									className={`p-4 border-b border-gray-200 last:border-b-0 transition-all duration-300 ${
-										animatedMessages.includes(message.id)
+										animatedMessages.includes(message.docId)
 											? "animate-fadeIn"
 											: ""
 									} ${message.read ? "bg-gray-50" : "bg-white"}`}
@@ -174,14 +184,14 @@ useEffect(() => {
 											docId={message.senderId}
 											receiverId={message.recieverId}
 											noticeId={message.docId}
-											onAccept={() => {handleMessageRead(message.id)}}
-											onReject={() => {handleMessageRead(message.id)}}
+											onAccept={() => {handleMessageRead(message.docId)}}
+											onReject={() => {handleMessageRead(message.docId)}}
 										/>
 									)}
 									{message.type === "admin" && (
 										<div
 											className={`p-4 border-b border-gray-200 last:border-b-0 transition-all duration-300 ${
-												animatedMessages.includes(message.id)
+												animatedMessages.includes(message.docId)
 													? "animate-fadeIn"
 													: ""
 											} ${message.read ? "bg-gray-50" : "bg-white"}`}
@@ -191,7 +201,7 @@ useEffect(() => {
 													{message.content}
 												</p>
 												<button
-													onClick={() => handleMessageDelete(message.id)}
+													onClick={() => handleMessageDelete(message.docId)}
 													className="text-gray-400 hover:text-gray-600 focus:outline-none"
 													aria-label="Delete message"
 												>
@@ -199,12 +209,10 @@ useEffect(() => {
 												</button>
 											</div>
 											<div className="flex justify-between items-center">
-												{/* <span className="text-xs text-gray-500">
-													{formatTimestamp(message.timestamp)}
-												</span> */}
+											
 												{!message.read && (
 													<button
-														onClick={() => handleMessageRead(message.id)}
+														onClick={() => handleMessageRead(message.docId)}
 														className="text-xs text-blue-500 hover:text-blue-600 focus:outline-none transition-colors duration-200"
 													>
 														Mark as read
