@@ -16,7 +16,6 @@ export interface AdminMessage {
   senderNumber:string;
   recieverId: string;
   content: string;
-  timestamp: Date;
   read: boolean;
 }
 
@@ -44,20 +43,13 @@ interface MessageTransformInput {
   senderService?:string;
   recieverId?: string;
   content?: string;
-  timestamp?: Date | string | number;
   read?: boolean;
 }
 
 const transformMessage = (message: MessageTransformInput): AdminMessage => {
   // Handle timestamp transformation separately to properly type check
-  let timestamp: Date;
-  if (message.timestamp instanceof Date) {
-    timestamp = message.timestamp;
-  } else if (message.timestamp !== undefined) {
-    timestamp = new Date(message.timestamp);
-  } else {
-    timestamp = new Date();
-  }
+ 
+
 
   return {
     id: message.id || '',
@@ -71,7 +63,6 @@ const transformMessage = (message: MessageTransformInput): AdminMessage => {
     senderService: message.senderService || '',
     recieverId: message.recieverId || '',
     content: message.content || '',
-    timestamp,
     read: Boolean(message.read)
   };
 };

@@ -37,31 +37,39 @@ const ServicesComponent: React.FC = () => {
 						ref={(el: HTMLDivElement | null) => {
 							if (el) categoryRefs.current[index] = el;
 						}}
-						className="bg-white rounded-lg overflow-hidden transition-all duration-300 hover:shadow-2xl transform hover:-translate-y-2"
+						className={`bg-white rounded-lg overflow-hidden transition-all duration-300 hover:shadow-2xl transform hover:-translate-y-2 ${
+              selectedCategory === category.id
+                ? "ring-2 ring-black"
+                : ""
+            }`}
 					>
-						<div className="relative w-full h-48 mb-4 rounded-lg overflow-hidden">
+						<div  className="relative overflow-hidden group">
 							<Image
 								src={category.src}
 								alt={`${category.category} category`}
 								width={400}
 								height={200}
-								className="transition-transform duration-300 hover:scale-110"
+								className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110"
 							/>
-							<div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-								<h3 className="text-lg font-semibold text-gray-900 ">
-									{category.category}
-								</h3>
-							</div>
+					  <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <h3 className="text-2xl font-semibold text-white">
+                  {category.category}
+                </h3>
+              </div>
 						</div>
 						<div className="p-6">
-							<button
-								onClick={() => toggleCategory(category.id)}
-								className="w-full py-3 px-6 bg-black text-white rounded-full hover:bg-gray-800 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black"
-							>
-								{selectedCategory === category.id
-									? "Hide Services"
-									: "Show Services"}
-							</button>
+						<button
+                onClick={() => toggleCategory(category.id)}
+                className={`w-full py-3 px-6 rounded-full transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black ${
+                  selectedCategory === category.id
+                    ? "bg-black text-white hover:bg-gray-800"
+                    : "bg-gray-100 text-black hover:bg-gray-200"
+                }`}
+              >
+                {selectedCategory === category.id
+                  ? "Hide Services"
+                  : "Show Services"}
+              </button>
 							{selectedCategory === category.id && (
 								<div className="mt-8 grid grid-cols-2 gap-6">
 									{category.services.map((service) => (
