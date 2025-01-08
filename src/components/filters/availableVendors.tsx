@@ -105,7 +105,7 @@ const AvailableVendors: React.FC<VendorProps> = ({
 		[searchParams]
 	);
 
-	const { profiles, error } = useAppSelector((state) => state.profile);
+	const { profiles, error, status  } = useAppSelector((state) => state.profile);
 
 	const Vendors = searchParams.get("name");
 	const vendors = Vendors ?? "";
@@ -148,6 +148,14 @@ const AvailableVendors: React.FC<VendorProps> = ({
 	const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
 	function renderVendors() {
+
+		if (status === "loading") {
+			return (
+				<div className="flex justify-center items-center p-4 w-screen">
+        <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-blue-500"></div>
+      </div>
+			);
+		}
 		if (filteredList.length === 0) {
 			return (
 				<div className="col-span-full text-center py-8">
