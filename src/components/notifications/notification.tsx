@@ -22,7 +22,6 @@ interface MessageTransformInput {
 	senderService?: string;
 	recieverId?: string;
 	content?: string;
-	timestamp?: Date | string | number;
 	read?: boolean;
 }
 
@@ -38,14 +37,14 @@ export default function AdminMessageNotice() {
 
 	const transformMessage = (message: MessageTransformInput): AdminMessage => {
 		// Handle timestamp transformation separately to properly type check
-		let timestamp: Date;
-		if (message.timestamp instanceof Date) {
-			timestamp = message.timestamp;
-		} else if (message.timestamp !== undefined) {
-			timestamp = new Date(message.timestamp);
-		} else {
-			timestamp = new Date();
-		}
+		// let timestamp: Date;
+		// if (message.timestamp instanceof Date) {
+		// 	timestamp = message.timestamp;
+		// } else if (message.timestamp !== undefined) {
+		// 	timestamp = new Date(message.timestamp);
+		// } else {
+		// 	timestamp = new Date();
+		// }
 
 		return {
 			id: message.id || "",
@@ -59,7 +58,6 @@ export default function AdminMessageNotice() {
 			senderService: message.senderService || "",
 			recieverId: message.recieverId || "",
 			content: message.content || "",
-			timestamp,
 			read: Boolean(message.read),
 		};
 	};
@@ -201,9 +199,9 @@ useEffect(() => {
 												</button>
 											</div>
 											<div className="flex justify-between items-center">
-												<span className="text-xs text-gray-500">
+												{/* <span className="text-xs text-gray-500">
 													{formatTimestamp(message.timestamp)}
-												</span>
+												</span> */}
 												{!message.read && (
 													<button
 														onClick={() => handleMessageRead(message.id)}
