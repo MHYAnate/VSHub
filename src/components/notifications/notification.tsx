@@ -4,7 +4,6 @@ import React, { useState, useEffect, useCallback } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useAppDispatch, useAppSelector } from "@/lib/store/store";
 import {
-	fetchProfiles,
 	type ProfileValues,
 } from "@/lib/store/features/profileSlice";
 import {

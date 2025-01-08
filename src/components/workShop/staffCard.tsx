@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import { useAppSelector } from "@/lib/store/store";
 import { type RateValue } from "@/lib/store/features/ratingSlice";
 import RenderStars from "./renderStar";
 import Image from "next/image";
