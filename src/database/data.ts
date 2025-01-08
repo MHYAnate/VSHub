@@ -220,7 +220,7 @@ export const Services = [
       },
       {
         "id": 9,
-        "name": "F.M.C.G wholesales, procurement and logistic",
+        "name": "F.M.C.G procurement and logistic",
         "src": "/service/fmcg.jpg",
         "link": "",
       },

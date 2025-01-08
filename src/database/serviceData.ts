@@ -206,7 +206,7 @@ export const ServiceList = [
       },
       {
         "id": 34,
-        "name": "F.M.C.G wholesales, procurement and logistic",
+        "name": "F.M.C.G procurement and logistic",
         "src": "/service/fmcg.jpg",
         "link": "",
       },
