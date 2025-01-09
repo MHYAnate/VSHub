@@ -9,6 +9,39 @@
   "theme_color": "#000000",
   "background_color": "#000000",
   "orientation": "any",
+  "display_override": "window-controls-overlay",
+  "shortcuts": [
+    {
+      "name": "Register",
+      "url": "/register",
+      "description": "Join Sspot1",
+      "icons": [
+        {
+          "src": "/service/1xpng2.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "About Us",
+      "url": "/aboutus",
+      "description": "about Sspot1",
+      "icons": [
+        {
+          "src": "/service/1xpng2.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    }
+  ],
+  "protocol_handlers": [
+    {
+      "protocol": "web+servicespot",
+      "url": "/%s"
+    }
+  ],
   "icons": [
     {
       "src": "/service/1xpng.png",
@@ -85,6 +118,4 @@
       "description": "A screenshot of the vendor employment card"
     }
   ]
- 
-  }
- 
+}
