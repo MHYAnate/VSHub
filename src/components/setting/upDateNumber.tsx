@@ -15,11 +15,10 @@ export default function UpDateNumber({ docId }: Props) {
 
 	const { database } = Firebase;
 
-	const [loader, setLoader] = useState(false);
-
 	const {
 		register,
 		handleSubmit,
+		reset,
 		formState: { isSubmitSuccessful, isSubmitting },
 	} = useForm<ProfileValues>({
 		defaultValues: {
@@ -41,13 +40,13 @@ export default function UpDateNumber({ docId }: Props) {
 				{ merge: true }
 			);
 
-			setLoader(isSubmitting);
-			setLoader(isSubmitSuccessful && false);
+		
+			reset();
 
 			console.log("Profile detail added successfully");
 		} catch (error) {
 			console.error("Error adding profile detail:", error);
-			setLoader(false);
+		
 		}
 	};
 
@@ -83,13 +82,14 @@ export default function UpDateNumber({ docId }: Props) {
 				<label htmlFor="email" className="block text-sm font-medium text-white">
 					.
 				</label>
-				<button
+				{isSubmitting?<LoadingSvg/>:<button
 					type="submit"
-          disabled={loader}
+          disabled={isSubmitting}
 					className="w-full flex justify-center mt-1 py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-gradient-to-br from-slate-500 to-slate-700 hover:bg-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
 				>
-					{loader? <LoadingSvg/> : "UpDate"}
-				</button>
+					{ "UpDate"}
+				</button>}
+				
 			</div>
 			<style jsx>{`
 				@keyframes fadeIn {

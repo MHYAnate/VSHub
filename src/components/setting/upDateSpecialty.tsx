@@ -5,6 +5,7 @@ import { collection, setDoc, doc } from "firebase/firestore";
 import { useForm } from "react-hook-form";
 import Firebase from "@/firebase/firebase";
 import  { ProfileValues } from "@/lib/store/features/profileSlice";
+import LoadingSvg from "../loading/loadingSvg";
 
 interface Props{
 	setLoader:(value:boolean)=>void
@@ -18,10 +19,12 @@ export default function UpDateSpecialty(
 		docId}:Props
 ) {
 	const { database } = Firebase;
+	
 
 	const {
 		register,
 		handleSubmit,
+		reset,
 		formState: { isSubmitSuccessful,  isSubmitting },
 	} = useForm<ProfileValues>({
 		defaultValues: {
@@ -47,6 +50,7 @@ export default function UpDateSpecialty(
 			setLoader(isSubmitting)
 			setQuick("")
 			setLoader(isSubmitSuccessful && false)
+			reset()
 
 			console.log("Profile detail added successfully");
 		} catch (error) {
@@ -87,12 +91,13 @@ export default function UpDateSpecialty(
 				>
 					.
 				</label>
-				<button
+				{isSubmitting?<LoadingSvg/>:<button
 					type="submit"
 					className="w-full flex justify-center mt-1 py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-gradient-to-br from-slate-500 to-slate-700 hover:bg-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
 				>
 					UpDate
-				</button>
+				</button>}
+				
 			</div>
 			<style jsx>{`
         @keyframes fadeIn {
