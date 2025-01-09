@@ -22,9 +22,11 @@ export default function SuccesNotification({ duration = 5000, onClose }: Notific
     }, duration - 300)
 
     const closeTimer = setTimeout(() => {
-      setIsVisible(false)
-      onClose && onClose()
-    }, duration)
+      setIsVisible(false);
+      if (onClose) {
+        onClose();
+      }
+    }, duration);
 
     return () => {
       clearTimeout(timer)
