@@ -1,11 +1,13 @@
 "use client";
-import React from "react";
+import React, {useState} from "react";
 import { collection, setDoc, doc } from "firebase/firestore";
 import { useForm } from "react-hook-form";
 import Firebase from "@/firebase/firebase";
 import { StateData } from "@/database/stateData";
 import { ProfileValues } from "@/lib/store/features/profileSlice";
 import LoadingSvg from "../loading/loadingSvg";
+import SuccesNotification from "../notifications/success";
+import ErrorNotification from "../notifications/error";
 
 interface Props{
 	setLoader:(value:boolean)=>void
@@ -18,6 +20,8 @@ export default function UpDateLocation(
 		docId}:Props
 ) {
 	const { database } = Firebase;
+
+	const [ er,setEr] = useState(false);
 
 	const {
 		register,
@@ -53,11 +57,13 @@ export default function UpDateLocation(
 			setQuick("")
 			setLoader(isSubmitSuccessful && false)
 			reset();
+			
 
 			console.log("Profile detail added successfully");
 		} catch (error) {
 			console.error("Error adding profile detail:", error);
 			setLoader(false);
+			setEr(true)
 		}
 	};
 
@@ -108,6 +114,8 @@ export default function UpDateLocation(
 
 	return (
 		<form onSubmit={handleSubmit(onSubmit)} className="grid grid-cols-2 gap-4 transition-all duration-300 animate-fadeIn">
+				{isSubmitSuccessful && <SuccesNotification/>}
+				{er && <ErrorNotification/>}
 			<div>
 				<label
 					htmlFor="state"

@@ -1,11 +1,13 @@
 "use client";
-import React from "react";
+import React, {useState} from "react";
 
 import { collection, setDoc, doc } from "firebase/firestore";
 import { useForm } from "react-hook-form";
 import Firebase from "@/firebase/firebase";
 import { ProfileValues } from "@/lib/store/features/profileSlice";
 import LoadingSvg from "../loading/loadingSvg";
+import SuccesNotification from "../notifications/success";
+import ErrorNotification from "../notifications/error";
 
 interface Props {
 	docId: string;
@@ -13,6 +15,8 @@ interface Props {
 
 export default function UpDateName({ docId }: Props) {
 	const { database } = Firebase;
+
+	const [ er,setEr] = useState(false);
 
 	const {
 		register,
@@ -45,7 +49,7 @@ export default function UpDateName({ docId }: Props) {
 			console.log("Profile detail added successfully");
 		} catch (error) {
 			console.error("Error adding profile detail:", error);
-		
+			setEr(true)
 		}
 	};
 
@@ -65,6 +69,8 @@ export default function UpDateName({ docId }: Props) {
 				>
 					Update Name
 				</label>
+				{isSubmitSuccessful && <SuccesNotification/>}
+				{er && <ErrorNotification/>}
 				<input
 					type="text"
 					autoComplete="street-address"

@@ -1,11 +1,13 @@
 "use client";
-import React from "react";
+import React, {useState} from "react";
 
 import { collection, setDoc, doc } from "firebase/firestore";
 import { useForm } from "react-hook-form";
 import Firebase from "@/firebase/firebase";
 import  { ProfileValues } from "@/lib/store/features/profileSlice";
 import LoadingSvg from "../loading/loadingSvg";
+import SuccesNotification from "../notifications/success";
+import ErrorNotification from "../notifications/error";
 
 interface Props{
 	setLoader:(value:boolean)=>void
@@ -19,6 +21,8 @@ export default function UpDateSpecialty(
 		docId}:Props
 ) {
 	const { database } = Firebase;
+
+	const [ er,setEr] = useState(false);
 	
 
 	const {
@@ -56,6 +60,7 @@ export default function UpDateSpecialty(
 		} catch (error) {
 			console.error("Error adding profile detail:", error);
 			setLoader(false);
+			setEr(true)
 		}
 	};
 
@@ -72,6 +77,8 @@ export default function UpDateSpecialty(
 				>
 					Update Specialty
 				</label>
+				{isSubmitSuccessful && <SuccesNotification/>}
+				{er && <ErrorNotification/>}
 				<input
 					type="text"
 					autoComplete="street-address"
