@@ -1,23 +1,90 @@
 {
   "name": "Service spot 1",
   "short_name": "Sspot1",
-  "description": "A Dynamic Service platform",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#ffffff",
+  "description": "A Dynamic Service platform",
+  "lang": "en",
+  "dir": "auto",
   "theme_color": "#000000",
-  "orientation": "portrait",
+  "background_color": "#000000",
+  "orientation": "any",
   "icons": [
     {
       "src": "/service/1xpng.png",
-      "sizes": "192x192",
+      "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "maskable"
     },
     {
-      "src": "/service/1xpng.png",
-      "sizes": "512x512",
-      "type": "image/png"
+      "src": "/service/1xpng2.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/service/sh.png",
+      "sizes": "700x900",
+      "type": "image/png",
+      "description": "A screenshot of the home page"
+    },
+    {
+      "src": "/service/sss.png",
+      "sizes": "700x900",
+      "type": "image/png",
+      "description": "A screenshot of the Search Services"
+    },
+    {
+      "src": "/service/scs.png",
+      "sizes": "700x900",
+      "type": "image/png",
+      "description": "A screenshot of the Category of Service finder"
+    },
+    {
+      "src": "/service/sfv.png",
+      "sizes": "700x900",
+      "type": "image/png",
+      "description": "A screenshot of the vendors filter page"
+    },
+    {
+      "src": "/service/svc.png",
+      "sizes": "700x900",
+      "type": "image/png",
+      "description": "A screenshot of the vendors card"
+    },
+    {
+      "src": "/service/sdb.png",
+      "sizes": "700x900",
+      "type": "image/png",
+      "description": "A screenshot of the vendor dash board"
+    },
+    {
+      "src": "/service/sdm.png",
+      "sizes": "700x900",
+      "type": "image/png",
+      "description": "A screenshot of the vendor dash board menu"
+    },
+    {
+      "src": "/service/sdbc.png",
+      "sizes": "700x900",
+      "type": "image/png",
+      "description": "A screenshot of the vendor dashboard cards"
+    },
+    {
+      "src": "/service/scfb.png",
+      "sizes": "700x900",
+      "type": "image/png",
+      "description": "A screenshot of the customer feed back"
+    },
+    {
+      "src": "/service/sec.png",
+      "sizes": "700x900",
+      "type": "image/png",
+      "description": "A screenshot of the vendor employment card"
     }
   ]
-}
+ 
+  }
+ 
