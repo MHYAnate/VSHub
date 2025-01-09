@@ -9,7 +9,7 @@
   "theme_color": "#000000",
   "background_color": "#000000",
   "orientation": "any",
-  "display_override": "window-controls-overlay",
+  "display_override": "standalone",
   "shortcuts": [
     {
       "name": "Register",
