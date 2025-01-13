@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import Firebase from "@/firebase/firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import Image from "next/image";
-import React, { useState, Suspense } from "react";
+import React, { useState, Suspense, useEffect } from "react";
 import Link from "next/link";
 import LoadingSvg from "@/components/loading/loadingSvg";
 import { type ProfileValues } from "@/lib/store/features/profileSlice";
@@ -22,7 +22,15 @@ export default function Register() {
 		mode: "onChange",
 	});
 
+	const user = auth.currentUser;
+
 	const router = useRouter();
+
+	useEffect(()=>{
+		if (user){
+			router.push("/dashboard");
+		}
+	},[user, router])
 
 	const [loader, setLoader] = useState(false);
 	const [rememberMe, setRememberMe] = useState(false);
