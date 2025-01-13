@@ -12,11 +12,12 @@ import {
 	fetchRatings,
 	resetCardRating
 } from "@/lib/store/features/ratingSlice";
+
 import Firebase from "@/firebase/firebase";
 import Dashboard from "@/components/dashboard/dashboard";
 import Profile from "@/components/dashboard/profile";
 import Settings from "@/components/dashboard/settings";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { signOut } from "firebase/auth";
 import FooterComponent from "@/components/footer/footerComponent";
 import AdminMessageNotice from "@/components/notifications/notification";
@@ -68,6 +69,8 @@ export default function VendorDashboard() {
 
 	const router = useRouter();
 
+	const pathname = usePathname();
+
 	const SingOut = () => {
 		signOut(auth)
 			.then(() => {
@@ -99,7 +102,7 @@ export default function VendorDashboard() {
 						<span
 							className={`text-2xl font-bold  font-[family-name:var(--ProtestGuerrilla)] text-white`}
 						>
-							Sspot1
+								{pathname === "/dashboard" ? "": "Sspot1"}
 						</span>
 					</Link>
 					<SearchComponent serviceList={ServiceList} />
