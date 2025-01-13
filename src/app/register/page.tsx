@@ -7,7 +7,7 @@ import Link from "next/link";
 import NavComponent from "@/components/nav/navComponent";
 
 export default function RegisterLanding() {
-	const [activeTab, setActiveTab] = useState("vendor");
+	const [activeTab, setActiveTab] = useState("");
 	const [qNav, setQnav] = useState("");
 
 	return (
