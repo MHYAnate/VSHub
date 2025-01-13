@@ -153,7 +153,7 @@ export default function VendorDashboard() {
 					<ul className="flex flex-col md:flex-row md:space-x-8">
 						
 						{["Dash board", "Profile", "Job Board", "Settings", "Service spot"].map((item) => (
-							<li className={(item ==="Profile" && account === "client"? "hidden":"")} key={item}>
+							<li className={(item ==="Profile" && account === "client"? "hidden":account === "client" && item ==="Job Board" ? "hidden" : "")} key={item}>
 								<button
 									onClick={() => setActiveTab(item)}
 									className={`w-full text-left py-2 px-4 rounded font-[family-name:var(--Poppins-Bold)] transition-colors ${
