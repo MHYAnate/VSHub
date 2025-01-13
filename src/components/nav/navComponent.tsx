@@ -58,7 +58,7 @@ export default function NavComponent({ setQNav, qNav }: Props) {
 			return (
 				<div
 					onClick={() => router.push("/register")}
-					className="px-4 py-2 text-sm font-medium text-white bg-black rounded-full hover:bg-gray-800 transition-all duration-300 cursor-pointer hover:shadow-lg transform hover:-translate-y-0.5"
+					className="px-4 py-2 mx-2 text-sm font-medium text-white bg-black rounded-full hover:bg-gray-800 transition-all duration-300 cursor-pointer hover:shadow-lg transform hover:-translate-y-0.5"
 				>
 					Register
 				</div>
