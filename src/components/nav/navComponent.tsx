@@ -78,13 +78,13 @@ export default function NavComponent({ setQNav, qNav }: Props) {
 			<>
 				<div
 					onClick={() => router.push("/login")}
-					className="text-sm font-medium text-gray-600 hover:text-black transition-all duration-300 cursor-pointer relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-black after:transition-all after:duration-300 hover:after:w-full"
+					className="text-sm ml-2 font-medium text-gray-600 hover:text-black transition-all duration-300 cursor-pointer relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-black after:transition-all after:duration-300 hover:after:w-full"
 				>
 					Log In
 				</div>
 				<div
 					onClick={() => router.push("/register")}
-					className="px-4 py-2 text-sm font-medium text-white bg-black rounded-full hover:bg-gray-800 transition-all duration-300 cursor-pointer hover:shadow-lg transform hover:-translate-y-0.5"
+					className="px-4 py-2 text-sm text-center font-medium text-white bg-black rounded-full hover:bg-gray-800 transition-all duration-300 cursor-pointer hover:shadow-lg transform hover:-translate-y-0.5"
 				>
 					Register
 				</div>
@@ -184,7 +184,7 @@ export default function NavComponent({ setQNav, qNav }: Props) {
 				</div>
 
 				{mobileMenuOpen && (
-					<nav className="mt-4 md:hidden">
+					<nav className="mt-4 md:hidden bg-white rounded-lg pb-1">
 						<div className="flex flex-col space-y-2">
 							{pathname === "/" &&
 								navItems.map((item, index) => (
@@ -194,7 +194,7 @@ export default function NavComponent({ setQNav, qNav }: Props) {
 											item.action();
 											setMobileMenuOpen(false);
 										}}
-										className="text-sm font-medium text-gray-600 hover:text-black transition-all duration-300 cursor-pointer"
+										className="text-sm font-medium text-gray-600 hover:text-black transition-all duration-300 cursor-pointer ml-2"
 									>
 										{item.label}
 									</div>
