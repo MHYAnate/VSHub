@@ -126,7 +126,8 @@ export default function NavComponent({ setQNav, qNav }: Props) {
 								scrolled ? "text-black" : "text-white"
 							} `}
 						>
-							Sspot1
+							{pathname === "/dashboard" ? "": "	Sspot1"}
+							
 						</span>
 					</div>
 
