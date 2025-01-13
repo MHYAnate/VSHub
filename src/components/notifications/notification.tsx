@@ -136,6 +136,12 @@ useEffect(() => {
 		setMessages((prevMessages) => prevMessages.filter((msg) => msg.id !== id));
 	};
 
+
+	
+	useEffect(() => {
+		dispatch(fetchMessages());
+	}, [handleMessageRead, handleMessageDelete]);
+
 	return (
 		<div className="bg-transparent relative">
 			<button
@@ -183,8 +189,8 @@ useEffect(() => {
 											docId={message.senderId}
 											receiverId={message.recieverId}
 											noticeId={message.docId}
-											onAccept={() => {handleMessageRead(message.docId)}}
-											onReject={() => {handleMessageRead(message.docId)}}
+											onAccept={() => {handleMessageDelete(message.docId)}}
+											onReject={() => {handleMessageDelete(message.docId)}}
 										/>
 									)}
 									{message.type === "admin" && (
