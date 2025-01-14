@@ -10,6 +10,7 @@ import NavComponent from '@/components/nav/navComponent';
 import AboutTestimonials from '@/components/about/testimonials';
 import AboutGetStarted from '@/components/about/getStarted';
 import AboutFooter from '@/components/about/aboutFooter';
+import Footer from '@/components/workShop/footer';
 
 
 export default function AboutUs() {
@@ -70,7 +71,7 @@ export default function AboutUs() {
 
 			{/* Footer */}
 			<footer className="bg-black text-white">
-				<AboutFooter/>
+				<Footer/>
 			</footer>
 		</div>
 	);
