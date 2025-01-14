@@ -1,6 +1,5 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { stats } from "@/database/stats";
 import { useAppDispatch, useAppSelector } from "@/lib/store/store";
 import { fetchProfiles } from "@/lib/store/features/profileSlice";
 

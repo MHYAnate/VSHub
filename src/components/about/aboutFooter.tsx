@@ -69,7 +69,7 @@ const AboutFooter: React.FC = () => {
       </div>
     </div>
     <div className="mt-8 border-t border-gray-700 pt-8 text-center">
-      <p className="text-gray-400"> &copy; 2024 Sspot1 by ILUD. All rights reserved. </p>
+      <p className="text-gray-400"> &copy; 2025 Sspot1 by ILUD. All rights reserved. </p>
     </div>
   </div>
 	);
