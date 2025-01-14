@@ -84,7 +84,7 @@ export default function NavComponent({ setQNav, qNav }: Props) {
 				</div>
 				<div
 					onClick={() => router.push("/register")}
-					className="px-4 py-2 text-sm text-center font-medium text-white bg-black rounded-full hover:bg-gray-800 transition-all duration-300 cursor-pointer hover:shadow-lg transform hover:-translate-y-0.5"
+					className={`${scrolled? "text-gray-600 bg-black rounded-full hover:bg-gray-800 transition-all duration-300 cursor-pointer":"text-white bg-black rounded-full hover:bg-gray-800 transition-all duration-300 cursor-pointer"} px-4 py-2 text-sm text-center font-medium text-white  hover:shadow-lg transform hover:-translate-y-0.5 mx-2`}
 				>
 					Register
 				</div>
@@ -184,7 +184,7 @@ export default function NavComponent({ setQNav, qNav }: Props) {
 				</div>
 
 				{mobileMenuOpen && (
-					<nav className="mt-4 md:hidden bg-white rounded-lg pb-1">
+					<nav className="mt-4 md:hidden rounded-lg pb-1">
 						<div className="flex flex-col space-y-2">
 							{pathname === "/" &&
 								navItems.map((item, index) => (
@@ -194,7 +194,7 @@ export default function NavComponent({ setQNav, qNav }: Props) {
 											item.action();
 											setMobileMenuOpen(false);
 										}}
-										className="text-sm font-medium text-gray-600 hover:text-black transition-all duration-300 cursor-pointer ml-2"
+										className={`${scrolled? "text-gray-600":"text-white"} text-sm font-medium text-gray-600 hover:text-black transition-all duration-300 cursor-pointer ml-2`}
 									>
 										{item.label}
 									</div>
