@@ -172,10 +172,10 @@ export default function Profile() {
 								{profileDetails?.name}
 							</h1>
 							<div className="mt-2 flex items-center">
-								<span className="text-yellow-400">★</span>
 								<span className="ml-1 text-gray-600">
-									{!Math.round(finalRate) ? 0 :Math.round(finalRate)} ({ratings.length} reviews)
+									{Math.round(finalRate) ? 0 :Math.round(finalRate)} ({ratings.length} reviews)
 								</span>
+								<span className="text-yellow-400">★</span>
 							</div>
 							<p className="mt-2 text-gray-500">
 								{profileDetails?.yearsOfExperience} years of experience
