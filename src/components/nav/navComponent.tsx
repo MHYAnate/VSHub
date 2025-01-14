@@ -194,7 +194,7 @@ export default function NavComponent({ setQNav, qNav }: Props) {
 											item.action();
 											setMobileMenuOpen(false);
 										}}
-										className={`${scrolled? "text-gray-600":"text-white"} text-sm font-medium text-gray-600 hover:text-black transition-all duration-300 cursor-pointer ml-2`}
+										className={`${scrolled? "text-gray-600":"text-white bg-black"} text-sm font-medium text-gray-600 hover:text-black transition-all duration-300 cursor-pointer ml-2`}
 									>
 										{item.label}
 									</div>
