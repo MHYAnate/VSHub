@@ -40,6 +40,8 @@ export default function VendorDashboard() {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	const [account, setAccount] = useState("")
 
+	
+
 	const dispatch = useAppDispatch();
 	const { profiles } = useAppSelector((state) => state.profile);
 
@@ -86,6 +88,12 @@ export default function VendorDashboard() {
 			setAccount(profileDetails?.isVendor === "true"? "vendor":profileDetails?.isVendor === "false"? "client":""); 
 		}
 	}, [user, profileDetails]);
+
+	useEffect(()=>{
+		if (!user){
+			router.push("/");
+		}
+	},[user, router])
 
 	return (
 		<div className="min-h-screen bg-white text-black flex flex-col">

@@ -2,13 +2,27 @@
 
 import RegComponent from "@/components/register/client";
 import VendorRegComponent from "@/components/register/vendor";
-import React, { useState } from "react";
+import React, { useState, useEffect  } from "react";
 import Link from "next/link";
 import NavComponent from "@/components/nav/navComponent";
+import Firebase from "@/firebase/firebase";
+import { useRouter } from "next/navigation";
 
 export default function RegisterLanding() {
 	const [activeTab, setActiveTab] = useState("");
 	const [qNav, setQnav] = useState("");
+
+	const {auth} = Firebase;
+
+	const user = auth.currentUser;
+
+	const router = useRouter();
+
+	useEffect(()=>{
+		if (user){
+			router.push("/dashboard");
+		}
+	},[user, router])
 
 	return (
 		<div>
