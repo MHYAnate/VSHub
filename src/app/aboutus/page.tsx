@@ -9,7 +9,6 @@ import AboutVision from '@/components/about/aboutVision';
 import NavComponent from '@/components/nav/navComponent';
 import AboutTestimonials from '@/components/about/testimonials';
 import AboutGetStarted from '@/components/about/getStarted';
-import AboutFooter from '@/components/about/aboutFooter';
 import Footer from '@/components/workShop/footer';
 
 
