@@ -520,11 +520,11 @@ export default function VendorRegComponent() {
 								>
 									Select Service
 								</option>
-								{selectService === "Automotive"
+								{selectService === "Automotive Services"
 									? renderAutomotiveServices()
-									: selectService === "Maintenance"
+									: selectService === "Maintenance Repair, Construction & Fabrication Services"
 									? renderMaintenance1Services()
-									: selectService === "Others"
+									: selectService === "Lifestyle & Other Personal Services"
 									? renderOtherServices()
 									: ""}
 							</select>
