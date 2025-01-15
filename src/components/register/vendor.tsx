@@ -179,15 +179,15 @@ export default function VendorRegComponent() {
 	}
 
 	const autoCategory = Services.find(
-		(category) => category.category === "Automotive"
+		(category) => category.category === "Automotive Services"
 	);
 
 	const maintenanceCategory = Services.find(
-		(category) => category.category === "Maintenance"
+		(category) => category.category === "Maintenance Repair, Construction & Fabrication Services"
 	);
 
 	const otherCategory = Services.find(
-		(category) => category.category === "Others"
+		(category) => category.category === "Lifestyle & Other Personal Services"
 	);
 
 	function renderAvailableCategory() {

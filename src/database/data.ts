@@ -56,7 +56,7 @@ export const Services = [
   },
   {
     "id": 2,
-    "category": "Maintenance, Construction & Fabrication Services", 
+    "category": "Maintenance Repair, Construction & Fabrication Services", 
     "src": "/service/vshm3.jpg",
     "services": [
       {
