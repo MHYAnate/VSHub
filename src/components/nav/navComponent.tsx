@@ -184,7 +184,7 @@ export default function NavComponent({ setQNav, qNav }: Props) {
 				</div>
 
 				{mobileMenuOpen && (
-					<nav className="mt-4 md:hidden rounded-lg pb-1">
+					<nav className={`mt-4 md:hidden rounded-lg pb-1${scrolled? "":"bg-black" }`}>
 						<div className="flex flex-col space-y-2">
 							{pathname === "/" &&
 								navItems.map((item, index) => (
