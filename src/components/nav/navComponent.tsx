@@ -78,7 +78,7 @@ export default function NavComponent({ setQNav, qNav }: Props) {
 			<>
 				<div
 					onClick={() => router.push("/login")}
-					className="text-sm ml-2 font-medium text-gray-600 hover:text-black transition-all duration-300 cursor-pointer relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-black after:transition-all after:duration-300 hover:after:w-full"
+					className={`${scrolled? "" :"text-white"} text-sm ml-2 font-medium text-gray-600 hover:text-black transition-all duration-300 cursor-pointer relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-black after:transition-all after:duration-300 hover:after:w-full `}
 				>
 					Log In
 				</div>
@@ -184,8 +184,8 @@ export default function NavComponent({ setQNav, qNav }: Props) {
 				</div>
 
 				{mobileMenuOpen && (
-					<nav className={`mt-4 md:hidden rounded-lg pb-1${scrolled? "":"bg-black" }`}>
-						<div className="flex flex-col space-y-2">
+					<nav className="mt-4 md:hidden rounded-lg pb-1">
+						<div className={`${scrolled? "" : "bg-black rounded-xl" } flex flex-col space-y-2 pt-2 pl-2`}>
 							{pathname === "/" &&
 								navItems.map((item, index) => (
 									<div
