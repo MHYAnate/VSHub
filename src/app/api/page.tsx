@@ -148,6 +148,12 @@ export default function Api() {
 				<h1 className="text-4xl font-bold text-gray-900 mb-2">
 					Sspot1 API Documentation
 				</h1>
+        <div>
+           <h1 className="text-4xl font-bold text-gray-900 mb-2">Founder of Sspot1 </h1>
+           <h2 className="text-xl text-gray-600 mb-1">{"Mohammed Hayatudeen Yusuf Anate : Founder of Sspot1"}</h2>
+        </div>
+       
+      
 				<h2 className="text-xl text-gray-600 mb-1">Service Spot 1</h2>
 				<p className="text-gray-500">API Reference and Data Structures</p>
 			</header>

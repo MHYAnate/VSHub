@@ -45,16 +45,14 @@ export default function RateComponent({ id, profiles }: Props) {
 					<StarIcon fill="gold" className="w-6 h-6" />
 				</div>
 				<span className="text-gray-500">({rates.length} reviews)</span>
-				<button
-					className={`text-sm md:text-lg px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-colors ${
-						rates.length === 0 ? "opacity-50 cursor-not-allowed" : ""
-					}`}
-					disabled={rates.length === 0}
+				<div
+					className={`text-sm md:text-lg px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-colors`}
+				
 				>
 					{rates.length === 0
 						? "No Feedbacks"
 						: "Feedbacks"}
-				</button>
+				</div>
 			</div>
 	
 				<div className="space-y-4">
