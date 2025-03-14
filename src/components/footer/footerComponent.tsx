@@ -3,7 +3,6 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 
 const FooterComponent: React.FC = () => {
-
 	const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
 
 	useEffect(() => {
@@ -57,18 +56,27 @@ const FooterComponent: React.FC = () => {
 				</div>
 			</div>
 			<div className="mt-8 flex justify-center space-x-6">
-				{["Twitter", "LinkedIn"].map((platform) => (
+				{["Email", "LinkedIn"].map((platform) => (
 					<Link
 						key={platform}
-						href={`https://${platform.toLowerCase()}.com`}
+						href={
+							platform === "Email"
+								? "mailto:mhibnyusufanate@gmail.com"
+								: "https://www.linkedin.com/in/mohammed-hayatudeen-yusuf-04804a299"
+						}
 						target="_blank"
 						rel="noopener noreferrer"
 						className="text-gray-400 hover:text-black transition-colors duration-300"
 						aria-label={platform}
 					>
-						{platform === "Twitter" && (
+						{platform === "Email" && (
 							<svg className="h-6 w-6" fill="currentColor" viewBox="0 0 48 48">
-								<path d="M 11 4 C 7.134 4 4 7.134 4 11 L 4 39 C 4 42.866 7.134 46 11 46 L 39 46 C 42.866 46 46 42.866 46 39 L 46 11 C 46 7.134 42.866 4 39 4 L 11 4 z M 13.085938 13 L 21.023438 13 L 26.660156 21.009766 L 33.5 13 L 36 13 L 27.789062 22.613281 L 37.914062 37 L 29.978516 37 L 23.4375 27.707031 L 15.5 37 L 13 37 L 22.308594 26.103516 L 13.085938 13 z M 16.914062 15 L 31.021484 35 L 34.085938 35 L 19.978516 15 L 16.914062 15 z"></path>
+								<path
+									strokeLinecap="round"
+									strokeLinejoin="round"
+									strokeWidth="2"
+									d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+								></path>
 							</svg>
 						)}
 
